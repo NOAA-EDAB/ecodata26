@@ -24,5 +24,5 @@ plot_trans_dates(
 ggplot object
 }
 \description{
-uses ecodata::trans_dates
+uses ecodata26::trans_dates
 }

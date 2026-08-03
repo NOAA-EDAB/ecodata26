@@ -19,7 +19,7 @@ plot_abc_acl <- function(
   plottype = "Stacked"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -28,7 +28,7 @@ plot_abc_acl <- function(
     filterEPUs <- c("NE") #unique to abc_acl dataset
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
   # EPUs are Councils here, MAB = MAFMC and NE = NEFMC
@@ -38,7 +38,7 @@ plot_abc_acl <- function(
   # splitting code by report for now
 
   if (report == "MidAtlantic") {
-    ABCs <- ecodata::abc_acl |>
+    ABCs <- ecodata26::abc_acl |>
       dplyr::filter(EPU == filterEPUs) |>
       tidyr::separate(col = Var, into = c("Fishery", "Var"), sep = "_") |>
       dplyr::filter(Var == "Quota") |>
@@ -66,7 +66,7 @@ plot_abc_acl <- function(
       dplyr::arrange(Order) |>
       dplyr::mutate(Fishery = factor(Fishery, levels = unique(Fishery)))
 
-    CatchABC <- ecodata::abc_acl |>
+    CatchABC <- ecodata26::abc_acl |>
       unique() |>
       dplyr::filter(EPU == filterEPUs) |>
       tidyr::separate(col = Var, into = c("Fishery", "Var"), sep = "_") |>
@@ -88,7 +88,7 @@ plot_abc_acl <- function(
   }
 
   if (report == "NewEngland") {
-    ABCs <- ecodata::abc_acl |>
+    ABCs <- ecodata26::abc_acl |>
       dplyr::filter(EPU == filterEPUs) |>
       tidyr::separate(
         col = Var,
@@ -99,7 +99,7 @@ plot_abc_acl <- function(
       dplyr::group_by(Fishery, Time) |>
       dplyr::summarise(Value = sum(Value), .groups = "drop")
 
-    CatchABC <- ecodata::abc_acl |>
+    CatchABC <- ecodata26::abc_acl |>
       unique() |>
       dplyr::filter(EPU == filterEPUs) |>
       tidyr::separate(
@@ -152,9 +152,9 @@ plot_abc_acl <- function(
       ) +
       ggplot2::ylab("ABC or ACL, metric tons") +
       ggplot2::xlab(ggplot2::element_blank()) +
-      ecodata::theme_ts() +
+      ecodata26::theme_ts() +
       ggplot2::guides(fill = ggplot2::guide_legend(ncol = 1)) +
-      ecodata::theme_title() +
+      ecodata26::theme_title() +
       ggplot2::scale_fill_manual(values = unname(customPalette[-16]))
 
     return(p)
@@ -181,8 +181,8 @@ plot_abc_acl <- function(
       ggplot2::ylab(expression("Catch / ABC or ACL")) +
       ggplot2::theme(legend.title = ggplot2::element_blank()) +
       ggplot2::xlab(ggplot2::element_blank()) +
-      ecodata::theme_ts() +
-      ecodata::theme_title()
+      ecodata26::theme_ts() +
+      ecodata26::theme_title()
 
     return(p)
   }

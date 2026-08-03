@@ -17,5 +17,5 @@ plot_forage_anomaly(shadedRegion = NULL, report = "MidAtlantic", n = 0)
 ggplot object
 }
 \description{
-Plots ecodata::forage_anomaly
+Plots ecodata26::forage_anomaly
 }

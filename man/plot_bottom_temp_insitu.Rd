@@ -17,5 +17,5 @@ plot_bottom_temp_insitu(shadedRegion = NULL, report = "MidAtlantic", n = 0)
 ggplot object
 }
 \description{
-ecodata::bottom_temp_insitu
+ecodata26::bottom_temp_insitu
 }

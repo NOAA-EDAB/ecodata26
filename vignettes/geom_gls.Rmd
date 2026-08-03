@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(ecodata)
+library(ecodata26)
 ```
 
 ## Using geom_gls()
@@ -44,5 +44,5 @@ ggplot2::ggplot(data = data,aes(x = x, y = y)) +
 produces 
 
 ```{r neusfig, echo=F}
-knitr::include_graphics(path="https://raw.githubusercontent.com/NOAA-EDAB/ecodata/master/docs/images/geom_gls.png")
+knitr::include_graphics(path="https://raw.githubusercontent.com/NOAA-EDAB/ecodata26/master/docs/images/geom_gls.png")
 ```

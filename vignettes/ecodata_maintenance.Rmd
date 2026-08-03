@@ -1,10 +1,10 @@
 ---
-title: "ecodata maintenance"
+title: "ecodata26 maintenance"
 author: "NOAA-EDAB"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ecodata maintenance}
+  %\VignetteIndexEntry{ecodata26 maintenance}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The purpose of the `ecodata` package is to hold and facilitate the use of ecosystem indicator datasets used in the annual State of the Ecosystem reports developed for the New England and Mid-Atlantic Fisheries Management Councils. Since these reports are iterative, the indicators used to develop the reports are added to or changed regularly. To ensure continuity between years and package authors, the following protocols have been established. 
+The purpose of the `ecodata26` package is to hold and facilitate the use of ecosystem indicator datasets used in the annual State of the Ecosystem reports developed for the New England and Mid-Atlantic Fisheries Management Councils. Since these reports are iterative, the indicators used to develop the reports are added to or changed regularly. To ensure continuity between years and package authors, the following protocols have been established. 
 
 ## Workflow Overview
 
@@ -33,7 +33,7 @@ In some cases the data will not arrive in the same format or naming convention. 
 
 ## Add new indicator
 
-To add a new indicator dataset to the `ecodata` package, first ensure the  delivered .csv/.xls/.Rdata file is in the data-raw folder. Write a get_example.R function which wrangles the raw data set into the desired format. Be sure to include a `get_example(save_clean = T)` line after closing the function. This will store the data frame in the data folder which is used to lazy load the data when the package is installed. 
+To add a new indicator dataset to the `ecodata26` package, first ensure the  delivered .csv/.xls/.Rdata file is in the data-raw folder. Write a get_example.R function which wrangles the raw data set into the desired format. Be sure to include a `get_example(save_clean = T)` line after closing the function. This will store the data frame in the data folder which is used to lazy load the data when the package is installed. 
 
 
 The **data-raw** folder should hold contributor datasets, functions for wrangling data into SOE format (get_example.R scripts) and any supplimental functions used to create those datasets. 
@@ -47,8 +47,8 @@ The **data** folder should hold only wrangled .rda files.
 
 2)  When the package is built, the files in the *R* folder will be used to populate the *man* folder. 
 
-3)  Ecodata uses [pkgdown](https://pkgdown.r-lib.org/index.html) so once the manual documentation is complete run `pkgdown::build_site()`. This will populate the website with is updated indicator dataset information. 
+3)  ecodata26 uses [pkgdown](https://pkgdown.r-lib.org/index.html) so once the manual documentation is complete run `pkgdown::build_site()`. This will populate the website with is updated indicator dataset information. 
 
-Website link - https://noaa-edab.github.io/ecodata/landing_page
+Website link - https://noaa-edab.github.io/ecodata26/landing_page
 
 

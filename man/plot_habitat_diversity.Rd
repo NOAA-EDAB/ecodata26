@@ -21,5 +21,5 @@ plot_habitat_diversity(
 ggplot object
 }
 \description{
-Plots ecodata::habitat_diversity (Shannon index and species richness)
+Plots ecodata26::habitat_diversity (Shannon index and species richness)
 }

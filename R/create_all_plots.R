@@ -1,10 +1,10 @@
-#' Create all variations of an ecodata plot function
+#' Create all variations of an ecodata26 plot function
 #'
-#' This function can flexibly plot all possible variations given the arguments and attributes of an ecodata plot function
+#' This function can flexibly plot all possible variations given the arguments and attributes of an ecodata26 plot function
 #' This function can also print all of the code needed to run all possible variations
-#' This may be useful for reviewing data submissions, creating catalog pages, automating QA/QC protocols and comparing against other ecodata versions.
+#' This may be useful for reviewing data submissions, creating catalog pages, automating QA/QC protocols and comparing against other ecodata26 versions.
 #'
-#' @param ecodata_name string. the data name of the target ecodata dataset or plot function (default = NULL)
+#' @param ecodata26_name string. the data name of the target ecodata26 dataset or plot function (default = NULL)
 #' @param write_only boolean. should the function output the plotting code, as text, for all plot variations (default = FALSE)
 #' @param n numeric. number of data points for short term trend (default = 0)
 #'
@@ -12,9 +12,9 @@
 #'
 #' @export
 
-create_all_plots <- function(ecodata_name = NULL, write_only = FALSE, n = 0) {
+create_all_plots <- function(ecodata26_name = NULL, write_only = FALSE, n = 0) {
   # Define plot function syntax based on user input
-  function_name <- paste0("ecodata::plot_", ecodata_name)
+  function_name <- paste0("ecodata26::plot_", ecodata26_name)
 
   # Parse the argument names (e.g. "report", "varName", etc.) of the plot function
   all_arguments <- names(formals(eval(parse(

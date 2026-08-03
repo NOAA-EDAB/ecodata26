@@ -1,4 +1,4 @@
-url: https://noaa-edab.github.io/ecodata/
+url: https://noaa-edab.github.io/ecodata26/
 
 template:
  bootstrap: 5
@@ -12,7 +12,7 @@ navbar:
   articles:
    text: Articles
    menu:
-   - text: Ecodata maintenance
+   - text: ecodata26 maintenance
      href: articles/ecodata_maintenance.html
    - text: Landing page
      href: articles/landing_page.html
@@ -32,7 +32,7 @@ reference:
   - title: "Plotting and modeling functions"
     desc: "main functions for running models and plotting its output"
     contents:
-    - ecodata
+    - ecodata26
     - coast
     - create_all_plots
     - cold_pool_sf

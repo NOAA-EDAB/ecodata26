@@ -17,5 +17,5 @@ plot_bottom_temp_glorys(shadedRegion = NULL, report = "MidAtlantic", n = 0)
 ggplot object
 }
 \description{
-ecodata::bottom_temp_glorys
+ecodata26::bottom_temp_glorys
 }

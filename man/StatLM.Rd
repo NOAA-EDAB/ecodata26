@@ -3,7 +3,7 @@
 \docType{data}
 \name{StatLM}
 \alias{StatLM}
-\title{StatLM Stat protto based on ecodata StatGLS
+\title{StatLM Stat protto based on ecodata26 StatGLS
 Need to pass arguments}
 \format{
 An object of class \code{StatLM} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 4.

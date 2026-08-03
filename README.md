@@ -1,22 +1,22 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ecodata <img src="man/figures/ecodata_logo.png" align="right" width="120" />
+# ecodata26 <img src="man/figures/ecodata_logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 
-[![gitleaks](https://github.com/NOAA-EDAB/ecodata/actions/workflows/secretScan.yml/badge.svg)](https://github.com/NOAA-EDAB/ecodata/actions/workflows/secretScan.yml)
-[![gh-pages](https://github.com/NOAA-EDAB/ecodata/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/ecodata/actions/workflows/pkgdown.yml)
-[![R-CMD-check](https://github.com/NOAA-EDAB/ecodata/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/NOAA-EDAB/ecodata/actions/workflows/R-CMD-check.yaml)
+[![gitleaks](https://github.com/NOAA-EDAB/ecodata26/actions/workflows/secretScan.yml/badge.svg)](https://github.com/NOAA-EDAB/ecodata26/actions/workflows/secretScan.yml)
+[![gh-pages](https://github.com/NOAA-EDAB/ecodata26/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/NOAA-EDAB/ecodata26/actions/workflows/pkgdown.yml)
+[![R-CMD-check](https://github.com/NOAA-EDAB/ecodata26/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/NOAA-EDAB/ecodata26/actions/workflows/R-CMD-check.yaml)
 [![Run PR
-Checks](https://github.com/NOAA-EDAB/ecodata/actions/workflows/verify_pr.yml/badge.svg)](https://github.com/NOAA-EDAB/ecodata/actions/workflows/verify_pr.yml)
+Checks](https://github.com/NOAA-EDAB/ecodata26/actions/workflows/verify_pr.yml/badge.svg)](https://github.com/NOAA-EDAB/ecodata26/actions/workflows/verify_pr.yml)
 <!-- badges: end -->
 
 ## Overview
 
-[`ecodata`](https://noaa-edab.github.io/ecodata/) is an R data package
-developed by the Ecosystems Dynamics and Assessment Branch of the
-Northeast Fisheries Science Center for use in State of the Ecosystem
+[`ecodata26`](https://noaa-edab.github.io/ecodata26/) is an R data
+package developed by the Ecosystems Dynamics and Assessment Branch of
+the Northeast Fisheries Science Center for use in State of the Ecosystem
 (SOE) reporting. SOE reports are high-level overviews of ecosystem
 indicator status and trends occurring on the Northeast Continental
 Shelf. Unless otherwise stated, data are representative of specific
@@ -24,11 +24,11 @@ Ecological Production Units (EPUs), referring to the Mid-Atlantic Bight
 (MAB), Georges Bank (GB), Gulf of Maine (GOM), and Scotian Shelf (SS).
 SOE reports are developed for US Fishery Management Councils (FMCs), and
 therefore indicator data for Scotian Shelf are included when available,
-but this is not always the case. `ecodata` has two companion bookdown
+but this is not always the case. `ecodata26` has two companion bookdown
 documents: 1) [Tech-Doc](https://noaa-edab.github.io/tech-doc/), which
 details the methods used in the SOE, and 2) the [Northeast US Ecosystem
 Indicator Catalog](https://noaa-edab.github.io/catalog/), which provides
-expanded ecological context for SOE indicators. The `ecodata` package
+expanded ecological context for SOE indicators. The `ecodata26` package
 can be used to access to all of the indicators, datasets and plots
 featured in the SOE reports, which can be accessed using the table
 below. **Please consult the [technical
@@ -49,21 +49,21 @@ before using data sets.**
 For the latest data and plots:
 
 ``` r
-pak::pak("noaa-edab/ecodata")
+pak::pak("noaa-edab/ecodata26")
 ```
 
 For data used in the past, please replace “X.X.X” below with the desired
-[`ecodata` version](https://github.com/NOAA-EDAB/ecodata/releases):
+[`ecodata26` version](https://github.com/NOAA-EDAB/ecodata26/releases):
 
 ``` r
-pak::pak("noaa-edab/ecodata@X.X.X")
+pak::pak("noaa-edab/ecodata26@X.X.X")
 ```
 
 ## Loading data sets
 
 1.  All derived data sets are available once the package has been loaded
     into the environment. View available data sets using the syntax
-    `ecodata::...`
+    `ecodata26::...`
 
 ![](man/figures/ecodata1.gif)
 
