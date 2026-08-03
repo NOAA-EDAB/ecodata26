@@ -8,13 +8,13 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(ecodata)
+library(ecodata26)
 library(ecodata25)
 library(dplyr)
 library(knitr)
 
 # Replace 'chl_pp' with intended dataset
-dataset<-ecodata::chl_pp
+dataset<-ecodata26::chl_pp
 dataset24<-ecodata25::chl_pp
 
 # Define dataset-specific arguments for plot functions
@@ -28,7 +28,7 @@ epu<-list("MAB","GOM","GB")
 
 ## `r paste(report[1],variable[1],plottype[1],epu[1])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[1], n = 10, varName = variable[1], plottype = plottype[1], EPU = epu[1]) + 
+ecodata26::plot_chl_pp(report = report[1], n = 10, varName = variable[1], plottype = plottype[1], EPU = epu[1]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[1], plottype = plottype[1], EPU = epu[1]) + 
@@ -37,7 +37,7 @@ ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[1], plott
 
 ## `r paste(report[2],variable[1],plottype[1],epu[2])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[1], plottype = plottype[1], EPU = epu[2]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[1], plottype = plottype[1], EPU = epu[2]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[1], plottype = plottype[1], EPU = epu[2]) + 
@@ -46,7 +46,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[1], plott
 
 ## `r paste(report[2],variable[1],plottype[1],epu[3])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[1], plottype = plottype[1], EPU = epu[3]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[1], plottype = plottype[1], EPU = epu[3]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[1], plottype = plottype[1], EPU = epu[3]) + 
@@ -55,7 +55,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[1], plott
 
 ## `r paste(report[1],variable[1],plottype[2],epu[1])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[1], n = 10, varName = variable[1], plottype = plottype[2], EPU = epu[1]) + 
+ecodata26::plot_chl_pp(report = report[1], n = 10, varName = variable[1], plottype = plottype[2], EPU = epu[1]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[1], plottype = plottype[2], EPU = epu[1]) + 
@@ -64,7 +64,7 @@ ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[1], plott
 
 ## `r paste(report[2],variable[1],plottype[2],epu[2])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[1], plottype = plottype[2], EPU = epu[2]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[1], plottype = plottype[2], EPU = epu[2]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[1], plottype = plottype[2], EPU = epu[2]) + 
@@ -73,7 +73,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[1], plott
 
 ## `r paste(report[2],variable[1],plottype[2],epu[3])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[1], plottype = plottype[2], EPU = epu[3]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[1], plottype = plottype[2], EPU = epu[3]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[1], plottype = plottype[2], EPU = epu[3]) + 
@@ -82,7 +82,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[1], plott
 
 ## `r paste(report[1],variable[2],plottype[1],epu[1])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[1], n = 10, varName = variable[2], plottype = plottype[1], EPU = epu[1]) + 
+ecodata26::plot_chl_pp(report = report[1], n = 10, varName = variable[2], plottype = plottype[1], EPU = epu[1]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[2], plottype = plottype[1], EPU = epu[1]) + 
@@ -91,7 +91,7 @@ ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[2], plott
 
 ## `r paste(report[2],variable[2],plottype[1],epu[2])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[2], plottype = plottype[1], EPU = epu[2]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[2], plottype = plottype[1], EPU = epu[2]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[2], plottype = plottype[1], EPU = epu[2]) + 
@@ -100,7 +100,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[2], plott
 
 ## `r paste(report[2],variable[2],plottype[1],epu[3])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[2], plottype = plottype[1], EPU = epu[3]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[2], plottype = plottype[1], EPU = epu[3]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[2], plottype = plottype[1], EPU = epu[3]) + 
@@ -109,7 +109,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[2], plott
 
 ## `r paste(report[1],variable[2],plottype[2],epu[1])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[1], n = 10, varName = variable[2], plottype = plottype[2], EPU = epu[1]) + 
+ecodata26::plot_chl_pp(report = report[1], n = 10, varName = variable[2], plottype = plottype[2], EPU = epu[1]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[2], plottype = plottype[2], EPU = epu[1]) + 
@@ -118,7 +118,7 @@ ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[2], plott
 
 ## `r paste(report[2],variable[2],plottype[2],epu[2])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[2], plottype = plottype[2], EPU = epu[2]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[2], plottype = plottype[2], EPU = epu[2]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[2], plottype = plottype[2], EPU = epu[2]) + 
@@ -127,7 +127,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[2], plott
 
 ## `r paste(report[2],variable[2],plottype[2],epu[3])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[2], plottype = plottype[2], EPU = epu[3]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[2], plottype = plottype[2], EPU = epu[3]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[2], plottype = plottype[2], EPU = epu[3]) + 
@@ -136,7 +136,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[2], plott
 
 ## `r paste(report[1],variable[3],plottype[1],epu[1])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[1], n = 10, varName = variable[3], plottype = plottype[1], EPU = epu[1]) + 
+ecodata26::plot_chl_pp(report = report[1], n = 10, varName = variable[3], plottype = plottype[1], EPU = epu[1]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[3], plottype = plottype[1], EPU = epu[1]) + 
@@ -145,7 +145,7 @@ ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[3], plott
 
 ## `r paste(report[2],variable[3],plottype[1],epu[2])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[3], plottype = plottype[1], EPU = epu[2]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[3], plottype = plottype[1], EPU = epu[2]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[3], plottype = plottype[1], EPU = epu[2]) + 
@@ -154,7 +154,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[3], plott
 
 ## `r paste(report[2],variable[3],plottype[1],epu[3])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[3], plottype = plottype[1], EPU = epu[3]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[3], plottype = plottype[1], EPU = epu[3]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[3], plottype = plottype[1], EPU = epu[3]) + 
@@ -163,7 +163,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[3], plott
 
 ## `r paste(report[1],variable[3],plottype[2],epu[1])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[1], n = 10, varName = variable[3], plottype = plottype[2], EPU = epu[1]) + 
+ecodata26::plot_chl_pp(report = report[1], n = 10, varName = variable[3], plottype = plottype[2], EPU = epu[1]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[3], plottype = plottype[2], EPU = epu[1]) + 
@@ -172,7 +172,7 @@ ecodata25::plot_chl_pp(report = report[1], n = 100, varName = variable[3], plott
 
 ## `r paste(report[2],variable[3],plottype[2],epu[2])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[3], plottype = plottype[2], EPU = epu[2]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[3], plottype = plottype[2], EPU = epu[2]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[3], plottype = plottype[2], EPU = epu[2]) + 
@@ -181,7 +181,7 @@ ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[3], plott
 
 ## `r paste(report[2],variable[3],plottype[2],epu[3])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_chl_pp(report = report[2], n = 10, varName = variable[3], plottype = plottype[2], EPU = epu[3]) + 
+ecodata26::plot_chl_pp(report = report[2], n = 10, varName = variable[3], plottype = plottype[2], EPU = epu[3]) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_chl_pp(report = report[2], n = 100, varName = variable[3], plottype = plottype[2], EPU = epu[3]) + 

@@ -8,13 +8,13 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(ecodata)
+library(ecodata26)
 library(ecodata25)
 library(dplyr)
 library(knitr)
 
 # Replace 'mab_inshore_survey' with intended dataset
-dataset<-ecodata::mab_inshore_survey
+dataset<-ecodata26::mab_inshore_survey
 dataset24<-ecodata25::mab_inshore_survey
 
 # Define dataset-specific arguments for plot functions
@@ -38,7 +38,7 @@ kable(datastats, digits = 2)
 
 ## `r paste(report[1])`
 ```{r, fig.show="hold", out.width="50%", echo=FALSE, message=FALSE, warning=FALSE}
-ecodata::plot_mab_inshore_survey(report = report[1], n = 10) + 
+ecodata26::plot_mab_inshore_survey(report = report[1], n = 10) + 
   ggplot2::ggtitle("SOE 2026") + ggplot2::theme(plot.title = ggplot2::element_text(size = 20))
 
 ecodata25::plot_mab_inshore_survey(report = report[1], n = 10) + 

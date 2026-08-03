@@ -8,7 +8,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(ecodata)
+library(ecodata26)
 library(ecodata25)
 library(dplyr)
 library(knitr)
@@ -19,7 +19,7 @@ library(ggplot2)
 
 ## MAB Forecast 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::surface_temp_mom6 |>
+fix <- ecodata26::surface_temp_mom6 |>
   dplyr::filter(grepl("forecast",Var)) |>
   dplyr::filter(EPU == "MAB")
 
@@ -34,7 +34,7 @@ p
 
 ## GB Forecast 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::surface_temp_mom6 |>
+fix <- ecodata26::surface_temp_mom6 |>
   dplyr::filter(grepl("forecast",Var)) |>
   dplyr::filter(EPU == "GB")
 
@@ -49,7 +49,7 @@ p
 
 ## GOM Forecast 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::surface_temp_mom6 |>
+fix <- ecodata26::surface_temp_mom6 |>
   dplyr::filter(grepl("forecast",Var)) |>
   dplyr::filter(EPU == "GOM")
 
@@ -64,7 +64,7 @@ p
 
 ## MAB hindcast 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::surface_temp_mom6 |>
+fix <- ecodata26::surface_temp_mom6 |>
   dplyr::filter(grepl("hindcast",Var)) |>
   dplyr::filter(EPU == "MAB")
 
@@ -79,7 +79,7 @@ p
 
 ## GB hindcast 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::surface_temp_mom6 |>
+fix <- ecodata26::surface_temp_mom6 |>
   dplyr::filter(grepl("hindcast",Var)) |>
   dplyr::filter(EPU == "GB")
 
@@ -94,7 +94,7 @@ p
 
 ## GOM hindcast 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::surface_temp_mom6 |>
+fix <- ecodata26::surface_temp_mom6 |>
   dplyr::filter(grepl("hindcast",Var)) |>
   dplyr::filter(EPU == "GOM")
 

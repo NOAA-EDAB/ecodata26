@@ -8,7 +8,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(ecodata)
+library(ecodata26)
 library(ecodata25)
 library(dplyr)
 library(knitr)
@@ -19,7 +19,7 @@ library(ggplot2)
 
 ## MAB Annual BT 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Annual",Var)) |>
   dplyr::filter(EPU == "MAB")
 
@@ -34,7 +34,7 @@ p
 
 ## GB Annual BT 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Annual",Var)) |>
   dplyr::filter(EPU == "GB")
 
@@ -49,7 +49,7 @@ p
 
 ## GOM Annual BT 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Annual",Var)) |>
   dplyr::filter(EPU == "GOM")
 
@@ -64,7 +64,7 @@ p
 
 ## MAB Winter BT Anom
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Winter",Var)) |>
   dplyr::filter(EPU == "MAB")
 
@@ -79,7 +79,7 @@ p
 
 ## GB Winter BT Anom 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Winter",Var)) |>
   dplyr::filter(EPU == "GB")
 
@@ -94,7 +94,7 @@ p
 
 ## GOM Winter BT Anom 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Winter",Var)) |>
   dplyr::filter(EPU == "GOM")
 
@@ -109,7 +109,7 @@ p
 
 ## MAB Spring BT Anom
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Spring",Var)) |>
   dplyr::filter(EPU == "MAB")
 
@@ -124,7 +124,7 @@ p
 
 ## GB Spring BT Anom 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Spring",Var)) |>
   dplyr::filter(EPU == "GB")
 
@@ -139,7 +139,7 @@ p
 
 ## GOM Spring BT Anom 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Spring",Var)) |>
   dplyr::filter(EPU == "GOM")
 
@@ -154,7 +154,7 @@ p
 
 ## MAB Summer BT Anom
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Summer",Var)) |>
   dplyr::filter(EPU == "MAB")
 
@@ -169,7 +169,7 @@ p
 
 ## GB Summer BT Anom 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Summer",Var)) |>
   dplyr::filter(EPU == "GB")
 
@@ -184,7 +184,7 @@ p
 
 ## GOM Summer BT Anom 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Summer",Var)) |>
   dplyr::filter(EPU == "GOM")
 
@@ -199,7 +199,7 @@ p
 
 ## MAB Fall BT Anom
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Fall",Var)) |>
   dplyr::filter(EPU == "MAB")
 
@@ -214,7 +214,7 @@ p
 
 ## GB Fall BT Anom 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Fall",Var)) |>
   dplyr::filter(EPU == "GB")
 
@@ -229,7 +229,7 @@ p
 
 ## GOM Fall BT Anom 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-fix <- ecodata::bottom_temp_mom6 |>
+fix <- ecodata26::bottom_temp_mom6 |>
   dplyr::filter(grepl("Fall",Var)) |>
   dplyr::filter(EPU == "GOM")
 
