@@ -1,4 +1,4 @@
-prey_freq <- ecodata::seabird_ne %>%
+prey_freq <- ecodata26::seabird_ne %>%
   dplyr::filter(
     !stringr::str_detect(Var, "Productivity"),
     !stringr::str_detect(Var, "Sum")
@@ -48,7 +48,7 @@ diet_freq_bar <-
   ggplot2::ggtitle("Prey composition") +
   ggplot2::ylab("Proportion of prey items") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()
 
 diet_freq_bar

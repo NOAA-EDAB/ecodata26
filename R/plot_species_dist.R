@@ -20,7 +20,7 @@ plot_species_dist <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -41,9 +41,9 @@ plot_species_dist <- function(
     stop("Please select varName = 'along' or 'depth'")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  fix <- ecodata::species_dist |>
+  fix <- ecodata26::species_dist |>
     #dplyr::filter(!Var == "Season") %>%
     dplyr::mutate(Value = as.numeric(Value)) |>
     dplyr::group_by(Var) |>
@@ -80,10 +80,10 @@ plot_species_dist <- function(
       linetype = setup$hline.lty,
       na.rm = T
     ) +
-    ecodata::geom_gls(na.rm = T) +
-    ecodata::geom_lm(n = n, na.rm = T) +
-    ecodata::theme_ts() +
-    ecodata::theme_title()
+    ecodata26::geom_gls(na.rm = T) +
+    ecodata26::geom_lm(n = n, na.rm = T) +
+    ecodata26::theme_ts() +
+    ecodata26::theme_title()
 
   # optional code for New England specific (2 panel) formatting
   # if (report == "NewEngland") {

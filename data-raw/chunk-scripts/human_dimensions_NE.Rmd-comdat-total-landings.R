@@ -1,6 +1,6 @@
 council_abbr <- "NEFMC"
 #Managed landings
-managed_landings <- ecodata::comdat %>%
+managed_landings <- ecodata26::comdat %>%
   dplyr::filter(
     Var %in%
       c(
@@ -18,10 +18,10 @@ managed_landings <- ecodata::comdat %>%
     Time >= 1986
   )
 
-US_landings <- ecodata::comdat %>%
+US_landings <- ecodata26::comdat %>%
   dplyr::filter(Var == "Seafood Landings", Time >= 1986)
 # #Total landings
-total_landings <- ecodata::comdat %>%
+total_landings <- ecodata26::comdat %>%
   dplyr::filter(Var == "Landings", Time >= 1986)
 
 total_landings_agg <- total_landings %>%
@@ -68,12 +68,12 @@ gom_total <- landings_aggx %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Value, group = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  #ecodata::geom_lm(aes(x = Time, y = Value))+
+  #ecodata26::geom_lm(aes(x = Time, y = Value))+
   ggplot2::geom_line(aes(x = Time, y = Value, color = Var), size = lwd) +
   ggplot2::geom_point(aes(x = Time, y = Value, color = Var), size = pcex) +
   ggplot2::ylim(0, 190) +
@@ -120,9 +120,9 @@ gom_total <- landings_aggx %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::ggtitle("Gulf of Maine") +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 landings_agg_pre2018 <- landings_agg %>%
   dplyr::filter(Time <= 2018, EPU == "GB", Var == "Total")
@@ -145,13 +145,13 @@ gb_total <- landings_aggx %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Value, group = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
 
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
   ggplot2::geom_line(aes(x = Time, y = Value, color = Var), size = lwd) +
   ggplot2::geom_point(aes(x = Time, y = Value, color = Var), size = pcex) +
   ggplot2::ylim(0, 190) +
@@ -196,9 +196,9 @@ gb_total <- landings_aggx %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::ggtitle("Georges Bank") +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 plot_row <- cowplot::plot_grid(gb_total, gom_total, ncol = 2)
 title <- ggdraw() +

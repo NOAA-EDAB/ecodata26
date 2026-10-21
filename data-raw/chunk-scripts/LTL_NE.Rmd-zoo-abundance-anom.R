@@ -1,4 +1,4 @@
-d <- ecodata::zoo_regime %>%
+d <- ecodata26::zoo_regime %>%
   dplyr::filter(
     Var %in% c('pseudo_100m3', 'ctyp_100m3', 'calfin_100m3'),
     EPU %in% c('GOM', 'GB')
@@ -23,7 +23,7 @@ d <- ecodata::zoo_regime %>%
   ggplot2::geom_point() +
   ggplot2::geom_line() +
   ggplot2::facet_wrap(~EPU, ncol = 2, scales = "free") +
-  #ecodata::geom_gls()+
+  #ecodata26::geom_gls()+
   ggplot2::ylab("Abundance Anomaly") +
   ggplot2::geom_hline(
     aes(yintercept = 0),
@@ -40,7 +40,7 @@ d <- ecodata::zoo_regime %>%
     )
   ) +
   ggplot2::theme(legend.position = "bottom", legend.title = element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()
 d

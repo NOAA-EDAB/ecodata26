@@ -21,7 +21,7 @@ plot_heatwave <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -30,11 +30,11 @@ plot_heatwave <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   durdvar <- paste0("duration-", varName, "Detrended")
 
-  durd <- ecodata::heatwave |>
+  durd <- ecodata26::heatwave |>
     dplyr::filter(Var == durdvar) |>
     dplyr::group_by(Time, EPU, Var, Units) |>
     dplyr::summarise(Value = sum(Value)) |>
@@ -45,7 +45,7 @@ plot_heatwave <- function(
 
   maxindvar <- paste0("maximum intensity-", varName, "Detrended")
 
-  maxind <- ecodata::heatwave |>
+  maxind <- ecodata26::heatwave |>
     dplyr::filter(Var == maxindvar) |>
     dplyr::group_by(Time, EPU, Var, Units) |>
     dplyr::summarise(Value = max(Value)) |>
@@ -72,9 +72,9 @@ plot_heatwave <- function(
     ggplot2::ggplot() +
     ggplot2::geom_line(ggplot2::aes(x = Time, y = Value)) +
     ggplot2::geom_point(ggplot2::aes(x = Time, y = Value)) +
-    ecodata::geom_gls(ggplot2::aes(x = Time, y = Value, group = Var)) +
-    ecodata::geom_lm(n = n, ggplot2::aes(x = Time, y = Value, group = Var)) +
-    #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+    ecodata26::geom_gls(ggplot2::aes(x = Time, y = Value, group = Var)) +
+    ecodata26::geom_lm(n = n, ggplot2::aes(x = Time, y = Value, group = Var)) +
+    #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
     ggplot2::ylab("") +
     ggplot2::xlab(ggplot2::element_blank()) +
     ggplot2::ggtitle(paste(setup$region, varName, "Marine Heatwave Intesity")) +
@@ -99,11 +99,11 @@ plot_heatwave <- function(
       #labeller = ggplot2::label_wrap_gen(multi_line=FALSE),
       scales = "free"
     ) +
-    ecodata::theme_facet() +
+    ecodata26::theme_facet() +
     ggplot2::theme(
       strip.text = ggplot2::element_text(hjust = 0, face = "italic")
     ) +
-    ecodata::theme_title()
+    ecodata26::theme_title()
 
   # optional code for New England specific (2 panel) formatting
   if (report == "NewEngland") {
@@ -120,14 +120,14 @@ attr(plot_heatwave, "varName") <- c("Surface", "Bottom")
 attr(plot_heatwave, "report") <- c("MidAtlantic", "NewEngland")
 
 # Paste commented original plot code chunk for reference
-# durd <- ecodata::heatwave %>%
+# durd <- ecodata26::heatwave %>%
 #   dplyr::filter(Var == "duration-SurfaceDetrended") %>%
 #   dplyr::group_by(Time, EPU, Var, Units) %>%
 #   dplyr::summarise(Value = sum(Value)) %>%
 #   dplyr::ungroup() %>%
 #   dplyr::mutate(Var = dplyr::recode(Var, "duration-SurfaceDetrended" = "Total Days Detrended (N days)"))
 #
-# maxind <- ecodata::heatwave %>%
+# maxind <- ecodata26::heatwave %>%
 #   dplyr::filter(Var == "maximum intensity-SurfaceDetrended") %>%
 #   dplyr::group_by(Time, EPU, Var, Units) %>%
 #   dplyr::summarise(Value = max(Value)) %>%
@@ -145,8 +145,8 @@ attr(plot_heatwave, "report") <- c("MidAtlantic", "NewEngland")
 #   ggplot2::ggplot() +
 #   ggplot2::geom_line(aes(x = Time, y = Value)) +
 #   ggplot2::geom_point(aes(x = Time, y = Value)) +
-#   ecodata::geom_gls(aes(x = Time, y = Value, group = Var)) +
-#   #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+#   ecodata26::geom_gls(aes(x = Time, y = Value, group = Var)) +
+#   #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
 #   ggplot2::ylab("") +
 #   ggplot2::xlab(element_blank())+
 #   ggplot2::ggtitle("Mid-Atlantic Marine Heatwave Intesity") +
@@ -159,9 +159,9 @@ attr(plot_heatwave, "report") <- c("MidAtlantic", "NewEngland")
 #                     xmin = x.shade.min , xmax = x.shade.max,
 #                     ymin = -Inf, ymax = Inf) +
 #   ggplot2::facet_wrap(~Var, scales = "free")+
-#   ecodata::theme_facet()+
+#   ecodata26::theme_facet()+
 #   ggplot2::theme(strip.text=element_text(hjust=0,
 #                                          face = "italic"))+
-#   ecodata::theme_title()
+#   ecodata26::theme_title()
 #
 #

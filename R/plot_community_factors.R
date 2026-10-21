@@ -52,7 +52,7 @@ plot_community_factors <- function(
     )
   }
 
-  eng <- ecodata::engagement |>
+  eng <- ecodata26::engagement |>
     #dplyr::distinct(Time, Var,  EPU, Units, .keep_all = T) |> #hack, remove later
     tidyr::separate(Var, into = c("Town", "StateVar"), sep = ", ") |> #using two steps because some towns have - in the name
     tidyr::separate(StateVar, into = c("State", "Var"), sep = "-") |> # which also seps the variable

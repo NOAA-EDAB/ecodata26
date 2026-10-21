@@ -1,4 +1,4 @@
-bar_dat_gom <- ecodata::productivity_anomaly %>%
+bar_dat_gom <- ecodata26::productivity_anomaly %>%
   dplyr::filter(EPU == "GOM") %>%
   tidyr::separate(Var, into = c("Var", "Survey"), sep = "_")
 

@@ -2,7 +2,7 @@ new <- read.csv(here::here("data-raw/SST_ltm9220.csv")) %>%
   dplyr::filter(EPU == c("GB", "GOM")) %>%
   dplyr::mutate(ltm = c("91-20")) %>%
   dplyr::select(-X)
-ecodata::seasonal_oisst_anom %>%
+ecodata26::seasonal_oisst_anom %>%
   dplyr::mutate(ltm = c("82-10")) %>%
   dplyr::filter(EPU == c("GB", "GOM")) %>%
   rbind(new) %>%
@@ -16,11 +16,11 @@ ecodata::seasonal_oisst_anom %>%
   ggplot(aes(x = Time, y = Value, color = ltm)) +
   geom_point() +
   geom_line() +
-  ecodata::geom_gls() +
+  ecodata26::geom_gls() +
   facet_grid(EPU ~ Var) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     plot.title = element_text(size = 12)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

@@ -1,4 +1,4 @@
-NE <- ecodata::habitat_diversity %>%
+NE <- ecodata26::habitat_diversity %>%
   dplyr::filter(Var == "Shannon", EPU %in% c("GB", "GOM")) %>%
   dplyr::group_by(EPU) %>%
   dplyr::mutate(
@@ -7,7 +7,7 @@ NE <- ecodata::habitat_diversity %>%
     hline = mean(Value)
   )
 
-ecodata::habitat_diversity %>%
+ecodata26::habitat_diversity %>%
   dplyr::filter(Var == "Shannon") %>%
   dplyr::group_by(EPU) %>%
   dplyr::mutate(
@@ -39,8 +39,8 @@ ecodata::habitat_diversity %>%
   #          size = hline.size,
   #          alpha = hline.alpha,
   #          linetype = hline.lty)+
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   #ggplot2::facet_wrap(~EPU)
   ggplot2::theme(strip.text = element_text(hjust = 0, face = "italic")) +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()

@@ -14,7 +14,7 @@
 
 plot_rec_hms <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -23,9 +23,9 @@ plot_rec_hms <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
     filterEPUs <- c("NE")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  fix <- ecodata::rec_hms |>
+  fix <- ecodata26::rec_hms |>
     dplyr::filter(EPU %in% filterEPUs) |>
     tidyr::separate(col = Var, into = c("Group", "Trash"), sep = "-") |>
     dplyr::mutate(Value = Value / 1000) |>
@@ -65,7 +65,7 @@ plot_rec_hms <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
     ) +
     ggplot2::geom_point() +
     ggplot2::geom_line() +
-    ecodata::geom_lm(
+    ecodata26::geom_lm(
       n = n,
       # only assess for groups with enough data points
       data = fix |>
@@ -78,7 +78,7 @@ plot_rec_hms <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
     ggplot2::ylab(expression("Number of Fish (1000s)")) +
     ggplot2::xlab(ggplot2::element_blank()) +
     ggplot2::facet_wrap(~fac, scales = "free_y", ncol = 1) +
-    ecodata::geom_gls(
+    ecodata26::geom_gls(
       # only assess for groups with enough data points
       data = fix |>
         tidyr::drop_na(Value) |>
@@ -86,9 +86,9 @@ plot_rec_hms <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
         dplyr::mutate(n = dplyr::n()) |>
         dplyr::filter(n >= 30)
     ) +
-    ecodata::theme_ts() +
-    ecodata::theme_facet() +
-    ecodata::theme_title() +
+    ecodata26::theme_ts() +
+    ecodata26::theme_facet() +
+    ecodata26::theme_title() +
     ggplot2::theme(
       strip.text = ggplot2::element_blank(),
       strip.background = ggplot2::element_blank()
@@ -108,7 +108,7 @@ plot_rec_hms <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
 attr(plot_rec_hms, "report") <- c("MidAtlantic", "NewEngland")
 
 # Paste commented original plot code chunk for reference
-# ecodata::dataset |>
+# ecodata26::dataset |>
 #   dplyr::filter(Var %in% c("..."),
 #                 EPU == "...") |>
 #   ... more dataset wrangling as necessary |>
@@ -122,8 +122,8 @@ attr(plot_rec_hms, "report") <- c("MidAtlantic", "NewEngland")
 #   ggplot2::ggtitle("Title")+
 #   ggplot2::ylab(expression("Y label"))+
 #   ggplot2::xlab(element_blank())+
-#   ecodata::geom_gls()+
-#   ecodata::theme_ts()+
-#   ecodata::theme_title()
+#   ecodata26::geom_gls()+
+#   ecodata26::theme_ts()+
+#   ecodata26::theme_title()
 #
 #

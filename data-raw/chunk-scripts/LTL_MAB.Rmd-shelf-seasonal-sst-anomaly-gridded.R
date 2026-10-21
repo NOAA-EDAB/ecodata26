@@ -5,7 +5,7 @@ ymin <- 36
 ymax <- 45
 xlims <- c(xmin, xmax)
 ylims <- c(ymin, ymax)
-sst <- ecodata::seasonal_oisst_anom_gridded
+sst <- ecodata26::seasonal_oisst_anom_gridded
 
 sst$Season <- factor(
   sst$Season,
@@ -13,14 +13,14 @@ sst$Season <- factor(
 )
 
 sst <- sst %>% dplyr::mutate(Value = replace(Value, Value > 5, 5))
-epu_sf <- ecodata::epu_sf[ecodata::epu_sf$EPU != "SS", ]
+epu_sf <- ecodata26::epu_sf[ecodata26::epu_sf$EPU != "SS", ]
 
 ggplot2::ggplot() +
   ggplot2::geom_tile(
     data = sst,
     aes(x = Longitude, y = Latitude, fill = Value)
   ) +
-  ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+  ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
   ggplot2::geom_sf(data = epu_sf, fill = "transparent", size = map.lwd) +
   ggplot2::scale_fill_gradient2(
     name = "Temp.\nAnomaly (C)",
@@ -32,7 +32,7 @@ ggplot2::ggplot() +
   ) +
   ggplot2::coord_sf(crs = crs, xlim = xlims, ylim = ylims) +
   ggplot2::facet_wrap(Season ~ .) +
-  ecodata::theme_map() +
+  ecodata26::theme_map() +
   ggplot2::ggtitle("SST anomaly (2022)") +
   ggplot2::xlab("Longitude") +
   ggplot2::ylab("Latitude") +
@@ -44,4 +44,4 @@ ggplot2::ggplot() +
     strip.text = element_text(hjust = 0),
     axis.text = element_text(size = 8)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

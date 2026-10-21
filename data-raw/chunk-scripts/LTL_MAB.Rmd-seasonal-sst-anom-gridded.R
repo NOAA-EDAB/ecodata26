@@ -10,7 +10,7 @@ annotation_custom2 <- function(data, ...) {
 }
 
 #EPU shapefile
-mab_epu_sf <- ecodata::epu_sf %>%
+mab_epu_sf <- ecodata26::epu_sf %>%
   dplyr::filter(EPU %in% c("MAB"))
 
 #Map line parameters
@@ -23,13 +23,13 @@ ymin <- 35.5
 ymax <- 43
 xlims <- c(xmin, xmax)
 ylims <- c(ymin, ymax)
-sst <- ecodata::seasonal_oisst_anom_gridded
+sst <- ecodata26::seasonal_oisst_anom_gridded
 
 sst$Season <- factor(
   sst$Season,
   levels = c("Winter", "Spring", "Summer", "Fall")
 )
-# ma_anom<-ecodata::seasonal_oisst_anom
+# ma_anom<-ecodata26::seasonal_oisst_anom
 #
 # ma_anom$Var <- factor(ma_anom$Var, levels= c("Winter","Spring","Summer","Fall"))
 sst <- sst %>% dplyr::mutate(Value = replace(Value, Value > 5, 5))
@@ -41,7 +41,7 @@ sst_map <- function(season) {
       dplyr::filter(Season == season)
   ) +
     ggplot2::geom_tile(aes(x = Longitude, y = Latitude, fill = Value)) +
-    ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+    ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
     ggplot2::geom_sf(data = mab_epu_sf, fill = "transparent", size = map.lwd) +
     ggplot2::scale_fill_gradient2(
       name = "Temp.\nAnomaly (C)",
@@ -53,7 +53,7 @@ sst_map <- function(season) {
     ) +
     ggplot2::coord_sf(crs = crs, xlim = xlims, ylim = ylims) +
     #ggplot2::facet_wrap(Season~.) +
-    ecodata::theme_map() +
+    ecodata26::theme_map() +
     ggplot2::ggtitle(season) +
     ggplot2::xlab(element_blank()) +
     ggplot2::ylab(element_blank()) +
@@ -66,12 +66,12 @@ sst_map <- function(season) {
       axis.text = element_text(size = 8),
       axis.title.y = element_text(angle = 90)
     ) +
-    ecodata::theme_title()
+    ecodata26::theme_title()
 }
 
 season_anom <- function(season) {
   ggplot2::ggplotGrob(
-    ecodata::seasonal_oisst_anom %>%
+    ecodata26::seasonal_oisst_anom %>%
       dplyr::filter(EPU == "MAB", stringr::str_detect(Var, season)) %>%
       dplyr::mutate(hline = mean(Value)) %>%
       ggplot2::ggplot(aes(x = Time, y = Value)) +
@@ -86,12 +86,12 @@ season_anom <- function(season) {
       ) +
       ggplot2::geom_line() +
       ggplot2::geom_point() +
-      ecodata::geom_gls(alpha = trend.alpha + 0.25) +
+      ecodata26::geom_gls(alpha = trend.alpha + 0.25) +
       ggplot2::ylab("SST anomaly (C)") +
       ggplot2::xlab(element_blank()) +
       ggplot2::scale_x_continuous(expand = c(0.01, 0.01)) +
       ggplot2::geom_hline(aes(yintercept = hline)) +
-      ecodata::theme_ts() +
+      ecodata26::theme_ts() +
       ggplot2::theme(
         axis.title = element_text(size = 6),
         axis.text = element_text(size = 6),

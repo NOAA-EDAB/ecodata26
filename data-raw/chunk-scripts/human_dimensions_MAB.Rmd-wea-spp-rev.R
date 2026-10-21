@@ -1,4 +1,4 @@
-ecodata::wind_revenue %>%
+ecodata26::wind_revenue %>%
   tidyr::separate(Var, sep = "-", into = c("Species", "Var")) %>%
   dplyr::filter(Var == "sum_value") %>%
   dplyr::mutate(
@@ -40,5 +40,5 @@ ecodata::wind_revenue %>%
   ggplot2::ylab(expression("Dollars (10"^6 * ")")) +
   theme(legend.title = element_blank()) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

@@ -20,7 +20,7 @@ plot_recdat <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -51,9 +51,9 @@ plot_recdat <- function(
     scalar <- 1
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  fix <- ecodata::recdat |>
+  fix <- ecodata26::recdat |>
     dplyr::filter(EPU %in% filterEPUs, Var == varName) |>
     dplyr::mutate(Value = Value / scalar) |>
     dplyr::mutate(hline = mean(Value))
@@ -86,10 +86,10 @@ plot_recdat <- function(
       linetype = setup$hline.lty
     ) +
     ggplot2::scale_x_continuous(expand = c(0.01, 0.01)) +
-    ecodata::geom_gls() +
-    ecodata::geom_lm(n = n) +
-    ecodata::theme_ts() +
-    ecodata::theme_title()
+    ecodata26::geom_gls() +
+    ecodata26::geom_lm(n = n) +
+    ecodata26::theme_ts() +
+    ecodata26::theme_title()
 
   # optional code for New England specific (2 panel) formatting
   if (report == "NewEngland") {

@@ -1,4 +1,4 @@
-dt <- ecodata::wea_landings_rev %>%
+dt <- ecodata26::wea_landings_rev %>%
   dplyr::select(
     "NEFMC, MAFMC, and ASMFC Managed Species",
     "perc_landings_max",

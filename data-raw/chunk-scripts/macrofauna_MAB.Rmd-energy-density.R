@@ -1,4 +1,4 @@
-d <- ecodata::energy_density %>%
+d <- ecodata26::energy_density %>%
   tidyr::separate(Var, into = c("Species", "Season", "Var"), sep = "/") %>%
   tidyr::pivot_wider(names_from = Var, values_from = Value)
 
@@ -84,5 +84,5 @@ d %>%
   ) +
   scale_x_continuous(breaks = c(2017, 2018, 2019, 2020, 2021, 2022)) +
   ggplot2::ggtitle("Forage Fish Energy Density") +
-  ecodata::theme_facet() +
-  ecodata::theme_title()
+  ecodata26::theme_facet() +
+  ecodata26::theme_title()

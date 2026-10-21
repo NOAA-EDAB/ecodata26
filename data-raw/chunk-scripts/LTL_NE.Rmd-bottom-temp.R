@@ -1,4 +1,4 @@
-bt <- ecodata::bottom_temp_model_anom %>%
+bt <- ecodata26::bottom_temp_model_anom %>%
   dplyr::filter(EPU == "GOM") %>%
   dplyr::mutate(anom = Value - mean(Value), hline = 0) %>%
   ggplot2::ggplot() + #plot
@@ -12,7 +12,7 @@ bt <- ecodata::bottom_temp_model_anom %>%
     ymax = Inf
   ) +
   ggplot2::geom_line(aes(x = Time, y = anom)) +
-  ecodata::geom_gls(aes(x = Time, y = anom)) +
+  ecodata26::geom_gls(aes(x = Time, y = anom)) +
   ggplot2::geom_point(aes(x = Time, y = anom)) +
   ggplot2::ylab("Temperature Anomaly (C)") +
   ggplot2::xlab(element_blank()) +
@@ -25,15 +25,15 @@ bt <- ecodata::bottom_temp_model_anom %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     plot.title = element_text(size = 12)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 
-gb_bt <- ecodata::bottom_temp_model_anom %>%
+gb_bt <- ecodata26::bottom_temp_model_anom %>%
   dplyr::filter(EPU == "GB") %>%
   dplyr::mutate(anom = Value - mean(Value), hline = 0) %>%
   ggplot2::ggplot() + #plot
@@ -47,7 +47,7 @@ gb_bt <- ecodata::bottom_temp_model_anom %>%
     ymax = Inf
   ) +
   ggplot2::geom_line(aes(x = Time, y = anom)) +
-  ecodata::geom_gls(aes(x = Time, y = anom)) +
+  ecodata26::geom_gls(aes(x = Time, y = anom)) +
   ggplot2::geom_point(aes(x = Time, y = anom)) +
   ggplot2::ylab("Temperature Anomaly (C)") +
   ggplot2::xlab(element_blank()) +
@@ -60,12 +60,12 @@ gb_bt <- ecodata::bottom_temp_model_anom %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     plot.title = element_text(size = 12)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 plot_row <- cowplot::plot_grid(bt, gb_bt, ncol = 2)
 title <- cowplot::ggdraw() +

@@ -1,4 +1,4 @@
-zoo_div <- ecodata::zoo_diversity %>%
+zoo_div <- ecodata26::zoo_diversity %>%
   dplyr::filter(EPU %in% c("GOM", "GB"))
 
 gom_zoo_div <- zoo_div %>%
@@ -14,8 +14,8 @@ gom_zoo_div <- zoo_div %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
   ggplot2::geom_line() +
   ggplot2::geom_point() +
   #  ggplot2::ylim(1,2.8)+
@@ -30,8 +30,8 @@ gom_zoo_div <- zoo_div %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_blank()) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 gom_zoo_div

@@ -1,5 +1,5 @@
 #Filtering and aggregation step
-rev_agg <- ecodata::comdat %>%
+rev_agg <- ecodata26::comdat %>%
   dplyr::filter(
     Var %in%
       c(
@@ -20,7 +20,7 @@ rev_agg <- ecodata::comdat %>%
   dplyr::group_by(Status, EPU) %>%
   dplyr::mutate(hline = mean(Total))
 
-rev_total <- ecodata::comdat %>%
+rev_total <- ecodata26::comdat %>%
   dplyr::filter(Var == "Revenue") %>%
   dplyr::mutate(Status = c("Total")) %>%
   dplyr::group_by(Status, Time, EPU) %>%
@@ -48,12 +48,12 @@ gom_rev_agg <- rev %>%
   ) +
 
   #lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Total, group = Status),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  #ecodata::geom_lm(aes(x = Time, y = Total,
+  #ecodata26::geom_lm(aes(x = Time, y = Total,
   #             group = Status))+
   ggplot2::geom_line(aes(x = Time, y = Total, color = Status), size = lwd) +
   ggplot2::geom_point(aes(x = Time, y = Total, color = Status), size = pcex) +
@@ -77,9 +77,9 @@ gom_rev_agg <- rev %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggtitle("Gulf of Maine") +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 gb_rev_agg <- rev %>%
   dplyr::filter(EPU == "GB") %>%
@@ -97,12 +97,12 @@ gb_rev_agg <- rev %>%
   ) +
 
   #lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Total, group = Status),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Total,
+  # ecodata26::geom_lm(aes(x = Time, y = Total,
   #              group = Status))+
   ggplot2::geom_line(aes(x = Time, y = Total, color = Status), size = lwd) +
   ggplot2::geom_point(aes(x = Time, y = Total, color = Status), size = pcex) +
@@ -125,8 +125,8 @@ gb_rev_agg <- rev %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggtitle("Georges Bank") +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 cowplot::plot_grid(gb_rev_agg, gom_rev_agg, ncol = 2)

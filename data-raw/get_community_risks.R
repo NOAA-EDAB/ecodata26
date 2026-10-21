@@ -110,7 +110,7 @@ get_community_risks <- function(save_clean = F) {
   )
 
   # 2022 data were found to be incomplete
-  # Removing from ecodata until further review
+  # Removing from ecodata26 until further review
   community_risks <- dplyr::filter(
     community_risks,
     Time != 2025

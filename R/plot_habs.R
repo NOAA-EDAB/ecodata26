@@ -18,7 +18,7 @@ plot_habs <- function(
   varName = "Alexandrium"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -43,7 +43,7 @@ plot_habs <- function(
   # e.g. fill = setup$shade.fill, alpha = setup$shade.alpha,
   # xmin = setup$x.shade.min , xmax = setup$x.shade.max
 
-  p <- ecodata::habs |>
+  p <- ecodata26::habs |>
     dplyr::filter(Source == varName, EPU %in% filterEPUs) |>
     ggplot2::ggplot(ggplot2::aes(x = Time, y = Value, color = Var)) +
     ggplot2::annotate(
@@ -57,14 +57,14 @@ plot_habs <- function(
     ) +
     ggplot2::geom_point() +
     ggplot2::geom_line() +
-    ecodata::theme_ts() +
+    ecodata26::theme_ts() +
     ggplot2::scale_color_discrete(name = plotLegend) +
-    ecodata::theme_title() +
+    ecodata26::theme_title() +
     ggplot2::ylab(plotylab) +
     ggplot2::xlab(ggplot2::element_blank()) +
     ggplot2::ggtitle(plotTitle) +
-    #ecodata::geom_gls()+
-    ecodata::theme_facet()
+    #ecodata26::geom_gls()+
+    ecodata26::theme_facet()
 
   return(p)
 }

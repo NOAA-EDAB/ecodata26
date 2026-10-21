@@ -21,7 +21,7 @@ plot_benthos_index <- function(
   plottype = "index",
   n = 0
 ) {
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # convert to leading capital
   varName <- stringr::str_to_sentence(varName)
@@ -36,7 +36,7 @@ plot_benthos_index <- function(
       filterEPUs <- c("GB", "GOM")
     }
 
-    fix <- ecodata::benthos_index |>
+    fix <- ecodata26::benthos_index |>
       dplyr::filter(
         Var %in%
           c(
@@ -48,7 +48,7 @@ plot_benthos_index <- function(
       dplyr::group_by(EPU) |>
       dplyr::summarise(max = max(Value))
 
-    p <- ecodata::benthos_index |>
+    p <- ecodata26::benthos_index |>
       dplyr::filter(
         Var %in%
           c(
@@ -94,11 +94,11 @@ plot_benthos_index <- function(
       ggplot2::ylab(paste("Relative", varName, "Biomass")) +
       ggplot2::xlab(ggplot2::element_blank()) +
       ggplot2::facet_wrap(. ~ EPU) +
-      ecodata::geom_gls() +
-      ecodata::geom_lm(n = n) +
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::geom_gls() +
+      ecodata26::geom_lm(n = n) +
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
 
     if (report == "NewEngland") {
       p <- p +
@@ -110,7 +110,7 @@ plot_benthos_index <- function(
   }
 
   if (plottype == "cog") {
-    p <- ecodata::benthos_index |>
+    p <- ecodata26::benthos_index |>
       dplyr::filter(
         Var %in%
           c(
@@ -155,11 +155,11 @@ plot_benthos_index <- function(
       ggplot2::ylab(paste(varName, " Center of Gravity, km")) +
       ggplot2::xlab(ggplot2::element_blank()) +
       ggplot2::facet_wrap(~Direction, scales = "free_y") + #Season
-      ecodata::geom_gls() +
-      ecodata::geom_lm(n = n) +
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::geom_gls() +
+      ecodata26::geom_lm(n = n) +
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
   }
 
   return(p)

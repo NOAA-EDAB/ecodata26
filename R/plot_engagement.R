@@ -21,7 +21,7 @@ plot_engagement <- function(
   varName = "Commercial"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # select social indicators by indicator group for table or shading
   indgroup <- c(
@@ -39,7 +39,7 @@ plot_engagement <- function(
 
   # filter to fishery type for main plot
   if (varName == "Commercial") {
-    eng <- ecodata::engagement |>
+    eng <- ecodata26::engagement |>
       #dplyr::distinct(Time, Var,  EPU, Units, .keep_all = T) |> #hack, remove later
       tidyr::separate(Var, into = c("Town", "StateVar"), sep = ", ") |> #using two steps because some towns have - in the name
       tidyr::separate(StateVar, into = c("State", "Var"), sep = "-") |> # which also seps the variable
@@ -99,7 +99,7 @@ plot_engagement <- function(
   }
 
   if (varName == "Recreational") {
-    eng <- ecodata::engagement |>
+    eng <- ecodata26::engagement |>
       dplyr::filter(!is.na(Value)) |>
       dplyr::select(-Units) |>
       #dplyr::distinct(Time, Var,  EPU, Units, .keep_all = T) |> #hack, remove later
@@ -211,8 +211,8 @@ plot_engagement <- function(
         ' ',
         max(eng$Time)
       )) +
-      #ecodata::theme_ts()+
-      ecodata::theme_title()
+      #ecodata26::theme_ts()+
+      ecodata26::theme_title()
   }
 
   return(p)

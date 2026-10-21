@@ -1,4 +1,4 @@
-exp <- ecodata::exp_n %>%
+exp <- ecodata26::exp_n %>%
   tidyr::separate(Var, into = c("Var", "Season"), sep = "-") %>%
   dplyr::filter(
     EPU == "MAB",
@@ -7,7 +7,7 @@ exp <- ecodata::exp_n %>%
   ) %>%
   dplyr::rename(VarSD = Var, ValueSD = Value)
 
-exp2 <- ecodata::exp_n %>%
+exp2 <- ecodata26::exp_n %>%
   tidyr::separate(Var, into = c("Var", "Season"), sep = "-") %>%
   dplyr::filter(
     EPU == "MAB",
@@ -38,8 +38,8 @@ exp2 %>%
   ) +
   ggplot2::geom_line(size = lwd - 0.5) +
   ggplot2::geom_point(size = pcex - 0.5) +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
-  #ecodata::geom_lm()+
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
+  #ecodata26::geom_lm()+
   # scale_color_manual(values = series.col, aesthetics = "color")+
   #ggplot2::guides(color = FALSE) +
   #ggplot2::geom_hline(aes(yintercept = hline,
@@ -49,7 +49,7 @@ exp2 %>%
   #           linetype = hline.lty)+
   ggplot2::facet_wrap(EPU ~ ., scales = "free_y", ncol = 2) +
   ggplot2::ggtitle("Expected Number of Species - Fall") +
-  #ecodata::geom_gls() +
+  #ecodata26::geom_gls() +
   #Axis and theme
   ggplot2::scale_x_continuous(
     breaks = seq(1965, 2015, by = 10),
@@ -57,9 +57,9 @@ exp2 %>%
   ) +
   ggplot2::ylab("n species per 1000 ind") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     legend.title = element_blank()
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

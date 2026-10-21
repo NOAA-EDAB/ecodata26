@@ -1,4 +1,4 @@
-cumu <- ecodata::heatwave %>%
+cumu <- ecodata26::heatwave %>%
   dplyr::filter(Var == "cumulative intensity") %>%
   dplyr::mutate(
     Var = recode(
@@ -7,7 +7,7 @@ cumu <- ecodata::heatwave %>%
     )
   )
 
-maxin <- ecodata::heatwave %>%
+maxin <- ecodata26::heatwave %>%
   dplyr::filter(Var == "maximum intensity") %>%
   dplyr::group_by(Time, EPU, Var, Units) %>%
   dplyr::summarise(Value = max(Value)) %>%
@@ -35,7 +35,7 @@ gb.hw <- hw %>%
   ) +
   ggplot2::geom_line(aes(x = Time, y = Value)) +
   ggplot2::geom_point(aes(x = Time, y = Value)) +
-  ecodata::geom_gls(aes(x = Time, y = Value)) +
+  ecodata26::geom_gls(aes(x = Time, y = Value)) +
   ggplot2::ylab("") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Georges Bank") +
@@ -47,7 +47,7 @@ gb.hw <- hw %>%
     linetype = hline.lty
   ) +
   ggplot2::facet_wrap(~Var, scales = "free") +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0, face = "italic"),
     axis.title.y = element_text(angle = 90)
@@ -68,7 +68,7 @@ gom.hw <- hw %>%
   ) +
   ggplot2::geom_line(aes(x = Time, y = Value)) +
   ggplot2::geom_point(aes(x = Time, y = Value)) +
-  ecodata::geom_gls(aes(x = Time, y = Value)) +
+  ecodata26::geom_gls(aes(x = Time, y = Value)) +
   ggplot2::ylab("") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Gulf of Maine") +
@@ -85,7 +85,7 @@ gom.hw <- hw %>%
   #         linetype = hline.lty)+
   ylab("Heatwave Intensity") +
   ggplot2::facet_wrap(~Var, scales = "free") +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0, face = "italic"),
     axis.title.y = element_text(angle = 90)

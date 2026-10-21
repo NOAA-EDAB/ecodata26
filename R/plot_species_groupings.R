@@ -18,7 +18,7 @@ plot_species_groupings <- function(
   varName = "2024"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -28,12 +28,12 @@ plot_species_groupings <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   varName <- paste0("SOE.", substr(varName, 3, 4))
 
   # new table with all species listed by management entity
-  fix <- ecodata::species_groupings |>
+  fix <- ecodata26::species_groupings |>
     dplyr::select(dplyr::contains(varName), COMNAME, Fed.Managed) |>
     dplyr::filter(get(varName) != "Other") |>
     dplyr::distinct() |>

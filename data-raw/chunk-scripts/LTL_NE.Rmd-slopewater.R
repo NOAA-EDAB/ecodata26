@@ -1,4 +1,4 @@
-sw.df <- ecodata::slopewater %>%
+sw.df <- ecodata26::slopewater %>%
   dplyr::mutate(
     Var,
     Var = plyr::mapvalues(
@@ -16,7 +16,7 @@ sw.df$Origin <- factor(sw.df$Flavor, levels = c("WSW", "LSW"))
 ggplot2::ggplot(data = sw.df) +
   ggplot2::geom_line(aes(x = Time, y = Value, color = Origin)) +
   ggplot2::geom_point(aes(x = Time, y = Value, color = Origin)) +
-  #ecodata::geom_lm(aes(x = Time, y = Value, color = Origin))+
+  #ecodata26::geom_lm(aes(x = Time, y = Value, color = Origin))+
   ggplot2::ylab("Percent of Total Slopewater") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Slopewater Proportions in NE Channel") +
@@ -27,5 +27,5 @@ ggplot2::ggplot(data = sw.df) +
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

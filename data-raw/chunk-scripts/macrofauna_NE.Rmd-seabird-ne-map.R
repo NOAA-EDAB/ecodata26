@@ -22,7 +22,7 @@ islands <- ggplot2::ggplot() +
     nudge_y = -0.1
   ) +
   ggplot2::coord_sf(crs = crs, xlim = xlims, ylim = ylims) +
-  ecodata::theme_map() +
+  ecodata26::theme_map() +
   ggplot2::ggtitle("Common tern study sites") +
   ggplot2::xlab("Longitude") +
   ggplot2::ylab("Latitude") +
@@ -34,7 +34,7 @@ islands <- ggplot2::ggplot() +
     strip.text = element_text(hjust = 0),
     axis.text = element_text(size = 8)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 # inset_states <- new_england %>% filter(STATE_NAME %in% c("Maine",
 #                                                          "New Hampshire",
@@ -62,7 +62,7 @@ NE <- ggplotGrob(
       size = 0.1,
       fill = "transparent"
     ) +
-    ecodata::theme_map() +
+    ecodata26::theme_map() +
     ggplot2::xlab("") +
     ggplot2::ylab("") +
     ggplot2::theme(

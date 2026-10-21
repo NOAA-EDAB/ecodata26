@@ -25,7 +25,7 @@ plot_comdat <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -34,13 +34,13 @@ plot_comdat <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   #
   series.col2 <- c("indianred", "black", "steelblue4") # total landings
 
   if (varName == "landings") {
-    managed_landings <- ecodata::comdat |>
+    managed_landings <- ecodata26::comdat |>
       dplyr::filter(
         Var %in%
           c(
@@ -67,7 +67,7 @@ plot_comdat <- function(
         paste0("JOINT|", setup$council_abbr)
       ))
 
-    US_landings <- ecodata::comdat |>
+    US_landings <- ecodata26::comdat |>
       dplyr::filter(
         Var == "Seafood Landings", # There may be US landings that aren't seafood
         Time >= 1982
@@ -76,10 +76,10 @@ plot_comdat <- function(
     # Dec 2023:
     # Total is not total for 2019 on due to missing NAFO data
     # NAFO total dataset under construction will need to be added
-    # NAFO_landings <- ecodata::NAFO |>
+    # NAFO_landings <- ecodata26::NAFO |>
     #   dplyr::filter(Time >= NAFOyear)
 
-    total_landings <- ecodata::comdat |>
+    total_landings <- ecodata26::comdat |>
       dplyr::filter(
         Var %in%
           c(
@@ -155,7 +155,7 @@ plot_comdat <- function(
   if (varName == "revenue") {
     # # Apex pred are MAB and NE so can't be added to NE EPU plots
     # lets leave them out of BOTH for now
-    # apex<-ecodata::hms_landings |>
+    # apex<-ecodata26::hms_landings |>
     # dplyr::filter(stringr::str_detect(Var, "Revenue"),
     #               Time<2021) |>
     # separate(Var, c("Var", "trash"), sep = "_") |>
@@ -166,7 +166,7 @@ plot_comdat <- function(
     #        EPU = c("MAB"))
 
     #Filtering and aggregation step
-    rev_managed <- ecodata::comdat |>
+    rev_managed <- ecodata26::comdat |>
       dplyr::filter(
         Var %in%
           c(
@@ -208,7 +208,7 @@ plot_comdat <- function(
       dplyr::group_by(Status, EPU) |>
       dplyr::mutate(hline = mean(Total))
 
-    rev_tot <- ecodata::comdat |>
+    rev_tot <- ecodata26::comdat |>
       dplyr::filter(
         Var %in%
           c(
@@ -225,7 +225,7 @@ plot_comdat <- function(
       tidyr::separate(Var, into = c("feeding.guild"), sep = " ") |>
       dplyr::mutate(Value = Value / 1000)
 
-    rev_total <- ecodata::comdat |>
+    rev_total <- ecodata26::comdat |>
       dplyr::filter(Var == "Revenue", Time >= 1982) |>
       dplyr::mutate(Status = c("Total")) |>
       dplyr::group_by(Status, Time, EPU) |>
@@ -277,18 +277,18 @@ plot_comdat <- function(
         ymin = -Inf,
         ymax = Inf
       ) +
-      ecodata::geom_gls(
+      ecodata26::geom_gls(
         ggplot2::aes(x = Time, y = Value, group = Var),
         alpha = setup$trend.alpha,
         size = setup$trend.size
       ) +
-      ecodata::geom_lm(
+      ecodata26::geom_lm(
         n = n,
         ggplot2::aes(x = Time, y = Value, group = Var),
         alpha = setup$trend.alpha,
         size = setup$trend.size
       ) +
-      #ecodata::geom_lm(aes(x = Time, y = Value))+
+      #ecodata26::geom_lm(aes(x = Time, y = Value))+
       ggplot2::geom_line(
         ggplot2::aes(x = Time, y = Value, color = Var),
         linewidth = setup$lwd
@@ -316,10 +316,10 @@ plot_comdat <- function(
         alpha = setup$hline.alpha,
         linetype = setup$hline.lty
       ) +
-      ecodata::theme_ts() +
+      ecodata26::theme_ts() +
       ggplot2::ggtitle(setup$region) +
-      ecodata::theme_title() +
-      ecodata::theme_facet()
+      ecodata26::theme_title() +
+      ecodata26::theme_facet()
   }
 
   if (plottype == "guild") {
@@ -345,14 +345,14 @@ plot_comdat <- function(
       ) +
 
       #Test for trend and add lines
-      ecodata::geom_gls(ggplot2::aes(x = Time, y = Value, group = Var)) +
-      ecodata::geom_lm(
+      ecodata26::geom_gls(ggplot2::aes(x = Time, y = Value, group = Var)) +
+      ecodata26::geom_lm(
         n = n,
         ggplot2::aes(x = Time, y = Value, group = Var),
         alpha = setup$trend.alpha,
         size = setup$trend.size
       ) +
-      # ecodata::geom_lm(aes(x = Time, y = Value,
+      # ecodata26::geom_lm(aes(x = Time, y = Value,
       #              group = Var))+
 
       #Add time series
@@ -389,14 +389,14 @@ plot_comdat <- function(
       ) +
       ggplot2::ylab(ylabdat) +
       ggplot2::xlab(ggplot2::element_blank()) +
-      ecodata::theme_facet() +
+      ecodata26::theme_facet() +
       ggplot2::theme(
         strip.text = ggplot2::element_text(hjust = 0),
         legend.position = "bottom",
         legend.title = ggplot2::element_blank()
       ) +
       ggplot2::ggtitle(setup$region) +
-      ecodata::theme_title()
+      ecodata26::theme_title()
   }
 
   # optional code for New England specific (2 panel) formatting
@@ -417,7 +417,7 @@ attr(plot_comdat, "NAFOyear") <- 2019
 
 # Paste commented original plot code chunk for reference
 # Sorry can't fit them all here, 6 different code chunks
-# ecodata::dataset |>
+# ecodata26::dataset |>
 #   dplyr::filter(Var %in% c("..."),
 #                 EPU == "...") |>
 #   ... more dataset wrangling as necessary |>
@@ -431,8 +431,8 @@ attr(plot_comdat, "NAFOyear") <- 2019
 #   ggplot2::ggtitle("Title")+
 #   ggplot2::ylab(expression("Y label"))+
 #   ggplot2::xlab(element_blank())+
-#   ecodata::geom_gls()+
-#   ecodata::theme_ts()+
-#   ecodata::theme_title()
+#   ecodata26::geom_gls()+
+#   ecodata26::theme_ts()+
+#   ecodata26::theme_title()
 #
 #

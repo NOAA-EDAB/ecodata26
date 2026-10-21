@@ -1,4 +1,4 @@
-zoo_abund <- ecodata::zoo_strat_abun %>%
+zoo_abund <- ecodata26::zoo_strat_abun %>%
   dplyr::filter(EPU == epu_abbr, !stringr::str_detect(Var, "Small|Large")) %>%
   dplyr::mutate(Value = log10(Value + 1)) %>%
   dplyr::group_by(Var, EPU) %>%
@@ -15,8 +15,8 @@ zoo_abund %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm(aes(x = Time, y = Value))+
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm(aes(x = Time, y = Value))+
   ggplot2::geom_line() +
   ggplot2::geom_point() +
   ggplot2::ylab(expression("Log Stratified Abundance")) +
@@ -30,6 +30,6 @@ zoo_abund %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0, face = "italic")) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

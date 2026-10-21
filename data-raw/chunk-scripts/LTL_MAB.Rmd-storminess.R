@@ -1,4 +1,4 @@
-ecodata::storminess %>%
+ecodata26::storminess %>%
   dplyr::filter(EPU == "MAB") %>%
   dplyr::mutate(Time = as.numeric(Year), Value = as.numeric(Value)) %>%
   group_by(Var) %>%
@@ -22,9 +22,9 @@ ecodata::storminess %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::geom_gls() +
+  ecodata26::geom_gls() +
   ggplot2::ylab("Number of Events") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()

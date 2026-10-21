@@ -1,6 +1,6 @@
 #hline <- mean(narw[narw$Var == "right whale abundance median",]$Value)
 
-ecodata::narw %>%
+ecodata26::narw %>%
   dplyr::filter(Var != "Calves") %>%
   tidyr::spread(Var, Value) %>%
   dplyr::rename(Value = Median) %>%
@@ -24,7 +24,7 @@ ecodata::narw %>%
   ) +
   ggplot2::geom_line(aes(x = Time, y = Value), size = lwd - 0.75) +
   ggplot2::geom_point(aes(x = Time, y = Value), size = pcex - 0.75) +
-  #ecodata::geom_lm(aes(x = Time, y = Value))+
+  #ecodata26::geom_lm(aes(x = Time, y = Value))+
   ggplot2::geom_ribbon(
     aes(ymin = Lower95, ymax = Upper95, x = Time),
     alpha = 0.3
@@ -41,5 +41,5 @@ ecodata::narw %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

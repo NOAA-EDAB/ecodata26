@@ -1,4 +1,4 @@
-fix <- ecodata::forage_index %>%
+fix <- ecodata26::forage_index %>%
   dplyr::filter(
     Var %in%
       c(
@@ -10,7 +10,7 @@ fix <- ecodata::forage_index %>%
   dplyr::group_by(EPU) %>%
   dplyr::summarise(max = max(Value))
 
-ecodata::forage_index %>%
+ecodata26::forage_index %>%
   dplyr::filter(
     Var %in%
       c(
@@ -57,7 +57,7 @@ ecodata::forage_index %>%
   ggplot2::xlab(element_blank()) +
   ggplot2::facet_wrap(. ~ EPU) +
   ggplot2::theme(legend.position = "bottom", legend.title = element_blank()) +
-  ecodata::geom_gls() +
-  ecodata::theme_ts() +
-  ecodata::theme_facet() +
-  ecodata::theme_title()
+  ecodata26::geom_gls() +
+  ecodata26::theme_ts() +
+  ecodata26::theme_facet() +
+  ecodata26::theme_title()

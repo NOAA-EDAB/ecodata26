@@ -1,5 +1,5 @@
-sp_cat <- ecodata::hms_category
-ecodata::hms_cpue %>%
+sp_cat <- ecodata26::hms_category
+ecodata26::hms_cpue %>%
   filter(stringr::str_detect(Var, "SHARK")) %>%
   rename(COMMON_POP = Var) %>%
   left_join(sp_cat) %>%
@@ -23,5 +23,5 @@ ecodata::hms_cpue %>%
   #ggplot2::facet_wrap(~Var, scales = "free")+
   ggplot2::ggtitle("HMS POP SHARK CPUE") +
   ggplot2::ylab("Number per Haul") +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

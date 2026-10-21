@@ -1,6 +1,6 @@
 #' plot bottom anomaly temperature time series using NEFSC survey data
 #'
-#' ecodata::bottom_temp_insitu
+#' ecodata26::bottom_temp_insitu
 #'
 #' @param shadedRegion Numeric vector. Years denoting the shaded region of the plot (most recent 10)
 #' @param report Character string. Which SOE report ("MidAtlantic", "NewEngland")
@@ -16,19 +16,19 @@ plot_bottom_temp_insitu <- function(
   report = "MidAtlantic",
   n = 0
 ) {
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
   if (report == "MidAtlantic") {
     filterEPUs <- c("MAB")
   } else {
     filterEPUs <- c("GB", "GOM")
   }
 
-  fix <- ecodata::bottom_temp_insitu |>
+  fix <- ecodata26::bottom_temp_insitu |>
     dplyr::filter(EPU %in% filterEPUs) |>
     tidyr::complete(
       Time = tidyr::full_seq(
-        min(ecodata::bottom_temp_insitu$Time):max(
-          ecodata::bottom_temp_insitu$Time
+        min(ecodata26::bottom_temp_insitu$Time):max(
+          ecodata26::bottom_temp_insitu$Time
         ),
         1
       ),
@@ -37,7 +37,7 @@ plot_bottom_temp_insitu <- function(
     dplyr::mutate(hline = 0) |>
     dplyr::filter(Var == "bottom temp anomaly in situ", !is.na(Value))
 
-  #gl_bt<- ecodata::bottom_temp_glorys |>
+  #gl_bt<- ecodata26::bottom_temp_glorys |>
   #  dplyr::filter(EPU %in% filterEPUs)
 
   p <- fix |>
@@ -57,18 +57,18 @@ plot_bottom_temp_insitu <- function(
     ggplot2::geom_hline(yintercept = 0, linetype = setup$hline.lty) +
     # ggplot2::geom_point(ggplot2::aes(x = gl_bt$Time, y = gl_bt$Value), size = 1, color = "red") +
     #  ggplot2::geom_line(ggplot2::aes(x = gl_bt$Time, y = gl_bt$Value), color = "red") +
-    #ecodata::geom_lm(aes(x = temp_anom$Time, y = temp_anom$Value))+
+    #ecodata26::geom_lm(aes(x = temp_anom$Time, y = temp_anom$Value))+
     ggplot2::ylab("Temperature (C)") +
     ggplot2::xlab(ggplot2::element_blank()) +
     ggplot2::ggtitle(paste(
       report,
       ": NEFSC survey bottom temperature anomaly"
     )) +
-    ecodata::geom_gls() +
-    ecodata::geom_lm(n = n) +
-    ecodata::theme_ts() +
-    ecodata::theme_facet() +
-    ecodata::theme_title()
+    ecodata26::geom_gls() +
+    ecodata26::geom_lm(n = n) +
+    ecodata26::theme_ts() +
+    ecodata26::theme_facet() +
+    ecodata26::theme_title()
 
   return(p)
 }

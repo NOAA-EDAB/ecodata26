@@ -1,5 +1,5 @@
 #EPU shapefile
-ne_epu_sf <- ecodata::epu_sf %>%
+ne_epu_sf <- ecodata26::epu_sf %>%
   dplyr::filter(EPU %in% c("GOM", "GB"))
 
 #Map line parameters
@@ -12,7 +12,7 @@ ymin <- 39
 ymax <- 44.1
 xlims <- c(xmin, xmax)
 ylims <- c(ymin, ymax)
-bt <- ecodata::seasonal_bt_anomaly_gridded
+bt <- ecodata26::seasonal_bt_anomaly_gridded
 
 bt$Season <- factor(bt$Season, levels = c("Winter", "Spring", "Summer", "Fall"))
 
@@ -23,7 +23,7 @@ bt_map <-
     data = bt,
     aes(x = Longitude, y = Latitude, fill = Value)
   ) +
-  ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+  ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
   ggplot2::geom_sf(data = ne_epu_sf, fill = "transparent", size = map.lwd) +
   ggplot2::scale_fill_gradient2(
     name = "Temp.\nAnomaly (C)",
@@ -35,7 +35,7 @@ bt_map <-
   ) +
   ggplot2::coord_sf(crs = crs, xlim = xlims, ylim = ylims) +
   ggplot2::facet_wrap(Season ~ .) +
-  ecodata::theme_map() +
+  ecodata26::theme_map() +
   ggplot2::ggtitle("BT anomaly (2022)") +
   ggplot2::xlab("Longitude") +
   ggplot2::ylab("Latitude") +
@@ -48,7 +48,7 @@ bt_map <-
     axis.text = element_text(size = 8),
     axis.title.y = element_text(angle = 90)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 
 bt_map

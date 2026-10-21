@@ -1,6 +1,6 @@
 knitr::include_graphics(file.path(image.dir, "hms-too-big.png"))
 
-ecodata::hms_cpue %>%
+ecodata26::hms_cpue %>%
   ggplot() +
   ggplot2::annotate(
     "rect",
@@ -16,4 +16,4 @@ ecodata::hms_cpue %>%
   ggplot2::facet_wrap(~Var, scales = "free") +
   ggplot2::ggtitle("HMS POP CPUE ALL") +
   ggplot2::ylab("Number per Haul") +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()

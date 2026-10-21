@@ -1,4 +1,4 @@
-ecodata::observed_sharks %>%
+ecodata26::observed_sharks %>%
   filter(!EPU == "MAB", !EPU == "SS") %>%
   ggplot() +
   ggplot2::annotate(
@@ -17,6 +17,6 @@ ecodata::observed_sharks %>%
   ggplot2::ylab("Number per Haul") +
   ggplot2::xlab(element_blank()) +
   ggplot2::scale_color_discrete(name = "Category") +
-  ecodata::theme_ts() +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()

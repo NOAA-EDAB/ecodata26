@@ -1,4 +1,4 @@
-ecodata::rec_hms %>%
+ecodata26::rec_hms %>%
   dplyr::filter(EPU == "NE") %>%
   tidyr::separate(Var, c("Var", "X"), sep = "-") %>%
   dplyr::mutate(Value = Value / 10000) %>%
@@ -9,5 +9,5 @@ ecodata::rec_hms %>%
   ggplot2::ggtitle("Recreational Shark Landings") +
   ggplot2::xlab(element_blank()) +
   ggplot2::theme(legend.title = element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

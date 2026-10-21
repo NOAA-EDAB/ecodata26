@@ -1,4 +1,4 @@
-resca <- ecodata::forage_index %>%
+resca <- ecodata26::forage_index %>%
   dplyr::filter(
     Var %in%
       c(
@@ -9,7 +9,7 @@ resca <- ecodata::forage_index %>%
   ) %>%
   dplyr::summarise(max = max(Value))
 
-ecodata::forage_index %>%
+ecodata26::forage_index %>%
   dplyr::filter(
     Var %in%
       c(
@@ -50,6 +50,6 @@ ecodata::forage_index %>%
   ggplot2::ggtitle("Forage Biomass Index") +
   ggplot2::ylab(expression("Relative forage biomass")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::geom_gls() +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::geom_gls() +
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

@@ -1,4 +1,4 @@
-ecodata::sandlance %>%
+ecodata26::sandlance %>%
   dplyr::filter(
     Var %in%
       c(
@@ -24,7 +24,7 @@ ecodata::sandlance %>%
   ggplot2::facet_wrap(~Var, scales = "free") +
   #ggplot2::ylab("Number of Individuals")+
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title() +
+  ecodata26::theme_ts() +
+  ecodata26::theme_title() +
   ggplot2::theme(legend.title = element_blank(), legend.position = "bottom") +
-  ecodata::theme_facet()
+  ecodata26::theme_facet()

@@ -1,7 +1,7 @@
-hw1 <- ecodata::heatwave %>%
+hw1 <- ecodata26::heatwave %>%
   dplyr::filter(Time >= 2021) %>%
   dplyr::mutate(Source = c("PSY"))
-hwts <- ecodata::heatwave %>%
+hwts <- ecodata26::heatwave %>%
   dplyr::filter(Time <= 2020) %>%
   dplyr::mutate(Source = c("Glorys")) %>%
   rbind(hw1)
@@ -42,8 +42,8 @@ mab.hw %>%
   ggplot2::geom_line(aes(x = Time, y = Value)) +
   ggplot2::geom_point(aes(x = Time, y = Value, shape = Source)) +
   ggplot2::scale_shape_manual(values = c(16, 1)) +
-  ecodata::geom_gls(aes(x = Time, y = Value)) +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+  ecodata26::geom_gls(aes(x = Time, y = Value)) +
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
   ggplot2::ylab("") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Gulf of Maine Marine Bottom Temp Heatwave Intesity") +
@@ -64,7 +64,7 @@ mab.hw %>%
     ymax = Inf
   ) +
   ggplot2::facet_wrap(~Var, scales = "free") +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(strip.text = element_text(hjust = 0, face = "italic")) +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()

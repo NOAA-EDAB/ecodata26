@@ -14,7 +14,7 @@ plot_seasonal_oisst_anom_gridded <- function(
   report = "MidAtlantic",
   scale = "celsius"
 ) {
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   if (report == "MidAtlantic") {
     filterEPUs <- c("MAB")
@@ -37,11 +37,11 @@ plot_seasonal_oisst_anom_gridded <- function(
   }
 
   #EPU shapefile
-  ne_epu_sf <- ecodata::epu_sf |>
+  ne_epu_sf <- ecodata26::epu_sf |>
     sf::st_as_sf() |>
     dplyr::filter(EPU %in% filterEPUs)
 
-  sst <- ecodata::seasonal_oisst_anom_gridded |>
+  sst <- ecodata26::seasonal_oisst_anom_gridded |>
     dplyr::mutate(
       Season = factor(Season, levels = c("Winter", "Spring", "Summer", "Fall"))
     )
@@ -77,7 +77,7 @@ plot_seasonal_oisst_anom_gridded <- function(
       data = sst,
       ggplot2::aes(x = Longitude, y = Latitude, fill = Value)
     ) +
-    ggplot2::geom_sf(data = ecodata::coast, size = setup$map.lwd) +
+    ggplot2::geom_sf(data = ecodata26::coast, size = setup$map.lwd) +
     ggplot2::geom_sf(
       data = ne_epu_sf,
       fill = "transparent",
@@ -95,7 +95,7 @@ plot_seasonal_oisst_anom_gridded <- function(
     ) +
     ggplot2::coord_sf(xlim = xlims, ylim = ylims) +
     ggplot2::facet_wrap(Season ~ .) +
-    ecodata::theme_map() +
+    ecodata26::theme_map() +
     ggplot2::ggtitle("SST anomaly") +
     ggplot2::xlab("Longitude") +
     ggplot2::ylab("Latitude") +
@@ -113,7 +113,7 @@ plot_seasonal_oisst_anom_gridded <- function(
       axis.title.y = ggplot2::element_text(angle = 90)
     ) +
 
-    ecodata::theme_title()
+    ecodata26::theme_title()
 
   return(p)
 }

@@ -1,4 +1,4 @@
-cal <- ecodata::calanus_stage %>%
+cal <- ecodata26::calanus_stage %>%
 
   tidyr::separate(Var, into = c("Var", "season"), sep = "-") %>%
   dplyr::filter(EPU == "GOM", Var %in% c("c5", "adt")) %>%
@@ -26,7 +26,7 @@ cal %>%
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("GOM Calanus Stage Abundance") +
   ggplot2::theme(legend.position = "bottom", legend.title = element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   scale_fill_manual(values = c("steelblue1", "coral1")) +
   scale_color_manual(values = c("steelblue1", "coral1")) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

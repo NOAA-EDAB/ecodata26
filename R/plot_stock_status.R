@@ -16,7 +16,7 @@
 
 plot_stock_status <- function(shadedRegion = NULL, report = "MidAtlantic") {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -25,9 +25,9 @@ plot_stock_status <- function(shadedRegion = NULL, report = "MidAtlantic") {
     councils <- c("NEFMC", "Both")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  fix <- ecodata::stock_status |>
+  fix <- ecodata26::stock_status |>
     dplyr::mutate(
       Code = dplyr::recode(Code, "Dogfish" = "Sp. Dogfish"),
       Code = dplyr::recode(Code, "Mackerel" = "At. Mackerel")
@@ -202,8 +202,8 @@ plot_stock_status <- function(shadedRegion = NULL, report = "MidAtlantic") {
     ggplot2::ylab(expression(~ F / F[msy])) +
     ggplot2::guides(color = "none") +
     ggplot2::ggtitle(paste0(report, ": stock status")) +
-    ecodata::theme_ts() +
-    ecodata::theme_title() +
+    ecodata26::theme_ts() +
+    ecodata26::theme_title() +
     ggplot2::theme(
       legend.position = "bottom",
       legend.direction = "vertical",

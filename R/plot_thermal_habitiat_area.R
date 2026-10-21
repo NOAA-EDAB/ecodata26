@@ -18,7 +18,7 @@ plot_thermal_habitat_area <- function(
   EPU = "MAB"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -30,10 +30,10 @@ plot_thermal_habitat_area <- function(
     filterEPUs <- EPU
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
-  fix <- ecodata::thermal_habitat_area |>
+  fix <- ecodata26::thermal_habitat_area |>
     dplyr::filter(EPU == filterEPUs)
 
   limits <- fix |>

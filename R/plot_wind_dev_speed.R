@@ -13,7 +13,7 @@
 
 plot_wind_dev_speed <- function(shadedRegion = NULL, report = "MidAtlantic") {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -22,9 +22,9 @@ plot_wind_dev_speed <- function(shadedRegion = NULL, report = "MidAtlantic") {
     filterEPUs <- c("NE")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  fix <- ecodata::wind_dev_speed |>
+  fix <- ecodata26::wind_dev_speed |>
     dplyr::mutate(
       Value = as.numeric(Value) / 1000000,
       Time = as.integer(Time)
@@ -45,12 +45,12 @@ plot_wind_dev_speed <- function(shadedRegion = NULL, report = "MidAtlantic") {
     ggplot2::ylab("Total Area (Million Acres)") +
     ggplot2::xlab("Project Construction Year") +
     ggplot2::ggtitle("Lease Cumulative Area") +
-    ecodata::theme_ts() +
+    ecodata26::theme_ts() +
     #theme(axis.text.x = element_text(angle = 45, hjust = 1))+
     ggplot2::scale_x_continuous(
       breaks = c(2020, 2022, 2024, 2026, 2028, 2030)
     ) +
-    ecodata::theme_title() +
+    ecodata26::theme_title() +
     ggplot2::scale_colour_discrete(name = "Year Reported")
 
   #  ggplot2::theme(legend.position = c(0.8, 0.2))

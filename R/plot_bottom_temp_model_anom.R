@@ -21,7 +21,7 @@ plot_bottom_temp_model_anom <- function(
   plottype = 'GLORYS',
   n = 0
 ) {
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   if (report == "MidAtlantic") {
     filterEPUs <- c("MAB")
@@ -32,7 +32,7 @@ plot_bottom_temp_model_anom <- function(
     filterEPUs <- EPU
   }
 
-  fix <- ecodata::bottom_temp_model_anom |>
+  fix <- ecodata26::bottom_temp_model_anom |>
     dplyr::filter(EPU %in% filterEPUs) |>
     dplyr::mutate(
       Time = as.numeric(Time),
@@ -62,7 +62,7 @@ plot_bottom_temp_model_anom <- function(
     levels = c("Winter", "Spring", "Summer", "Fall", "Annual")
   )
 
-  # psy <- ecodata::bottom_temp_model_anom |>
+  # psy <- ecodata26::bottom_temp_model_anom |>
   #   dplyr::filter(Source == "PSY") |>
   #   dplyr::filter(EPU %in% filterEPUs) |>
   #   dplyr::mutate(Time = as.numeric(Time),
@@ -123,14 +123,14 @@ plot_bottom_temp_model_anom <- function(
       values = c("black", "indianred", 'steelblue4')
     ) +
     ggplot2::facet_wrap(Var ~ ., scales = "free_y") +
-    ecodata::theme_ts() +
-    ecodata::theme_facet() +
-    ecodata::geom_gls(inherit.aes = T) +
-    # ecodata::geom_lm(n=10)+
-    # ecodata::geom_lm(ggplot2::aes(x = Time, y = Value))+
+    ecodata26::theme_ts() +
+    ecodata26::theme_facet() +
+    ecodata26::geom_gls(inherit.aes = T) +
+    # ecodata26::geom_lm(n=10)+
+    # ecodata26::geom_lm(ggplot2::aes(x = Time, y = Value))+
     # ggplot2::theme(strip.text=ggplot2::element_text(hjust=0),
     #                plot.title = ggplot2::element_text(size = 12))+
-    ecodata::theme_title()
+    ecodata26::theme_title()
 
   if (plottype == "MOM6") {
     p <- "The MOM6 plot type is currently unavailable. Please use plottype = 'GLORYS'."

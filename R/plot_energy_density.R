@@ -13,7 +13,7 @@
 
 plot_energy_density <- function(shadedRegion = NULL, report = "MidAtlantic") {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -23,9 +23,9 @@ plot_energy_density <- function(shadedRegion = NULL, report = "MidAtlantic") {
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  d <- ecodata::energy_density |>
+  d <- ecodata26::energy_density |>
     tidyr::separate(Var, into = c("Species", "Season", "Var"), sep = "/") |>
     tidyr::pivot_wider(names_from = Var, values_from = Value) |>
     dplyr::mutate(
@@ -122,8 +122,8 @@ plot_energy_density <- function(shadedRegion = NULL, report = "MidAtlantic") {
     ) +
     #ggplot2::scale_x_continuous(breaks=c(2017,2018, 2019, 2020, 2021, 2022))+
     ggplot2::ggtitle("Forage Fish Energy Density") +
-    ecodata::theme_facet() +
-    ecodata::theme_title()
+    ecodata26::theme_facet() +
+    ecodata26::theme_title()
 
   # # optional code for New England specific (2 panel) formatting
   #  if (report == "NewEngland") {

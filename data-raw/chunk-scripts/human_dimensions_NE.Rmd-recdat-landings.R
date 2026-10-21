@@ -1,4 +1,4 @@
-landings_rec <- ecodata::recdat %>%
+landings_rec <- ecodata26::recdat %>%
   dplyr::filter(EPU == region_abbr, Var == "Recreational Seafood") %>%
   dplyr::mutate(hline = mean(Value))
 
@@ -16,12 +16,12 @@ rec_landings <- ggplot2::ggplot(data = landings_rec) +
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Value, group = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Value,
+  # ecodata26::geom_lm(aes(x = Time, y = Value,
   #              group = Var))+
   ggplot2::geom_line(aes(x = Time, y = Value, color = Var), size = lwd) +
   ggplot2::geom_point(aes(x = Time, y = Value, color = Var), size = pcex) +
@@ -46,8 +46,8 @@ rec_landings <- ggplot2::ggplot(data = landings_rec) +
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()
 
 #plotly::ggplotly(rec_landings) # plotly removes geom_gls
 rec_landings

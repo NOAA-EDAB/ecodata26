@@ -1,4 +1,4 @@
-ecodata::aquaculture %>%
+ecodata26::aquaculture %>%
   dplyr::ungroup() %>%
   dplyr::mutate(Region = as.character(Region)) %>%
   dplyr::filter(
@@ -17,7 +17,7 @@ ecodata::aquaculture %>%
   #Highlight last ten years
   ggplot2::geom_line(aes(x = Time, y = Value), size = lwd) +
   ggplot2::geom_point(aes(x = Time, y = Value), size = pcex) +
-  #ecodata::geom_lm(aes(x = Time, y = Value))+
+  #ecodata26::geom_lm(aes(x = Time, y = Value))+
   ggplot2::ggtitle("Total Oyster Production in New England") +
   ggplot2::ylab(expression("Oysters production (Pieces)")) +
   ggplot2::xlab("") +
@@ -25,5 +25,5 @@ ecodata::aquaculture %>%
   ggplot2::scale_x_continuous(
     breaks = c(2009, 2011, 2013, 2015, 2017, 2019, 2021)
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

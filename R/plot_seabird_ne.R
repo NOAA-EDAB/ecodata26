@@ -21,7 +21,7 @@ plot_seabird_ne <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -30,10 +30,10 @@ plot_seabird_ne <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   if (varName == "productivity") {
-    fix <- ecodata::seabird_ne |>
+    fix <- ecodata26::seabird_ne |>
       dplyr::filter(stringr::str_detect(Var, "Productivity"))
     fix <- tidyr::separate(fix, Var, c("Island", "COTE", "Spp"), sep = " ") |>
       dplyr::mutate(
@@ -92,13 +92,13 @@ plot_seabird_ne <- function(
       ggplot2::ggtitle("Common tern productivity") +
       ggplot2::ylab(expression("Fledged chicks per nest")) +
       ggplot2::xlab(ggplot2::element_blank()) +
-      ecodata::geom_gls() +
-      ecodata::geom_lm(n = n) +
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::geom_gls() +
+      ecodata26::geom_lm(n = n) +
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
   } else if (varName == "diversity") {
-    fix <- ecodata::seabird_ne |>
+    fix <- ecodata26::seabird_ne |>
       dplyr::filter(
         !stringr::str_detect(Var, "Productivity"),
         !stringr::str_detect(Var, "Sum")
@@ -150,7 +150,7 @@ plot_seabird_ne <- function(
       ggplot2::geom_line() +
       ggplot2::geom_point() +
       ggplot2::facet_wrap(~Island) +
-      #ecodata::geom_lm() +
+      #ecodata26::geom_lm() +
       ggplot2::ggtitle("Common tern diet diversity") +
       ggplot2::ylab(expression("Shannon Diversity")) +
       ggplot2::xlab(ggplot2::element_blank()) +
@@ -160,10 +160,10 @@ plot_seabird_ne <- function(
         alpha = setup$hline.alpha,
         linetype = setup$hline.lty
       ) +
-      ecodata::theme_ts() +
-      ecodata::theme_title()
+      ecodata26::theme_ts() +
+      ecodata26::theme_title()
   } else if (varName == "prey") {
-    fix <- ecodata::seabird_ne |>
+    fix <- ecodata26::seabird_ne |>
       dplyr::filter(
         !stringr::str_detect(Var, "Productivity"),
         !stringr::str_detect(Var, "Sum")
@@ -214,8 +214,8 @@ plot_seabird_ne <- function(
       ggplot2::ggtitle("Prey composition") +
       ggplot2::ylab("Proportion of prey items") +
       ggplot2::xlab(ggplot2::element_blank()) +
-      ecodata::theme_ts() +
-      ecodata::theme_title()
+      ecodata26::theme_ts() +
+      ecodata26::theme_title()
   }
 
   # code for generating plot object p

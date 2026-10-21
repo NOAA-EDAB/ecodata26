@@ -1,4 +1,4 @@
-dat <- ecodata::long_line_survey %>%
+dat <- ecodata26::long_line_survey %>%
   dplyr::filter(COMMON_NAME == "BLACKBELLY ROSEFISH")
 
 nesbath <- marmap::fortify.bathy(marmap::getNOAA.bathy(
@@ -14,10 +14,10 @@ colors <- c("A" = "orange", "B" = "blue")
 ggplot2::ggplot() +
   ggplot2::geom_raster(data = nesbath, aes(x = x, y = y, fill = z)) +
   ggplot2::scale_fill_gradientn(colors = c("lightcyan", "lightblue4")) +
-  ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+  ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
   ggplot2::geom_sf(data = epu_sf, fill = "transparent", size = map.lwd) +
   ggplot2::geom_sf(
-    data = ecodata::longlinesurvey_sf,
+    data = ecodata26::longlinesurvey_sf,
     size = map.lwd,
     color = "black",
     fill = "transparent"

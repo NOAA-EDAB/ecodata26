@@ -1,4 +1,4 @@
-df.symbol <- ecodata::wind_port %>%
+df.symbol <- ecodata26::wind_port %>%
   filter(
     EPU == "NE",
     !Var %in% c("wea_rev", "total_rev", "perc_rev_min", "perc_rev_max")
@@ -19,7 +19,7 @@ df.symbol <- ecodata::wind_port %>%
 
 # Percentage plot
 
-df.all.perc <- ecodata::wind_port %>%
+df.all.perc <- ecodata26::wind_port %>%
   filter(EPU == "NE") %>%
   pivot_wider(names_from = Var, values_from = Value) %>%
   dplyr::mutate(ordering = wea_rev, City = paste0(City, State)) %>%
@@ -64,6 +64,6 @@ p2 <- ggplot2::ggplot() +
   ggplot2::ggtitle("Port Revenue from Wind Energy Area") +
   ggplot2::xlab(expression("Port Revenue (%)")) +
   ggplot2::ylab(element_blank()) +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()
 
 p2

@@ -16,7 +16,7 @@ plot_phyto_size <- function(
   EPU = "MAB"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -33,13 +33,13 @@ plot_phyto_size <- function(
     filterEPUs <- EPU
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   month <- seq(as.Date("2021-01-01"), as.Date("2021-12-01"), by = "1 month")
   month_numeric <- lubridate::yday(month) / 365 * 52 + 1
   month_label <- lubridate::month(month, label = TRUE)
 
-  phyto_year_nano <- ecodata::chl_pp |>
+  phyto_year_nano <- ecodata26::chl_pp |>
     dplyr::filter(
       EPU %in% filterEPUs,
       Var %in% c("WEEKLY_PSC_FNANO_MEDIAN", "WEEKLY_PSC_FMICRO_MEDIAN")
@@ -62,7 +62,7 @@ plot_phyto_size <- function(
     dplyr::filter((year == max(year)), !Value == "NA") |>
     dplyr::mutate(Value = Value * 100)
 
-  phyto_year_micro <- ecodata::chl_pp |>
+  phyto_year_micro <- ecodata26::chl_pp |>
     dplyr::filter(EPU %in% filterEPUs, Var == c("WEEKLY_PSC_FMICRO_MEDIAN")) |>
     dplyr::mutate(Value = as.numeric(Value)) |>
     tidyr::separate(Time, into = c("Cat", "WEEK"), sep = "_") |>
@@ -73,7 +73,7 @@ plot_phyto_size <- function(
     dplyr::filter((year == max(year)), !Value == "NA") |>
     dplyr::mutate(Value = Value * 100)
 
-  out_phyto <- ecodata::chl_pp |>
+  out_phyto <- ecodata26::chl_pp |>
     dplyr::filter(
       EPU %in% filterEPUs,
       stringr::str_detect(Var, ("CLIMATOLOGICAL_WEEK"))
@@ -94,7 +94,7 @@ plot_phyto_size <- function(
   # Climatology median data from Kim does not add up to 1 do to variability in Kim's methods
   # We have decided to normalize these data such that they sum to 1 but remain in the same
   # relative proportions to one another. All data are normalized below to maintain consistent
-  # scale across variables. ecodata will be left exactly as sent in by Kim
+  # scale across variables. ecodata26 will be left exactly as sent in by Kim
 
   # Normalize climatology medians
   climatology_norm <- out_phyto |>
@@ -141,7 +141,7 @@ plot_phyto_size <- function(
   out_phyto <- climatology_norm
 
   # Normalize current year phytoplankton size classes
-  fpico <- ecodata::chl_pp |>
+  fpico <- ecodata26::chl_pp |>
     dplyr::filter(EPU %in% filterEPUs, Var == c("WEEKLY_PSC_FPICO_MEDIAN")) |>
     dplyr::mutate(Value = as.numeric(Value)) |>
     tidyr::separate(Time, into = c("Cat", "WEEK"), sep = "_") |>
@@ -231,7 +231,7 @@ plot_phyto_size <- function(
 
     ggplot2::ggtitle(paste0(EPU, " Phytoplankton Size Class")) +
     ggplot2::ylab("Percent") +
-    ecodata::theme_facet() +
+    ecodata26::theme_facet() +
     ggplot2::theme(
       axis.text.x = ggplot2::element_text(angle = 45, hjust = 1),
       panel.spacing = ggplot2::unit(.5, "lines"),
@@ -246,7 +246,7 @@ plot_phyto_size <- function(
     #scale_y_continuous( name = "Phytoplankton Size Fraction", sec.axis = sec_axis(~.*2, name="Chlorophyll a (mg m^-3)"))+
     ggplot2::scale_x_continuous(breaks = month_numeric, labels = month_label) +
     ggplot2::xlab(ggplot2::element_blank()) +
-    ecodata::theme_title()
+    ecodata26::theme_title()
 
   # if(varName == "adult"){
   #   p <- p + ggplot2::geom_ribbon(ggplot2::aes(ymin = Lower95, ymax = Upper95, x = Time), alpha = setup$shade.alpha)

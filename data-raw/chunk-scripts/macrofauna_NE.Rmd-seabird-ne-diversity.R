@@ -1,4 +1,4 @@
-diet_div <- ecodata::seabird_ne %>%
+diet_div <- ecodata26::seabird_ne %>%
   dplyr::filter(
     !stringr::str_detect(Var, "Productvity"),
     !stringr::str_detect(Var, "Sum")
@@ -35,7 +35,7 @@ shannon <- diet_div %>%
   ) +
   ggplot2::geom_line() +
   ggplot2::geom_point() +
-  #ecodata::geom_lm() +
+  #ecodata26::geom_lm() +
   ggplot2::scale_x_continuous(expand = c(0.01, 0.01), limits = c(1992, 2021)) +
   ggplot2::ggtitle("Common tern diet diversity") +
   ggplot2::ylab(expression("Shannon Diversity")) +
@@ -46,7 +46,7 @@ shannon <- diet_div %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()
 
 shannon

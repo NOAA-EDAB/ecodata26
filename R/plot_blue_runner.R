@@ -13,7 +13,7 @@
 
 plot_blue_runner <- function(shadedRegion = NULL, report = "MidAtlantic") {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # this plot goes a bit more south than standard 36
   setup$ylims <- c(35, setup$ymax)
@@ -25,9 +25,9 @@ plot_blue_runner <- function(shadedRegion = NULL, report = "MidAtlantic") {
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  blue <- ecodata::blue_runner |>
+  blue <- ecodata26::blue_runner |>
     tidyr::separate(Var, c("Var", "Pos"), "L") |>
     tidyr::pivot_wider(names_from = "Pos", values_from = "Value") |>
     #tidyr::spread(., Pos, Value) |>
@@ -53,7 +53,7 @@ plot_blue_runner <- function(shadedRegion = NULL, report = "MidAtlantic") {
   #
   p <-
     ggplot2::ggplot() +
-    ggplot2::geom_sf(data = ecodata::coast, size = setup$map.lwd) +
+    ggplot2::geom_sf(data = ecodata26::coast, size = setup$map.lwd) +
     ggplot2::geom_sf(
       data = setup$epu_sf,
       fill = "transparent",
@@ -66,7 +66,7 @@ plot_blue_runner <- function(shadedRegion = NULL, report = "MidAtlantic") {
     ggplot2::scale_shape_manual(values = c(16, 3, 17)) +
     ggplot2::scale_color_manual(values = c("blue", "black", "red")) +
     ggplot2::coord_sf(crs = setup$crs, xlim = setup$xlims, ylim = setup$ylims) +
-    ecodata::theme_map() +
+    ecodata26::theme_map() +
     ggplot2::ggtitle("Blue Runner Presence") +
     ggplot2::xlab("") +
     ggplot2::ylab("") +
@@ -100,7 +100,7 @@ plot_blue_runner <- function(shadedRegion = NULL, report = "MidAtlantic") {
 attr(plot_blue_runner, "report") <- c("MidAtlantic", "NewEngland")
 # Paste commented original plot code chunk for reference
 # Mid Atlantic only
-# blue<-ecodata::blue_runner %>%
+# blue<-ecodata26::blue_runner %>%
 #   tidyr::separate(Var, c("Var", "Pos"), "L") %>%
 #   tidyr::spread(., Pos, Value) %>%
 #   dplyr::rename(Lat = at,
@@ -112,7 +112,7 @@ attr(plot_blue_runner, "report") <- c("MidAtlantic", "NewEngland")
 # blue$Var <- factor(blue$Var, levels = c("Prior to 2000", "2001-2010", "Since 2010"))
 #
 # #EPU shapefile
-# epu_sf <- ecodata::epu_sf %>%
+# epu_sf <- ecodata26::epu_sf %>%
 #   dplyr::filter(EPU %in% c("GOM","GB", "MAB"))
 #
 # #Map line parameters
@@ -129,13 +129,13 @@ attr(plot_blue_runner, "report") <- c("MidAtlantic", "NewEngland")
 # ## Map plotting blue runner
 # blue_map <-
 #   ggplot2::ggplot() +
-#   ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+#   ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
 #   ggplot2::geom_sf(data = epu_sf, fill = "transparent", size = map.lwd) +
 #   ggplot2::geom_point(data = blue, aes(x = Lon, y = Lat, color = Var, shape = Var))+
 #   ggplot2::scale_shape_manual(values=c(16, 3, 17))+
 #   ggplot2::scale_color_manual(values = c("blue", "black", "red"))+
 #   ggplot2::coord_sf(crs = crs, xlim = xlims, ylim = ylims) +
-#   ecodata::theme_map() +
+#   ecodata26::theme_map() +
 #   ggplot2::ggtitle("Blue Runner Presence") +
 #   ggplot2::xlab("") +
 #   ggplot2::ylab("") +

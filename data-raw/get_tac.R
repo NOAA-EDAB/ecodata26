@@ -45,7 +45,7 @@ whiting_tac %>%
   facet_wrap(. ~ Var, scales = "free") +
   ylab("metric tons") +
   ggtitle("Southern Whiting") +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()
 
 
 whiting_tac %>%
@@ -59,4 +59,4 @@ whiting_tac %>%
   geom_hline(aes(yintercept = hline), linetype = "dashed") +
   ylab("Percent") +
   ggtitle("Southern Whiting") +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()

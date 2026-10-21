@@ -14,7 +14,7 @@
 
 plot_cold_pool_sf <- function(shadedRegion = NULL, report = "MidAtlantic") {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # adjust map window for Mid Atlantic cold pool region
   setup$xmin <- -78
@@ -24,10 +24,10 @@ plot_cold_pool_sf <- function(shadedRegion = NULL, report = "MidAtlantic") {
   setup$xlims <- c(setup$xmin, setup$xmax)
   setup$ylims <- c(setup$ymin, setup$ymax)
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   # YEARS HARDCODED, NOT INCLUDED WITH DATASET
-  area <- ecodata::cold_pool_sf |>
+  area <- ecodata26::cold_pool_sf |>
     dplyr::mutate(Time = c(1993:2018))
   area2 <- data.frame(Area = sf::st_area(area)) |>
     dplyr::mutate(Time = c(1993:2018)) |>
@@ -58,7 +58,7 @@ plot_cold_pool_sf <- function(shadedRegion = NULL, report = "MidAtlantic") {
   #
   p <- ggplot2::ggplot() +
     #ggplot2::geom_tile(data =hw, aes(x = Longitude, y = Latitude,fill = Value)) +
-    ggplot2::geom_sf(data = ecodata::coast, size = setup$map.lwd) +
+    ggplot2::geom_sf(data = ecodata26::coast, size = setup$map.lwd) +
     ggplot2::geom_sf(data = cpsf, alpha = 0.1) +
     ggplot2::geom_sf(
       data = cpsfcur,
@@ -86,7 +86,7 @@ plot_cold_pool_sf <- function(shadedRegion = NULL, report = "MidAtlantic") {
     #                     limits = c(-4,4)) +
 
     #facet_wrap(Season~.) +
-    ecodata::theme_map() +
+    ecodata26::theme_map() +
     ggplot2::ggtitle("Cold Pool Area") +
     ggplot2::xlab("Longitude") +
     ggplot2::ylab("Latitude") +
@@ -103,7 +103,7 @@ plot_cold_pool_sf <- function(shadedRegion = NULL, report = "MidAtlantic") {
       axis.text = ggplot2::element_text(size = 8),
       axis.title.y = ggplot2::element_text(angle = 90)
     ) +
-    ecodata::theme_title()
+    ecodata26::theme_title()
 
   area_ts <- ggplot2::ggplotGrob(
     area2 |>
@@ -126,7 +126,7 @@ plot_cold_pool_sf <- function(shadedRegion = NULL, report = "MidAtlantic") {
       ggplot2::ggtitle("") +
       ggplot2::ylab((expression("Area (m"^2 * ")"))) +
       ggplot2::xlab("") +
-      ecodata::theme_ts() +
+      ecodata26::theme_ts() +
       ggplot2::theme(
         axis.text.y = ggplot2::element_text(size = 6),
         axis.text.x = ggplot2::element_text(size = 6),
@@ -157,7 +157,7 @@ plot_cold_pool_sf <- function(shadedRegion = NULL, report = "MidAtlantic") {
   return(p)
 
   # Paste commented original plot code chunk for reference
-  # ecodata::dataset |>
+  # ecodata26::dataset |>
   #   dplyr::filter(Var %in% c("..."),
   #                 EPU == "...") |>
   #   ... more dataset wrangling as necessary |>
@@ -171,9 +171,9 @@ plot_cold_pool_sf <- function(shadedRegion = NULL, report = "MidAtlantic") {
   #   ggplot2::ggtitle("Title")+
   #   ggplot2::ylab(expression("Y label"))+
   #   ggplot2::xlab(element_blank())+
-  #   ecodata::geom_gls()+
-  #   ecodata::theme_ts()+
-  #   ecodata::theme_title()
+  #   ecodata26::geom_gls()+
+  #   ecodata26::theme_ts()+
+  #   ecodata26::theme_title()
   #
   #
 }

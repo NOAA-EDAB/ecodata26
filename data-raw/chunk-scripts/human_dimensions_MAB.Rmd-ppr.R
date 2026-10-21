@@ -1,9 +1,9 @@
-a <- ecodata::ppr %>%
+a <- ecodata26::ppr %>%
   dplyr::group_by(EPU) %>%
   dplyr::mutate(hline = mean(Value)) %>%
   dplyr::filter(Var == "PPR", EPU == "MAB", Time <= 1997)
 
-ecodata::ppr %>%
+ecodata26::ppr %>%
   dplyr::group_by(EPU) %>%
   dplyr::mutate(hline = mean(Value)) %>%
   dplyr::filter(Var == "PPR", EPU == "MAB", Time >= 1997) %>%
@@ -20,7 +20,7 @@ ecodata::ppr %>%
   ggplot2::geom_point(aes(x = Time, y = Value)) +
   ggplot2::geom_line(aes(x = Time, y = Value)) +
   ggplot2::geom_line(data = a, aes(x = Time, y = Value), linetype = "dashed") +
-  # ecodata::geom_lm(aes(x = Time, y = Value,
+  # ecodata26::geom_lm(aes(x = Time, y = Value,
   #              group = Var))+
   ggplot2::geom_hline(
     aes(yintercept = hline),
@@ -32,5 +32,5 @@ ecodata::ppr %>%
   ggplot2::ggtitle("Primary Production Required") +
   ggplot2::ylab("Proportion of Total PPD ") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

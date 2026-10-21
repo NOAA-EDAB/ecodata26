@@ -1,4 +1,4 @@
-menh <- ecodata::ne_inshore_survey %>%
+menh <- ecodata26::ne_inshore_survey %>%
   dplyr::group_by(Var) %>%
   dplyr::mutate(hline = mean(Value))
 
@@ -53,7 +53,7 @@ p1 <- menh %>%
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("ME/NH Inshore BTS") +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
@@ -95,7 +95,7 @@ p2 <- menh %>%
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
@@ -137,7 +137,7 @@ p3 <- menh %>%
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
@@ -178,7 +178,7 @@ p4 <- menh %>%
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0))
 
 cowplot::plot_grid(p1, p2, p3, p4, nrow = 4)

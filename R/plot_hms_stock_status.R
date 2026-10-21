@@ -15,7 +15,7 @@
 
 plot_hms_stock_status <- function(shadedRegion = NULL, report = "MidAtlantic") {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -24,7 +24,7 @@ plot_hms_stock_status <- function(shadedRegion = NULL, report = "MidAtlantic") {
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   y.max <- 5
   x.max <- 2
@@ -36,7 +36,7 @@ plot_hms_stock_status <- function(shadedRegion = NULL, report = "MidAtlantic") {
     y = seq(0.88 * y.max, 3.5, -0.3)
   )
 
-  stock_status <- ecodata::hms_stock_status |>
+  stock_status <- ecodata26::hms_stock_status |>
     #tidyr::spread(.,Var,Value) |>
     tidyr::separate(Var, c("species_abr", "spp", "Var"), ":") |>
     tidyr::pivot_wider(names_from = Var, values_from = Value) |>
@@ -107,7 +107,7 @@ plot_hms_stock_status <- function(shadedRegion = NULL, report = "MidAtlantic") {
     ggplot2::xlab(expression(~ B / B[msy])) +
     ggplot2::ylab(expression(~ F / F[msy])) +
     ggplot2::guides(color = FALSE) +
-    ecodata::theme_ts()
+    ecodata26::theme_ts()
 
   # Temporarily block plots as HMS reviews indicator
   p <- "This indicator is under review."
@@ -127,7 +127,7 @@ attr(plot_hms_stock_status, "report") <- c("MidAtlantic", "NewEngland")
 #
 #
 #
-# stock_status<-ecodata::hms_stock_status %>%
+# stock_status<-ecodata26::hms_stock_status %>%
 #   #tidyr::spread(.,Var,Value) %>%
 #   tidyr::separate(Var, c("species_abr", "spp", "Var"), ":") %>%
 #   tidyr::pivot_wider(names_from = Var, values_from = Value) %>%
@@ -168,5 +168,5 @@ attr(plot_hms_stock_status, "report") <- c("MidAtlantic", "NewEngland")
 #   ggplot2::xlab(expression(~B/B[msy])) +
 #   ggplot2::ylab(expression(~F/F[msy])) +
 #   ggplot2::guides(color = FALSE) +
-#   ecodata::theme_ts()
+#   ecodata26::theme_ts()
 #

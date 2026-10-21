@@ -22,7 +22,7 @@ plot_comdat_profit <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -47,7 +47,7 @@ plot_comdat_profit <- function(
   # e.g. fill = setup$shade.fill, alpha = setup$shade.alpha,
   # xmin = setup$x.shade.min , xmax = setup$x.shade.max
 
-  fix <- ecodata::comdat_profit |>
+  fix <- ecodata26::comdat_profit |>
     dplyr::filter(EPU %in% filterEPUs) |>
     dplyr::group_by(Var) |>
     dplyr::mutate(hline = mean(Value, na.rm = T))
@@ -66,15 +66,15 @@ plot_comdat_profit <- function(
       ) +
       ggplot2::geom_point() +
       ggplot2::geom_line() +
-      ecodata::theme_ts() +
-      ecodata::theme_title() +
+      ecodata26::theme_ts() +
+      ecodata26::theme_title() +
       ggplot2::ylab("Index") +
       ggplot2::ggtitle(paste0(
         EPU,
         ": Profitability, Cost and Revenue Indices"
       )) +
-      ecodata::theme_facet() +
-      ecodata::geom_lm(n = n) +
+      ecodata26::theme_facet() +
+      ecodata26::geom_lm(n = n) +
       ggplot2::geom_hline(
         ggplot2::aes(yintercept = hline, color = Var),
         size = setup$hline.size,
@@ -96,12 +96,12 @@ plot_comdat_profit <- function(
       ) +
       ggplot2::geom_point() +
       ggplot2::geom_line() +
-      ecodata::theme_ts() +
-      ecodata::theme_title() +
+      ecodata26::theme_ts() +
+      ecodata26::theme_title() +
       ggplot2::ylab(paste0(indextype)) +
       ggplot2::ggtitle(paste0(EPU, ": ", indextype)) +
-      ecodata::theme_facet() +
-      ecodata::geom_lm(n = n) +
+      ecodata26::theme_facet() +
+      ecodata26::geom_lm(n = n) +
       ggplot2::geom_hline(
         ggplot2::aes(yintercept = hline),
         size = setup$hline.size,

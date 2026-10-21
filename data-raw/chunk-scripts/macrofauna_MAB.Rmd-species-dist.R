@@ -1,4 +1,4 @@
-spec_dist <- ecodata::species_dist %>%
+spec_dist <- ecodata26::species_dist %>%
   #dplyr::filter(!Var == "Season") %>%
   dplyr::mutate(Value = as.numeric(Value)) %>%
   dplyr::group_by(Var) %>%
@@ -18,8 +18,8 @@ asd <- spec_dist %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
   ggplot2::geom_line() +
   ggplot2::geom_point() +
   ggplot2::scale_x_continuous(expand = c(0.01, 0.01)) +
@@ -32,8 +32,8 @@ asd <- spec_dist %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()
 
 depth <- spec_dist %>%
   dplyr::filter(Var == "depth", !Time == 2020) %>%
@@ -49,8 +49,8 @@ depth <- spec_dist %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
   ggplot2::geom_line() +
   ggplot2::geom_point() +
   ggplot2::scale_x_continuous(expand = c(0.01, 0.01)) +
@@ -64,8 +64,8 @@ depth <- spec_dist %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()
 
 
 asd + depth + patchwork::plot_layout(ncol = 1)

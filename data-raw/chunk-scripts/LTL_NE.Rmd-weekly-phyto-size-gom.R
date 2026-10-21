@@ -3,7 +3,7 @@ month_numeric <- lubridate::yday(month) / 365 * 52 + 1
 month_label <- lubridate::month(month, label = TRUE)
 
 ### GOM
-phyto_year_nano <- ecodata::phyto_size %>%
+phyto_year_nano <- ecodata26::phyto_size %>%
   dplyr::filter(
     EPU == c("GOM"),
     Var %in%
@@ -31,7 +31,7 @@ phyto_year_nano <- ecodata::phyto_size %>%
   dplyr::mutate(Value = Value * 100)
 
 
-phyto_year_micro <- ecodata::phyto_size %>%
+phyto_year_micro <- ecodata26::phyto_size %>%
   dplyr::filter(EPU == c("GOM"), Var == c("WEEKLY_MICRO_PERCENTAGE_MEDIAN")) %>%
   mutate(Value = as.numeric(Value)) %>%
   tidyr::separate(., Time, into = c("Cat", "WEEK"), sep = "_") %>%
@@ -42,7 +42,7 @@ phyto_year_micro <- ecodata::phyto_size %>%
   dplyr::filter(year == 2021, !Value == "NA") %>%
   dplyr::mutate(Value = Value * 100)
 
-out_phyto <- ecodata::phyto_size %>%
+out_phyto <- ecodata26::phyto_size %>%
   dplyr::filter(
     EPU == c("GOM"),
     stringr::str_detect(Var, ("CLIMATOLOGICAL_WEEK")),
@@ -94,7 +94,7 @@ p2 <- ggplot2::ggplot() +
   ggplot2::ggtitle("Gulf of Maine Phytoplankton Size Class") +
   ggplot2::ylab("Percent") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
     panel.spacing = unit(.5, "lines"),
@@ -108,5 +108,5 @@ p2 <- ggplot2::ggplot() +
   ) +
   #scale_y_continuous( name = "Phytoplankton Size Fraction", sec.axis = sec_axis(~.*2, name="Chlorophyll a (mg m^-3)"))+
   scale_x_continuous(breaks = month_numeric, labels = month_label) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 p2

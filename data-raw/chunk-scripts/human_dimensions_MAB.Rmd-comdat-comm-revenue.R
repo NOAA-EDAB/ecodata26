@@ -1,12 +1,12 @@
 ## Apex pred
-apex <- ecodata::hms_landings %>%
+apex <- ecodata26::hms_landings %>%
   dplyr::filter(stringr::str_detect(Var, "Revenue"), Time < 2021) %>%
   separate(Var, c("Var", "trash"), sep = "_") %>%
   group_by(Time) %>%
   summarise(Value = sum(Value)) %>%
   mutate(Var = c("HMS Revenue"), Units = c("metric tons"), EPU = c("MAB"))
 #Filtering and aggregation step
-rev_agg <- ecodata::comdat %>%
+rev_agg <- ecodata26::comdat %>%
   dplyr::filter(
     Var %in%
       c(
@@ -27,7 +27,7 @@ rev_agg <- ecodata::comdat %>%
   dplyr::group_by(Status, EPU) %>%
   dplyr::mutate(hline = mean(Total))
 
-rev_total <- ecodata::comdat %>%
+rev_total <- ecodata26::comdat %>%
   dplyr::filter(Var == "Revenue") %>%
   dplyr::mutate(Status = c("Total")) %>%
   dplyr::group_by(Status, Time, EPU) %>%
@@ -54,12 +54,12 @@ ggplot2::ggplot(data = rev) +
   ) +
 
   #lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Total, group = Status),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Total,
+  # ecodata26::geom_lm(aes(x = Time, y = Total,
   #              group = Status))+
   ggplot2::geom_line(aes(x = Time, y = Total, color = Status), size = lwd) +
   ggplot2::geom_point(aes(x = Time, y = Total, color = Status), size = 1.5) +
@@ -83,5 +83,5 @@ ggplot2::ggplot(data = rev) +
     linetype = hline.lty
   ) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

@@ -1,4 +1,4 @@
-zoo_div <- ecodata::zoo_diversity %>%
+zoo_div <- ecodata26::zoo_diversity %>%
   dplyr::filter(EPU == epu_abbr, Time > 1991) %>%
   dplyr::mutate(hline = mean(Value, na.rm = TRUE))
 
@@ -13,8 +13,8 @@ zoo_div %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
   ggplot2::geom_line() +
   ggplot2::geom_point() +
   ggplot2::ylab("Shannon Diversity") +
@@ -29,5 +29,5 @@ zoo_div %>%
     linetype = hline.lty
   ) +
   #ggplot2::theme(strip.text=element_blank())+
-  ecodata::theme_title() +
-  ecodata::theme_ts()
+  ecodata26::theme_title() +
+  ecodata26::theme_ts()

@@ -1,5 +1,5 @@
 #Get NEAMAP
-neamap <- ecodata::mab_inshore_survey %>%
+neamap <- ecodata26::mab_inshore_survey %>%
   tidyr::separate(Var, into = c("Var", "Val"), sep = "-") %>%
   tidyr::pivot_wider(names_from = Val, values_from = Value) %>%
   dplyr::mutate(Value = as.numeric(Value), CV = as.numeric(CV)) %>%
@@ -39,12 +39,12 @@ neamap %>%
     ymax = Inf
   ) +
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Value, color = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Value,
+  # ecodata26::geom_lm(aes(x = Time, y = Value,
   #              color = Var),
   #            alpha = trend.alpha, size = trend.size) +
 
@@ -70,7 +70,7 @@ neamap %>%
   #ggplot2::scale_x_continuous(breaks = seq(1965, 2015, by = 10), expand = c(0.01, 0.01)) +
   #ylim(0, 1200)+
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()

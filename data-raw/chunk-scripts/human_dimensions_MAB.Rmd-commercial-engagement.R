@@ -1,4 +1,4 @@
-com <- ecodata::engagement %>%
+com <- ecodata26::engagement %>%
   dplyr::filter(Region == "MAB", Fishery == "Commercial") %>%
   dplyr::rename("EJRating" = "EJ Rating")
 
@@ -49,9 +49,9 @@ com2 <- com %>%
   ) +
   #ggplot2::guides(color = FALSE) +
   #theme_bw()
-  ecodata::theme_ts() +
-  ecodata::theme_title()
-#ecodata::theme_facet()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()
+#ecodata26::theme_facet()
 
 gridExtra::grid.arrange(
   com2,

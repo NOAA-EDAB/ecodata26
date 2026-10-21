@@ -1,6 +1,6 @@
 #' plot habitat diversity
 #'
-#' Plots ecodata::habitat_diversity (Shannon index and species richness)
+#' Plots ecodata26::habitat_diversity (Shannon index and species richness)
 #'
 #' @param shadedRegion Numeric vector. Years denoting the shaded region of the plot (most recent 10)
 #' @param report Character string. Which SOE report ("MidAtlantic", "NewEngland")
@@ -18,7 +18,7 @@ plot_habitat_diversity <- function(
   varName = "Diversity"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -27,11 +27,11 @@ plot_habitat_diversity <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   if (varName == "Diversity") {
     varNames <- "Shannon"
-    fix <- ecodata::habitat_diversity |>
+    fix <- ecodata26::habitat_diversity |>
       dplyr::filter(Var == varNames, EPU %in% filterEPUs) |>
       dplyr::group_by(EPU) |>
       dplyr::mutate(
@@ -45,7 +45,7 @@ plot_habitat_diversity <- function(
     # e.g. fill = setup$shade.fill, alpha = setup$shade.alpha,
     # xmin = setup$x.shade.min , xmax = setup$x.shade.max
     #
-    p <- ecodata::habitat_diversity |>
+    p <- ecodata26::habitat_diversity |>
       dplyr::filter(grepl(varNames, Var)) |>
       dplyr::group_by(EPU) |>
       dplyr::mutate(
@@ -83,13 +83,13 @@ plot_habitat_diversity <- function(
       ggplot2::ylab("Shannon Diversity") +
       ggplot2::xlab(ggplot2::element_blank()) +
 
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
   } else {
     # Richness
     varNames <- "Richness"
-    fix <- ecodata::habitat_diversity |>
+    fix <- ecodata26::habitat_diversity |>
       dplyr::filter(grepl(varNames, Var), EPU %in% filterEPUs) |>
       tidyr::separate(Var, into = c("Var", "Richness"), sep = "-") |>
       tidyr::pivot_wider(values_from = "Value", names_from = "Var") |>
@@ -107,7 +107,7 @@ plot_habitat_diversity <- function(
     # e.g. fill = setup$shade.fill, alpha = setup$shade.alpha,
     # xmin = setup$x.shade.min , xmax = setup$x.shade.max
     #
-    p <- ecodata::habitat_diversity |>
+    p <- ecodata26::habitat_diversity |>
       dplyr::filter(grepl(varNames, Var)) |>
       tidyr::separate(Var, into = c("Var", "Richness"), sep = "-") |>
       tidyr::pivot_wider(values_from = "Value", names_from = "Var") |>
@@ -151,9 +151,9 @@ plot_habitat_diversity <- function(
       ggplot2::ylab("Richness") +
       ggplot2::xlab(ggplot2::element_blank()) +
 
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
   }
 
   # optional code for New England specific (2 panel) formatting

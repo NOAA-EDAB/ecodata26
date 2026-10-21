@@ -18,7 +18,7 @@ p1 <- gom_surv %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Mean, color = Var),
     alpha = trend.alpha,
     size = trend.size
@@ -52,12 +52,12 @@ p1 <- gom_surv %>%
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("GOM NEFSC BTS") +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 #### Plot 2
 p2 <- gom_surv %>%
@@ -76,7 +76,7 @@ p2 <- gom_surv %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Mean, color = Var),
     alpha = trend.alpha,
     size = trend.size
@@ -109,12 +109,12 @@ p2 <- gom_surv %>%
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 ## Plot 3
 p3 <- gom_surv %>%
@@ -133,7 +133,7 @@ p3 <- gom_surv %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Mean, color = Var),
     alpha = trend.alpha,
     size = trend.size
@@ -166,12 +166,12 @@ p3 <- gom_surv %>%
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 ##Plot 4
 p4 <- gom_surv %>%
@@ -190,7 +190,7 @@ p4 <- gom_surv %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Mean, color = Var),
     alpha = trend.alpha,
     size = trend.size
@@ -221,10 +221,10 @@ p4 <- gom_surv %>%
     breaks = seq(1965, 2015, by = 10),
     expand = c(0.01, 0.01)
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
   ggplot2::theme(strip.text = element_text(hjust = 0)) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 cowplot::plot_grid(p1, p2, p3, p4, nrow = 4)

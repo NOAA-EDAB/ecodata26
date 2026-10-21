@@ -1,5 +1,5 @@
 #Get data, spread for plotting, and filter
-stock_status <- ecodata::stock_status %>%
+stock_status <- ecodata26::stock_status %>%
   dplyr::mutate(
     Code = recode(Code, "Dogfish" = "Sp. Dogfish"),
     Code = recode(Code, "Mackerel" = "At. Mackerel")
@@ -76,4 +76,4 @@ ggplot2::ggplot(data = stock_status) +
   ggplot2::xlab(expression(~ B / B[msy])) +
   ggplot2::ylab(expression(~ F / F[msy])) +
   ggplot2::guides(color = FALSE) +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()

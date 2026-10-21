@@ -1,4 +1,4 @@
-mass <- ecodata::mass_inshore_survey %>%
+mass <- ecodata26::mass_inshore_survey %>%
   dplyr::filter(EPU == "GB", Time > 1980) %>%
   tidyr::separate(Var, c("feeding.guild", "season", "biomass", "stat")) %>%
   tidyr::unite(., Var, c("feeding.guild", "season"), sep = " ") %>%
@@ -37,12 +37,12 @@ p1 <- mass %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Index, color = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Index,
+  # ecodata26::geom_lm(aes(x = Time, y = Index,
   #              color = Var),
   #            alpha = trend.alpha, size = trend.size) +
   #Add time series
@@ -70,7 +70,7 @@ p1 <- mass %>%
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("MA Inshore BTS") +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
@@ -93,12 +93,12 @@ p2 <- mass %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Index, color = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Index,
+  # ecodata26::geom_lm(aes(x = Time, y = Index,
   #              color = Var),
   #            alpha = trend.alpha, size = trend.size) +
   #Add time series
@@ -126,7 +126,7 @@ p2 <- mass %>%
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
@@ -149,12 +149,12 @@ p3 <- mass %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Index, color = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Index,
+  # ecodata26::geom_lm(aes(x = Time, y = Index,
   #              color = Var),
   #            alpha = trend.alpha, size = trend.size) +
   #Add time series
@@ -182,7 +182,7 @@ p3 <- mass %>%
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
@@ -205,12 +205,12 @@ p4 <- mass %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Index, color = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Index,
+  # ecodata26::geom_lm(aes(x = Time, y = Index,
   #              color = Var),
   #            alpha = trend.alpha, size = trend.size) +
   #Add time series
@@ -238,7 +238,7 @@ p4 <- mass %>%
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0))
 
 cowplot::plot_grid(p1, p2, p3, p4, nrow = 4)

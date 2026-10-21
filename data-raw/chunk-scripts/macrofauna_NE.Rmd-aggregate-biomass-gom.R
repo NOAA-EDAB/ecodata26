@@ -1,4 +1,4 @@
-agg <- ecodata::aggregate_biomass %>%
+agg <- ecodata26::aggregate_biomass %>%
   dplyr::filter(
     !stringr::str_detect(
       Var,
@@ -57,12 +57,12 @@ p1 <- agg_bio %>%
     ymax = Inf
   ) +
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Mean, color = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Mean,
+  # ecodata26::geom_lm(aes(x = Time, y = Mean,
   #              color = Var),
   #            alpha = trend.alpha, size = trend.size) +
   #Add time series
@@ -89,7 +89,7 @@ p1 <- agg_bio %>%
   ) +
   #ylim(0, 1200)+
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::ggtitle("GOM NEFSC BTS") +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
@@ -112,12 +112,12 @@ p2 <- agg_bio %>%
     ymax = Inf
   ) +
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Mean, color = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Mean,
+  # ecodata26::geom_lm(aes(x = Time, y = Mean,
   #              color = Var),
   #            alpha = trend.alpha, size = trend.size) +
   #Add time series
@@ -144,7 +144,7 @@ p2 <- agg_bio %>%
     expand = c(0.01, 0.01)
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
@@ -165,12 +165,12 @@ p3 <- agg_bio %>%
     ymax = Inf
   ) +
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Mean, color = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Mean,
+  # ecodata26::geom_lm(aes(x = Time, y = Mean,
   #              color = Var),
   #            alpha = trend.alpha, size = trend.size) +
   #Add time series
@@ -197,7 +197,7 @@ p3 <- agg_bio %>%
   ) +
   #ylim(0, 600)+
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()
@@ -218,12 +218,12 @@ p4 <- agg_bio %>%
     ymax = Inf
   ) +
   #Test for trend and add lines
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Mean, color = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Mean,
+  # ecodata26::geom_lm(aes(x = Time, y = Mean,
   #              color = Var),
   #            alpha = trend.alpha, size = trend.size) +
   #Add time series
@@ -248,7 +248,7 @@ p4 <- agg_bio %>%
     expand = c(0.01, 0.01)
   ) +
   ggplot2::ylab(expression("Biomass (kg tow"^-1 * ")")) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     axis.title.x = element_blank()

@@ -25,7 +25,7 @@ plot_community_risks <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -34,7 +34,7 @@ plot_community_risks <- function(
     filterEPUs <- setup$region_abbr
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
   vulquants <- data.frame(
@@ -58,7 +58,7 @@ plot_community_risks <- function(
   if (plottype == "propcomm") {
     #proportion of communities
 
-    props <- ecodata::community_risks |>
+    props <- ecodata26::community_risks |>
       dplyr::filter(!stringr::str_detect(Var, "Regional-")) |>
       tidyr::separate(Var, into = c("Town", "StateVar"), sep = ",") |> #using two steps because some towns have - in the name
       tidyr::separate(StateVar, into = c("State", "Var"), sep = "-") |> # which also seps the variable
@@ -127,17 +127,17 @@ plot_community_risks <- function(
       #ggplot2::ggtitle("Mid-Atlantic") +
       #ggplot2::theme(legend.position = "blank")
       ggplot2::ylab("Proportion communities") +
-      # ecodata::geom_lm(n = n) +
-      ecodata::geom_lm(
+      # ecodata26::geom_lm(n = n) +
+      ecodata26::geom_lm(
         data = propsonly,
         n = n,
         ggplot2::aes(x = Time, y = propcat, group = risk),
         alpha = setup$trend.alpha,
         size = setup$trend.size
       ) +
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
 
     return(p)
   } else {
@@ -156,7 +156,7 @@ plot_community_risks <- function(
       plottype == "regionland" ~ "_region_lb"
     )
 
-    regional <- ecodata::community_risks |>
+    regional <- ecodata26::community_risks |>
       # dplyr::filter(stringr::str_detect(Var, "Regional-")) |>
       # dplyr::mutate(Varin = stringr::str_extract(Var, '\\b\\w+$'), #keep everything before -
       #               Varpre = stringr::str_to_lower(stringr::str_split_i(Varin, "Sum", 1)),
@@ -198,10 +198,10 @@ plot_community_risks <- function(
         breaks = c('Low', 'Moderate', 'High', 'Very High'),
         name = varTitle[varName]
       ) +
-      # ecodata::geom_gls(data = regional, ggplot2::aes(x = Time, y = Value,
+      # ecodata26::geom_gls(data = regional, ggplot2::aes(x = Time, y = Value,
       #                              group = Var),
       #                 alpha = setup$trend.alpha, size = setup$trend.size) +
-      ecodata::geom_lm(
+      ecodata26::geom_lm(
         data = regional,
         n = n,
         ggplot2::aes(x = Time, y = Value, group = Var),
@@ -224,9 +224,9 @@ plot_community_risks <- function(
       #ggplot2::ggtitle("Mid-Atlantic") +
       #ggplot2::theme(legend.position = "blank")
       ggplot2::ylab(paste("Regional", type, varTitle[varName])) +
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
 
     return(p)
   }

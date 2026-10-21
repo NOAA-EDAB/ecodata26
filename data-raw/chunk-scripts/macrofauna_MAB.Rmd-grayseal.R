@@ -1,7 +1,7 @@
-ribbon <- ecodata::grayseal %>%
+ribbon <- ecodata26::grayseal %>%
   tidyr::pivot_wider(names_from = Var, values_from = Value)
 
-ecodata::grayseal %>%
+ecodata26::grayseal %>%
   dplyr::filter(Var %in% c("pbr", "totalest5y", "totalest1y")) %>%
   ggplot2::ggplot() +
   ggplot2::geom_line(aes(x = Time, y = Value, linetype = Var, color = Var)) +
@@ -32,5 +32,5 @@ ecodata::grayseal %>%
     )
   ) +
   guides(color = FALSE) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

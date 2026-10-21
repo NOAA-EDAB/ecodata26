@@ -1,5 +1,5 @@
 interp_chl_pp <- function(epu, year = 2022, Variable) {
-  out <- ecodata::chl_pp %>%
+  out <- ecodata26::chl_pp %>%
     dplyr::filter(stringr::str_detect(Var, Variable), EPU == epu) %>%
     tidyr::separate(., Time, into = c("Cat", "Time2"), sep = "_") %>%
     tidyr::separate(., Time2, into = c("Year", "Week"), sep = 4) %>%
@@ -7,7 +7,7 @@ interp_chl_pp <- function(epu, year = 2022, Variable) {
     dplyr::group_by(EPU) %>%
     dplyr::mutate(Time = 1:length(Year))
 
-  ltm_out <- ecodata::chl_pp %>%
+  ltm_out <- ecodata26::chl_pp %>%
     dplyr::filter(stringr::str_detect(Var, Variable), EPU == epu) %>%
     tidyr::separate(., Time, into = c("Cat", "Time2"), sep = "_") %>%
     tidyr::separate(., Time2, into = c("Year", "Week"), sep = 4) %>%
@@ -68,9 +68,9 @@ ne_ppd <- ggplot2::ggplot(data = ne_ppd_weekly) +
     expand = c(0.01, 0.01)
   ) +
   ggplot2::scale_color_manual(values = c("#ef8a62", "#2c7fb8", "#a1d99b")) +
-  ecodata::theme_ts() +
-  ecodata::theme_title() +
-  ecodata::theme_facet() +
+  ecodata26::theme_ts() +
+  ecodata26::theme_title() +
+  ecodata26::theme_facet() +
   ggplot2::theme(panel.spacing = unit(1, "lines"))
 
 

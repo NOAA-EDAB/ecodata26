@@ -1,4 +1,4 @@
-ecodata::grayseal %>%
+ecodata26::grayseal %>%
   tidyr::pivot_wider(names_from = Var, values_from = Value) %>%
   ggplot2::ggplot() +
   ggplot2::geom_line(aes(
@@ -26,5 +26,5 @@ ecodata::grayseal %>%
     )
   ) +
   theme(legend.position = c(0.25, 0.85), legend.text = element_text(size = 8)) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

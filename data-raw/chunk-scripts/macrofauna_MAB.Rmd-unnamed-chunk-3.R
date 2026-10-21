@@ -1,4 +1,4 @@
-ecodata::observed_sharks %>%
+ecodata26::observed_sharks %>%
   filter(EPU == "MAB") %>%
   ggplot() +
   ggplot2::annotate(
@@ -14,4 +14,4 @@ ecodata::observed_sharks %>%
   ggplot2::geom_line(aes(x = Time, y = Value, color = Var)) +
   ggplot2::ggtitle("Observed Sharks") +
   ggplot2::ylab("Number of Sharks per Haul") +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()

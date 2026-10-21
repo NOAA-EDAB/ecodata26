@@ -1,4 +1,4 @@
-ecodata::ppr %>%
+ecodata26::ppr %>%
   dplyr::filter(Var == "MTL") %>%
   dplyr::group_by(EPU) %>%
   dplyr::mutate(hline = mean(Value)) %>%
@@ -15,7 +15,7 @@ ecodata::ppr %>%
   ) +
   ggplot2::geom_point(aes(x = Time, y = Value)) +
   ggplot2::geom_line(aes(x = Time, y = Value)) +
-  # ecodata::geom_lm(aes(x = Time, y = Value,
+  # ecodata26::geom_lm(aes(x = Time, y = Value,
   #              group = Var))+
   ggplot2::geom_hline(
     aes(yintercept = hline),
@@ -27,5 +27,5 @@ ecodata::ppr %>%
   ggplot2::facet_wrap(~EPU) +
   ggplot2::ggtitle("Mean Trophic Level") +
   ggplot2::ylab("") +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

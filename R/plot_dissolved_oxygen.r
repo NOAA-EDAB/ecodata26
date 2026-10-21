@@ -10,17 +10,17 @@
 #' @export
 
 plot_dissolved_oxygen <- function(shadedRegion = NULL, threshold = 5) {
-  setup <- ecodata::plot_setup(
+  setup <- ecodata26::plot_setup(
     shadedRegion = shadedRegion,
     report = 'MidAtlantic'
   )
 
   #EPU shapefile
-  ne_epu_sf <- ecodata::epu_sf
+  ne_epu_sf <- ecodata26::epu_sf
 
-  ne_coast <- sf::st_transform(ecodata::coast, crs = 4269)
+  ne_coast <- sf::st_transform(ecodata26::coast, crs = 4269)
 
-  fix <- ecodata::dissolved_oxygen |>
+  fix <- ecodata26::dissolved_oxygen |>
     sf::st_as_sf(wkt = 'geometry', crs = 4269) |>
     dplyr::mutate(Year = format(Time, '%Y')) |>
     dplyr::filter(Year == max(Year) & Var == 'dissolved_oxygen') |>
@@ -45,7 +45,7 @@ plot_dissolved_oxygen <- function(shadedRegion = NULL, threshold = 5) {
     ggplot2::coord_sf(xlim = c(-77, -65), ylim = c(35.5, 45), crs = 4326) +
 
     # ggplot2::facet_wrap(Var~.)+
-    ecodata::theme_map() +
+    ecodata26::theme_map() +
     ggplot2::scale_fill_viridis_c(
       name = paste0('# Days \n <', threshold, ' mg/L'),
       na.value = 'lightgrey',
@@ -54,8 +54,8 @@ plot_dissolved_oxygen <- function(shadedRegion = NULL, threshold = 5) {
     ggplot2::ggtitle(paste0('Hypoxia Events in ', max(fix$Year))) +
     ggplot2::xlab("Longitude") +
     ggplot2::ylab("Latitude") +
-    ecodata::theme_title() +
-    ecodata::theme_ts() +
+    ecodata26::theme_title() +
+    ecodata26::theme_ts() +
     ggplot2::theme(
       panel.border = ggplot2::element_rect(
         colour = "black",
@@ -76,7 +76,7 @@ plot_dissolved_oxygen <- function(shadedRegion = NULL, threshold = 5) {
 # p <-
 #   ggplot2::ggplot() +
 #   ggplot2::geom_tile(data = sst, ggplot2::aes(x = Longitude, y = Latitude,fill = Value)) +
-#   ggplot2::geom_sf(data = ecodata::coast, size = setup$map.lwd) +
+#   ggplot2::geom_sf(data = ecodata26::coast, size = setup$map.lwd) +
 #   ggplot2::geom_sf(data = ne_epu_sf, fill = "transparent", size = setup$map.lwd) +
 #   ggplot2::scale_fill_gradient2(name = "Temp.\nAnomaly (C)",
 #                                 low = scales::muted("blue"),
@@ -86,7 +86,7 @@ plot_dissolved_oxygen <- function(shadedRegion = NULL, threshold = 5) {
 #                                 labels = c("<-5", "-2", "0", "2", ">5")) +
 #   ggplot2::coord_sf(xlim = xlims, ylim = ylims) +
 #   ggplot2::facet_wrap(Season~.) +
-#   ecodata::theme_map() +
+#   ecodata26::theme_map() +
 #   ggplot2::ggtitle("SST anomaly") +
 #   ggplot2::xlab("Longitude") +
 #   ggplot2::ylab("Latitude") +
@@ -98,4 +98,4 @@ plot_dissolved_oxygen <- function(shadedRegion = NULL, threshold = 5) {
 #                  axis.text = ggplot2::element_text(size = 8),
 #                  axis.title.y = ggplot2::element_text(angle = 90))+
 #
-#    ecodata::theme_title()
+#    ecodata26::theme_title()

@@ -1,4 +1,4 @@
-ecodata::abc.acl %>%
+ecodata26::abc.acl %>%
   dplyr::filter(EPU == "MAB") %>%
   tidyr::separate(col = Var, into = c("Fishery", "Var"), sep = "_") %>%
   dplyr::filter(Var == "Quota") %>%
@@ -21,5 +21,5 @@ ecodata::abc.acl %>%
   ggplot2::ggtitle("ABC or ACL for MAFMC Managed Species") +
   #ggplot2::ylab(expression("ABC/ACL"))+
   ggplot2::xlab("ABC or ACL") +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

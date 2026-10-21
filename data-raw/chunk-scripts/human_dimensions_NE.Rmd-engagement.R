@@ -1,4 +1,4 @@
-eng <- ecodata::engagement %>%
+eng <- ecodata26::engagement %>%
   dplyr::filter(!Var == "med.high.scores")
 eng$Var <- factor(
   eng$Var,
@@ -22,10 +22,10 @@ eng %>%
   ggplot2::xlab("Time") +
   ggplot2::ylab("% Communities in each category (Low to High)") +
   ggplot2::ggtitle("Commercial Engagement") +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()
 
 
-ecodata::engagement %>%
+ecodata26::engagement %>%
   dplyr::filter(Var == "med.high.scores", EPU == "NE") %>%
   dplyr::mutate(hline = mean(Value)) %>%
   ggplot2::ggplot() +
@@ -49,4 +49,4 @@ ecodata::engagement %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()

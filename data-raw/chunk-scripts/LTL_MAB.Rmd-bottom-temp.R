@@ -1,4 +1,4 @@
-ecodata::bottom_temp_model_anom %>%
+ecodata26::bottom_temp_model_anom %>%
   dplyr::filter(EPU == epu_abbr) %>%
   dplyr::mutate(anom = Value - mean(Value)) %>%
   ggplot2::ggplot() +
@@ -13,7 +13,7 @@ ecodata::bottom_temp_model_anom %>%
   ) +
   ggplot2::geom_line(aes(x = Time, y = anom)) +
   ggplot2::geom_point(aes(x = Time, y = anom)) +
-  ecodata::geom_gls(aes(x = Time, y = anom)) +
+  ecodata26::geom_gls(aes(x = Time, y = anom)) +
   ggplot2::ylab("Temperature (C)") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Bottom temperature anomaly") +
@@ -28,5 +28,5 @@ ecodata::bottom_temp_model_anom %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

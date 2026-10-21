@@ -28,7 +28,7 @@ plot_chl_pp <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -42,7 +42,7 @@ plot_chl_pp <- function(
 
   # plot chl and pp
   if (varName != "size") {
-    # optional code to wrangle ecodata object prior to plotting
+    # optional code to wrangle ecodata26 object prior to plotting
     # e.g., calculate mean, max or other needed values to join below
 
     varabbr <- stringr::str_to_upper(varName)
@@ -59,7 +59,7 @@ plot_chl_pp <- function(
         "MONTHLY_PPD_MEDIAN"
       )
 
-      out <- ecodata::chl_pp |>
+      out <- ecodata26::chl_pp |>
         dplyr::filter(
           EPU %in% filterEPUs,
           stringr::str_detect(Var, varfilter)
@@ -94,7 +94,7 @@ plot_chl_pp <- function(
     }
 
     if (plottype == "anomaly") {
-      pp_anom <- ecodata::chl_pp |>
+      pp_anom <- ecodata26::chl_pp |>
         dplyr::filter(
           stringr::str_detect(Var, "ANNUAL_PPD_RATIO_ANOMALY"),
           EPU %in% filterEPUs
@@ -115,7 +115,7 @@ plot_chl_pp <- function(
         "WEEKLY_PPD_MEDIAN"
       )
 
-      out <- ecodata::chl_pp |>
+      out <- ecodata26::chl_pp |>
         dplyr::filter(
           EPU %in% filterEPUs,
           stringr::str_detect(Var, varfilter)
@@ -126,7 +126,7 @@ plot_chl_pp <- function(
         dplyr::group_by(EPU) |>
         dplyr::mutate(Time = 1:length(Year))
 
-      ltm_out <- ecodata::chl_pp |>
+      ltm_out <- ecodata26::chl_pp |>
         dplyr::filter(
           stringr::str_detect(Var, varfilter),
           EPU %in% filterEPUs
@@ -163,11 +163,11 @@ plot_chl_pp <- function(
     if (plottype == "monthly") {
       p <- out |>
         ggplot2::ggplot(ggplot2::aes(x = Year, y = Value, group = Month)) +
-        #ecodata::geom_lm(aes(x = Year, y = Value, group = Month))+
+        #ecodata26::geom_lm(aes(x = Year, y = Value, group = Month))+
         #  ggplot2::geom_point(color = "white") +
         ggplot2::geom_line() +
-        ecodata::geom_lm(n = n) +
-        ecodata::geom_lm(n = length(unique(out$Year))) +
+        ecodata26::geom_lm(n = n) +
+        ecodata26::geom_lm(n = length(unique(out$Year))) +
         ggplot2::scale_x_discrete(breaks = scales::breaks_pretty(n = 3)) +
         ggplot2::facet_grid(
           cols = ggplot2::vars(Month)
@@ -180,7 +180,7 @@ plot_chl_pp <- function(
           alpha = setup$hline.alpha,
           linetype = setup$hline.lty
         ) +
-        ecodata::theme_facet() +
+        ecodata26::theme_facet() +
         ggplot2::theme(
           panel.border = ggplot2::element_rect(color = "gray80"),
           panel.spacing = ggplot2::unit(0.1, "lines"),
@@ -188,7 +188,7 @@ plot_chl_pp <- function(
           text = ggplot2::element_text(size = 16),
           axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, size = 8)
         ) +
-        ecodata::theme_title()
+        ecodata26::theme_title()
     }
 
     if (plottype == "anomaly") {
@@ -218,7 +218,7 @@ plot_chl_pp <- function(
           alpha = setup$hline.alpha,
           linetype = setup$hline.lty
         ) +
-        ecodata::theme_facet() +
+        ecodata26::theme_facet() +
         ggplot2::theme(
           strip.text = ggplot2::element_text(hjust = 0)
         )
@@ -260,9 +260,9 @@ plot_chl_pp <- function(
         ggplot2::scale_color_manual(
           values = c("#ef8a62", "#2c7fb8", "#a1d99b")
         ) +
-        ecodata::theme_ts() +
-        ecodata::theme_title() +
-        ecodata::theme_facet() +
+        ecodata26::theme_ts() +
+        ecodata26::theme_title() +
+        ecodata26::theme_facet() +
         ggplot2::theme(panel.spacing = ggplot2::unit(1, "lines"))
     }
 

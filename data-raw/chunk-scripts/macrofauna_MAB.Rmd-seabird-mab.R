@@ -1,4 +1,4 @@
-bird <- ecodata::seabird_mab %>%
+bird <- ecodata26::seabird_mab %>%
   dplyr::mutate(hline = mean(Value))
 
 bird %>%
@@ -36,5 +36,5 @@ bird %>%
     legend.title = element_blank(),
     legend.margin = margin(t = -20)
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

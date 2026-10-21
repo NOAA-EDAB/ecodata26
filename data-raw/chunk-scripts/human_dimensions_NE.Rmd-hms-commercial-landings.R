@@ -1,6 +1,6 @@
 #Get data for plotting
 ## Apex pred
-apex <- ecodata::hms_landings %>%
+apex <- ecodata26::hms_landings %>%
   dplyr::filter(stringr::str_detect(Var, "Landings")) %>%
   #dplyr::mutate(Value = as.numeric(Value)) %>%
   separate(Var, c("Var", "trash"), sep = "_") #%>%
@@ -30,7 +30,7 @@ p1 <- apex %>%
   #            size = hline.size,
   #            alpha = hline.alpha,
   #            linetype = hline.lty)+
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     legend.position = "bottom",
@@ -40,6 +40,6 @@ p1 <- apex %>%
   ggplot2::ylab("Landings (metric tons)") +
   ggplot2::ggtitle("HMS Commercial Landings")
 ggplot2::xlab(element_blank()) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 p1

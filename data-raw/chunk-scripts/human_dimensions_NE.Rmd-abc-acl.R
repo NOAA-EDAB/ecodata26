@@ -1,4 +1,4 @@
-mean <- ecodata::abc.acl %>%
+mean <- ecodata26::abc.acl %>%
   #group_by(Time) %>%
   tidyr::separate(col = Var, into = c("Fishery", "Var"), sep = "-") %>%
   pivot_wider(names_from = Var, values_from = Value) %>%
@@ -10,7 +10,7 @@ mean <- ecodata::abc.acl %>%
   dplyr::ungroup() %>%
   dplyr::mutate(Time = as.numeric(Time))
 
-ecodata::abc.acl %>%
+ecodata26::abc.acl %>%
   #group_by(Time) %>%
   tidyr::separate(col = Var, into = c("Fishery", "Var"), sep = "-") %>%
   pivot_wider(names_from = Var, values_from = Value) %>%
@@ -26,5 +26,5 @@ ecodata::abc.acl %>%
   ggplot2::ylab(expression("Ratio of Catch to ABC/ACL")) +
   ggplot2::theme(legend.title = element_blank()) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

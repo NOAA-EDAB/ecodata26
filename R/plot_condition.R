@@ -18,7 +18,7 @@ plot_condition <- function(
   EPU = "MAB"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -32,10 +32,10 @@ plot_condition <- function(
 
   numberOfConditions <- 5
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
-  fix <- ecodata::condition |>
+  fix <- ecodata26::condition |>
     dplyr::filter(EPU == filterEPUs) |>
     dplyr::group_by(Var) |>
     dplyr::mutate(scaleCond = scale(Value, scale = T, center = T))
@@ -104,8 +104,8 @@ plot_condition <- function(
     )) +
     ggplot2::ylab(ggplot2::element_blank()) +
     ggplot2::xlab(ggplot2::element_blank()) +
-    ecodata::theme_ts() +
-    ecodata::theme_title()
+    ecodata26::theme_ts() +
+    ecodata26::theme_title()
 
   return(p)
 }

@@ -1,4 +1,4 @@
-wind1 <- ecodata::wind_occupancy
+wind1 <- ecodata26::wind_occupancy
 wind1$trend <- ifelse(
   wind1$Trend == "pos",
   "$\\nearrow$",

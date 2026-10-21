@@ -1,4 +1,4 @@
-exp <- ecodata::exp_n %>%
+exp <- ecodata26::exp_n %>%
   tidyr::separate(Var, into = c("Var", "Season"), sep = "-") %>%
   filter(
     !EPU == "MAB",
@@ -7,7 +7,7 @@ exp <- ecodata::exp_n %>%
     stringr::str_detect(Var, 'AlbatrossSD|BigelowSD')
   ) %>%
   rename(VarSD = Var, ValueSD = Value)
-exp2 <- ecodata::exp_n %>%
+exp2 <- ecodata26::exp_n %>%
   tidyr::separate(Var, into = c("Var", "Season"), sep = "-") %>%
   filter(
     !EPU == "MAB",
@@ -42,8 +42,8 @@ gom <- exp2 %>%
   ggplot2::geom_point(size = pcex - 0.5) +
   #ggplot2::facet_wrap(EPU~.,scales = "free_y", ncol = 2) +
   ggplot2::ggtitle("GOM Expected Number of Species - Spring") +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm()+
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm()+
   #Axis and theme
   ggplot2::scale_x_continuous(
     breaks = seq(1970, 2020, by = 10),
@@ -51,14 +51,14 @@ gom <- exp2 %>%
   ) +
   ggplot2::ylab(element_blank()) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     legend.title = element_blank(),
     axis.ticks.y = element_blank(),
     axis.text.y = element_blank()
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 gb <- exp2 %>%
   filter(EPU == "GB") %>%
@@ -82,7 +82,7 @@ gb <- exp2 %>%
   ggplot2::geom_point(size = pcex - 0.5) +
   #ggplot2::facet_wrap(EPU~.,scales = "free_y", ncol = 2) +
   ggplot2::ggtitle("GB Expected Number of Species - Spring") +
-  #ecodata::geom_lm() +
+  #ecodata26::geom_lm() +
   #Axis and theme
   ggplot2::scale_x_continuous(
     breaks = seq(1970, 2020, by = 10),
@@ -90,12 +90,12 @@ gb <- exp2 %>%
   ) +
   ggplot2::ylab("n species per 1000 ind") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     legend.title = element_blank(),
     legend.position = "none"
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 gb + gom

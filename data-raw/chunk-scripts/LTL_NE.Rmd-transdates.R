@@ -1,4 +1,4 @@
-ecodata::trans_dates %>%
+ecodata26::trans_dates %>%
   dplyr::filter(
     EPU %in% c("GB", "GOM"),
     Var %in% c("falltrans", "sprtrans"),
@@ -17,13 +17,13 @@ ecodata::trans_dates %>%
   ggplot(aes(x = Time, y = Value, color = Var)) +
   geom_point() +
   geom_line() +
-  ecodata::geom_gls() +
+  ecodata26::geom_gls() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     plot.title = element_text(size = 12)
   ) +
-  ecodata::theme_title() +
+  ecodata26::theme_title() +
   ylab("Day of Year") +
   ggplot2::facet_wrap(. ~ EPU) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   xlab(element_blank())

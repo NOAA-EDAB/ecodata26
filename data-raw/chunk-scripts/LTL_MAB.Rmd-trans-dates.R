@@ -19,8 +19,8 @@ dat2 %>%
   ylab("DOY") +
   xlab("Time") +
   ggtitle("Seasonal Transition Dates") +
-  ecodata::geom_gls() +
+  ecodata26::geom_gls() +
   #ggplot2::theme(legend.title = "Season")+
-  ecodata::theme_title() +
+  ecodata26::theme_title() +
   scale_y_reverse() +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()

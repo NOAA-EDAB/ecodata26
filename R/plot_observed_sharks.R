@@ -19,7 +19,7 @@ plot_observed_sharks <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -28,9 +28,9 @@ plot_observed_sharks <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  fix <- ecodata::observed_sharks |>
+  fix <- ecodata26::observed_sharks |>
     dplyr::filter(EPU %in% filterEPUs)
 
   # code for generating plot object p
@@ -55,11 +55,11 @@ plot_observed_sharks <- function(
     ggplot2::ylab(expression("Number of Sharks per Haul")) +
     ggplot2::xlab(ggplot2::element_blank()) +
     ggplot2::facet_wrap(. ~ EPU) +
-    #ecodata::geom_gls()+
-    ecodata::geom_lm(n = n) +
-    ecodata::theme_ts() +
-    ecodata::theme_facet() +
-    ecodata::theme_title()
+    #ecodata26::geom_gls()+
+    ecodata26::geom_lm(n = n) +
+    ecodata26::theme_ts() +
+    ecodata26::theme_facet() +
+    ecodata26::theme_title()
 
   # optional code for New England specific (2 panel) formatting
   # if (report == "NewEngland") {

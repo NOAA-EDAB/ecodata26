@@ -1,4 +1,4 @@
-sst <- ecodata::ches_bay_sst
+sst <- ecodata26::ches_bay_sst
 
 map.lwd <- 0.4
 
@@ -9,7 +9,7 @@ ymin <- 37
 ymax <- 40
 xlims <- c(xmin, xmax)
 ylims <- c(ymin, ymax)
-#sst <- ecodata::seasonal_oisst_anom_gridded
+#sst <- ecodata26::seasonal_oisst_anom_gridded
 crs <- "+proj=longlat +lat_1=35 +lat_2=45 +lat_0=40 +lon_0=-77 +x_0=0 +y_0=0 +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
 sst$Season <- factor(
   sst$Season,
@@ -19,7 +19,7 @@ sst$Season <- factor(
 sst <- sst %>% dplyr::mutate(Value = replace(Value, Value > 5, 5))
 sst_map <-
   ggplot2::ggplot() +
-  ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+  ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
   ggplot2::scale_fill_gradient2(
     name = "Temp.\nAnomaly (C)",
     low = scales::muted("blue"),
@@ -35,7 +35,7 @@ sst_map <-
     aes(x = Latitude, y = Longitude, fill = Value)
   ) +
   ggplot2::facet_wrap(Season ~ .) +
-  ecodata::theme_map() +
+  ecodata26::theme_map() +
   ggplot2::ggtitle("Chesapeake Bay SST anomaly (2022)") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ylab(element_blank()) +
@@ -50,7 +50,7 @@ sst_map <-
     axis.text = element_text(size = 6),
     axis.title.y = element_text(angle = 90)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 
 sst_map

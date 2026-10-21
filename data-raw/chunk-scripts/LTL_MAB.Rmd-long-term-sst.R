@@ -1,4 +1,4 @@
-lt_sst <- ecodata::long_term_sst %>%
+lt_sst <- ecodata26::long_term_sst %>%
   dplyr::mutate(hline = mean(Value, na.rm = TRUE))
 
 hline <- mean(lt_sst$Value)
@@ -14,9 +14,9 @@ lt_sst %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
-  #ecodata::geom_regime()+
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
+  #ecodata26::geom_regime()+
   ggplot2::geom_line() +
   ggplot2::geom_point() +
   ggplot2::geom_hline(
@@ -32,6 +32,6 @@ lt_sst %>%
     expand = c(0.01, 0.01),
     breaks = seq(1840, 2020, 10)
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0, face = "italic")) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

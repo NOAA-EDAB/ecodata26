@@ -1,5 +1,5 @@
 ## Apex pred
-apex <- ecodata::hms_landings %>%
+apex <- ecodata26::hms_landings %>%
   dplyr::filter(stringr::str_detect(Var, "Revenue")) %>%
   separate(Var, c("Var", "trash"), sep = "_")
 
@@ -24,7 +24,7 @@ p1 <- apex %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     legend.position = "bottom",
@@ -34,6 +34,6 @@ p1 <- apex %>%
   ggplot2::ylab(expression("Revenue (10^6 US Dollars)")) +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("HMS Revenue") +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 p1

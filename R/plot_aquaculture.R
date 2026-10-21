@@ -18,20 +18,20 @@ plot_aquaculture <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
     filterEPUs <- c("MAB") # no EPU in 2023 dataset
     ylabel <- "Oyster production"
-    aqua <- ecodata::aquaculture |>
+    aqua <- ecodata26::aquaculture |>
       dplyr::filter(Region %in% c("MD", "VA", "NJ")) |>
       dplyr::filter(!Value == "NA") |>
       dplyr::mutate(Time = as.integer(Time), Value = as.numeric(Value))
   } else {
     filterEPUs <- c("GB", "GOM") # no EPU in 2023 dataset
     ylabel <- "Production/Acre"
-    aqua <- ecodata::aquaculture |>
+    aqua <- ecodata26::aquaculture |>
       dplyr::ungroup() |>
       dplyr::mutate(Region = as.character(Region)) |>
       dplyr::filter(
@@ -47,7 +47,7 @@ plot_aquaculture <- function(
       dplyr::summarise(Value = sum(Value))
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   # see above, differs by region
 
@@ -58,7 +58,7 @@ plot_aquaculture <- function(
   #
 
   # create xaxis label breaks
-  yrs <- unique(ecodata::aquaculture$Time)
+  yrs <- unique(ecodata26::aquaculture$Time)
   breaks <- seq(min(yrs), max(yrs), 2)
 
   if (report == "MidAtlantic") {
@@ -86,10 +86,10 @@ plot_aquaculture <- function(
     ggplot2::scale_x_continuous(
       breaks = breaks
     ) +
-    #ecodata::geom_gls() + n < 30
-    ecodata::geom_lm(n = n) +
-    ecodata::theme_ts() +
-    ecodata::theme_title()
+    #ecodata26::geom_gls() + n < 30
+    ecodata26::geom_lm(n = n) +
+    ecodata26::theme_ts() +
+    ecodata26::theme_title()
 
   return(p)
 }

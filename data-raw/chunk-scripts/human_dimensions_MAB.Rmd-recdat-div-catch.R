@@ -1,4 +1,4 @@
-recdat <- ecodata::recdat %>%
+recdat <- ecodata26::recdat %>%
   dplyr::filter(EPU == region_abbr) %>%
   dplyr::group_by(Var) %>%
   dplyr::mutate(hline = mean(Value))
@@ -27,12 +27,12 @@ rec_div_catch <- recdat %>%
   #        y = label_loc[label_loc$Var == "Recreational anglers",]$yloc,
   #        label = label_loc[label_loc$Var == "Recreational anglers",]$labels,
   #        size = letter_size)+
-  ecodata::geom_gls(
+  ecodata26::geom_gls(
     aes(x = Time, y = Value, group = Var),
     alpha = trend.alpha,
     size = trend.size
   ) +
-  # ecodata::geom_lm(aes(x = Time, y = Value,
+  # ecodata26::geom_lm(aes(x = Time, y = Value,
   #              group = Var))+
   ggplot2::geom_line(aes(x = Time, y = Value, color = Var), size = lwd) +
   ggplot2::geom_point(aes(x = Time, y = Value, color = Var), size = pcex) +
@@ -49,7 +49,7 @@ rec_div_catch <- recdat %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()
 
 rec_div_catch

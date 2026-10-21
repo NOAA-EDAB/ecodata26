@@ -1,4 +1,4 @@
-gb_fullness <- ecodata::stom_fullness %>%
+gb_fullness <- ecodata26::stom_fullness %>%
   dplyr::group_by(Var, EPU) %>% ## Remove values with missing data
   dplyr::filter(n() > 10) %>% ## at least tens years
   dplyr::ungroup() %>%
@@ -23,9 +23,9 @@ gb_fullness <- ecodata::stom_fullness %>%
     legend.position = "none",
     axis.text.x = element_text(angle = 45)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
-gom_fullness <- ecodata::stom_fullness %>%
+gom_fullness <- ecodata26::stom_fullness %>%
   dplyr::group_by(Var, EPU) %>% ## Remove values with missing data
   dplyr::filter(n() > 10) %>% ## at least tens years
   dplyr::ungroup() %>%
@@ -50,7 +50,7 @@ gom_fullness <- ecodata::stom_fullness %>%
     legend.position = "none",
     axis.text.x = element_text(angle = 45)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 gb_fullness
 gom_fullness

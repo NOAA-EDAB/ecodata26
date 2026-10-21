@@ -1,10 +1,10 @@
-# sli <- ecodata::zoo_sli_anom %>%
+# sli <- ecodata26::zoo_sli_anom %>%
 #   filter(EPU %in% c("GOM","GB"),
 #          str_detect(Var, "Sm-Lg copepod anom")) %>%
 #   mutate(hline = 0)
 # sli$EPU <- factor(sli$EPU, levels = c("GOM","GB"))
 
-pp_anom <- ecodata::chl_pp %>%
+pp_anom <- ecodata26::chl_pp %>%
   filter(
     str_detect(Var, "ANNUAL_PPD_RATIO_ANOMALY"),
     EPU %in% c("GOM", "GB")

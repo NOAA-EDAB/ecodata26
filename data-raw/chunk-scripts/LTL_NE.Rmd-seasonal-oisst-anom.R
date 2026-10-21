@@ -1,4 +1,4 @@
-ne_anom <- ecodata::seasonal_oisst_anom %>%
+ne_anom <- ecodata26::seasonal_oisst_anom %>%
   dplyr::filter(EPU %in% c("GB", "GOM")) %>%
   dplyr::mutate(
     hline = 0,
@@ -41,12 +41,12 @@ ne_anom_plt <- ggplot2::ggplot(
     linetype = hline.lty
   ) +
   ggplot2::facet_wrap(Var ~ ., ncol = 2, scales = "free_y") +
-  ecodata::theme_facet() +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm(aes(x = Time, y = Value))+
+  ecodata26::theme_facet() +
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm(aes(x = Time, y = Value))+
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     plot.title = element_text(size = 12)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 ne_anom_plt

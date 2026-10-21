@@ -1,4 +1,4 @@
-durd <- ecodata::heatwave %>%
+durd <- ecodata26::heatwave %>%
   dplyr::filter(Var == "duration-SurfaceDetrended") %>%
   dplyr::group_by(Time, EPU, Var, Units) %>%
   dplyr::summarise(Value = sum(Value)) %>%
@@ -10,7 +10,7 @@ durd <- ecodata::heatwave %>%
     )
   )
 
-maxind <- ecodata::heatwave %>%
+maxind <- ecodata26::heatwave %>%
   dplyr::filter(Var == "maximum intensity-SurfaceDetrended") %>%
   dplyr::group_by(Time, EPU, Var, Units) %>%
   dplyr::summarise(Value = max(Value)) %>%
@@ -33,8 +33,8 @@ mab.hw %>%
   ggplot2::ggplot() +
   ggplot2::geom_line(aes(x = Time, y = Value)) +
   ggplot2::geom_point(aes(x = Time, y = Value)) +
-  ecodata::geom_gls(aes(x = Time, y = Value, group = Var)) +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+  ecodata26::geom_gls(aes(x = Time, y = Value, group = Var)) +
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
   ggplot2::ylab("") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Mid-Atlantic Marine Heatwave Intesity") +
@@ -55,6 +55,6 @@ mab.hw %>%
     ymax = Inf
   ) +
   ggplot2::facet_wrap(~Var, scales = "free") +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0, face = "italic")) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

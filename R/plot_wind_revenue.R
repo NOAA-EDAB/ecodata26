@@ -22,7 +22,7 @@ plot_wind_revenue <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -31,10 +31,10 @@ plot_wind_revenue <- function(
     filterEPUs <- c("NE")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   fix <- tidyr::separate(
-    ecodata::wind_revenue,
+    ecodata26::wind_revenue,
     col = Var,
     into = c("Species", "Var"),
     sep = "-sum_"
@@ -105,11 +105,11 @@ plot_wind_revenue <- function(
       ggplot2::ylab(wind_label) +
       ggplot2::xlab(ggplot2::element_blank()) +
       ggplot2::facet_wrap(. ~ Species, scales = "free_y") +
-      ecodata::geom_lm(n = n) +
-      #ecodata::geom_gls()+
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::geom_lm(n = n) +
+      #ecodata26::geom_gls()+
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
   } else {
     p <- fix |>
       ggplot2::ggplot(ggplot2::aes(x = Time, y = Value, color = Species)) +
@@ -127,12 +127,12 @@ plot_wind_revenue <- function(
       ggplot2::ggtitle(paste0(report, ": ", wind_title)) +
       ggplot2::ylab(wind_label) +
       ggplot2::xlab(ggplot2::element_blank()) +
-      ecodata::geom_lm(n = n) +
+      ecodata26::geom_lm(n = n) +
 
-      #ecodata::geom_gls()+
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      #ecodata26::geom_gls()+
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
   }
 
   # optional code for New England specific (2 panel) formatting

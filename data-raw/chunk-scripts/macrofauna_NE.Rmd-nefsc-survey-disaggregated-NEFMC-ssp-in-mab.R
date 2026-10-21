@@ -1,4 +1,4 @@
-nefmc_ma <- ecodata::nefsc_survey_disaggregated %>%
+nefmc_ma <- ecodata26::nefsc_survey_disaggregated %>%
   # distinct() %>%
   dplyr::filter(
     EPU %in% c("MAB"),
@@ -39,8 +39,8 @@ mab_nefmc_props <- nefmc_ma %>%
   #Add time series
   ggplot2::geom_line(size = lwd - 0.5) +
   ggplot2::geom_point(size = pcex - 0.5) +
-  ecodata::geom_gls(aes(x = Time, y = Value)) +
-  #ecodata::geom_lm(aes(x=Time, y = Value))+
+  ecodata26::geom_gls(aes(x = Time, y = Value)) +
+  #ecodata26::geom_lm(aes(x=Time, y = Value))+
   # scale_color_manual(values = series.col, aesthetics = "color")+
   ggplot2::guides(color = FALSE) +
   ggplot2::geom_hline(
@@ -60,7 +60,7 @@ mab_nefmc_props <- nefmc_ma %>%
   ) +
   ggplot2::ylab(expression("Proportion of MAB survey")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0))
 
 mab_nefmc_props

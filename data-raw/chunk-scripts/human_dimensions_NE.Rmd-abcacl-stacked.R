@@ -1,4 +1,4 @@
-test <- ecodata::abc.acl %>%
+test <- ecodata26::abc.acl %>%
   filter(EPU == "NE") %>%
   tidyr::separate(col = Var, into = c("FMP", "Species", "Var"), sep = "_") %>%
   tidyr::separate(col = Species, into = c("Species", "Location"), sep = "-") %>%
@@ -44,7 +44,7 @@ test <- ecodata::abc.acl %>%
   ) +
   ggplot2::ylab("Quota") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()
 
 test

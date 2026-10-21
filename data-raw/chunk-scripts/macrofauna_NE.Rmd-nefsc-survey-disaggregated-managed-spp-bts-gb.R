@@ -1,4 +1,4 @@
-prop <- ecodata::nefsc_survey_disaggregated %>%
+prop <- ecodata26::nefsc_survey_disaggregated %>%
   dplyr::filter(
     !stringr::str_detect(`Feeding guild`, "Other|other"),
     !is.na(Proportion)
@@ -79,7 +79,7 @@ GB_prop <-
   ggplot2::ylab(expression("Proportion of survey")) +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("GB") +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0))
 GB_prop <- ggiraph::girafe(ggobj = GB_prop)
 GB_prop <- ggiraph::girafe_options(GB_prop, opts_zoom(max = 5))

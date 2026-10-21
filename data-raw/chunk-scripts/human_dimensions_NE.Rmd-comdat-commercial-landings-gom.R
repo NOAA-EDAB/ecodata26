@@ -1,5 +1,5 @@
 #Managed landings
-managed_landings <- ecodata::comdat %>%
+managed_landings <- ecodata26::comdat %>%
   dplyr::filter(
     Var %in%
       c(
@@ -24,7 +24,7 @@ managed_landings <- ecodata::comdat %>%
   dplyr::ungroup()
 
 #Total landings
-total_landings <- ecodata::comdat %>%
+total_landings <- ecodata26::comdat %>%
   dplyr::filter(
     Var %in%
       c(
@@ -85,7 +85,7 @@ gom_landings <- landings %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls(aes(x = Time, y = Value, group = Var)) +
+  ecodata26::geom_gls(aes(x = Time, y = Value, group = Var)) +
   #Add time series
   ggplot2::geom_line(size = lwd) +
   ggplot2::geom_point(size = pcex) +
@@ -113,9 +113,9 @@ gom_landings <- landings %>%
   ) +
   ggplot2::ylab(expression("Landings (10"^3 * "metric tons)")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0)) +
   ggplot2::ggtitle("Gulf of Maine") +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 gom_landings

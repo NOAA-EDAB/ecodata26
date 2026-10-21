@@ -13,7 +13,7 @@
 
 plot_seabird_mab <- function(shadedRegion = NULL, report = "MidAtlantic") {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -23,9 +23,9 @@ plot_seabird_mab <- function(shadedRegion = NULL, report = "MidAtlantic") {
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  fix <- ecodata::seabird_mab |>
+  fix <- ecodata26::seabird_mab |>
     dplyr::mutate(hline = mean(Value))
 
   # code for generating plot object p
@@ -56,9 +56,9 @@ plot_seabird_mab <- function(shadedRegion = NULL, report = "MidAtlantic") {
       alpha = setup$hline.alpha,
       linetype = setup$hline.lty
     ) +
-    #    ecodata::geom_gls()+
-    ecodata::theme_ts() +
-    ecodata::theme_title()
+    #    ecodata26::geom_gls()+
+    ecodata26::theme_ts() +
+    ecodata26::theme_title()
 
   # optional code for New England specific (2 panel) formatting
   # if (report == "NewEngland") {

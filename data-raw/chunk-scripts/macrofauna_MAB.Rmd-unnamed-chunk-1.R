@@ -1,11 +1,11 @@
-exp <- ecodata::exp_n %>%
+exp <- ecodata26::exp_n %>%
   filter(
     EPU == "MAB",
     Season == "FALL",
     str_detect(Var, 'AlbatrossSD|BigelowSD')
   ) %>%
   rename(VarSD = Var, ValueSD = Value)
-exp2 <- ecodata::exp_n %>%
+exp2 <- ecodata26::exp_n %>%
   filter(EPU == "MAB", Season == "FALL", Var %in% c("Albatross", "Bigelow")) %>%
 
   left_join(exp) %>%
@@ -47,7 +47,7 @@ exp2 %>%
     expand = c(0.01, 0.01)
   ) +
   ggplot2::ylab("Expected N/tow") +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0))
 
 # exp2 %>%

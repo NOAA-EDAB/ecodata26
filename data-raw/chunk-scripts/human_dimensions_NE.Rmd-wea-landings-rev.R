@@ -1,4 +1,4 @@
-dt <- ecodata::wea_landings_rev[1:10, 1:3] %>%
+dt <- ecodata26::wea_landings_rev[1:10, 1:3] %>%
   dplyr::rename(
     "Maximum Percent Total Annual Regional Species Landings" = "perc_landings",
     "Maximum Percent Total Annual Regional Species Revenue" = "perc_revenue"

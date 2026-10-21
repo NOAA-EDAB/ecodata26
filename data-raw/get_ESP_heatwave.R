@@ -12,7 +12,7 @@ library(sf)
 library(ggplot2)
 library(ncdf4)
 library(reshape2)
-library(ecodata)
+library(ecodata26)
 library(stringr)
 library(tidync)
 
@@ -31,7 +31,7 @@ sst10 <- raster::rotate(sst10)
 
 sst <- raster::stack(sst80, sst90, sst00, sst10)
 
-sf <- ecodata::ESP_sf
+sf <- ecodata26::ESP_sf
 
 crs(
   sst
@@ -314,7 +314,7 @@ library(sf)
 library(ggplot2)
 library(ncdf4)
 library(reshape2)
-library(ecodata)
+library(ecodata26)
 library(stringr)
 library(tidync)
 

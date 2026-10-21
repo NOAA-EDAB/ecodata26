@@ -18,7 +18,7 @@ plot_wea_landings_rev <- function(
   n = NULL
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -29,13 +29,13 @@ plot_wea_landings_rev <- function(
 
   # set n to dataset length if n is not specified in function call
   if (is.null(n)) {
-    n <- as.numeric(nrow(ecodata::wea_landings_rev))
+    n <- as.numeric(nrow(ecodata26::wea_landings_rev))
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
-  fix <- ecodata::wea_landings_rev |>
+  fix <- ecodata26::wea_landings_rev |>
     dplyr::filter(Council %in% c(filterEPUs, "MAFMC/NEFMC")) |>
     dplyr::select(
       "NEFMC, MAFMC, and ASMFC Managed Species",

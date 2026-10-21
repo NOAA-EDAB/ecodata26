@@ -81,7 +81,7 @@ find_out <- dplyr::setdiff(sp_no_value, unique(main_table$NESPP3))
 # which species dont have a price
 find_out
 # print the names of these species
-to_add <- ecodata::species_groupings |>
+to_add <- ecodata26::species_groupings |>
   dplyr::select(COMNAME, ITISSPP, NESPP3) |>
   dplyr::distinct() |>
   dplyr::filter(NESPP3 %in% find_out)

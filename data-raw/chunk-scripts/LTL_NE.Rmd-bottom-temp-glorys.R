@@ -1,4 +1,4 @@
-# ecodata::bottom_temp_glorys %>%
+# ecodata26::bottom_temp_glorys %>%
 #   dplyr::filter(!EPU == "MAB",
 #                 !EPU == "SS")%>%
 #   dplyr::group_by(EPU) %>%
@@ -8,7 +8,7 @@
 #       xmin = x.shade.min , xmax = x.shade.max,
 #       ymin = -Inf, ymax = Inf) +
 #   ggplot2::geom_line(aes(x = Time, y = Value)) +
-#   #ecodata::geom_gls(aes(x = Time, y = Value)) +
+#   #ecodata26::geom_gls(aes(x = Time, y = Value)) +
 #   ggplot2::geom_point(aes(x = Time, y = Value), size = 1) +
 #   ggplot2::ylab("Temperature (C)") +
 #   ggplot2::xlab(element_blank())+
@@ -22,9 +22,9 @@
 #            alpha = hline.alpha,
 #            linetype = hline.lty) +
 #   ggplot2::facet_wrap(~EPU)+
-#   ecodata::theme_ts()
+#   ecodata26::theme_ts()
 
-temp_anom <- ecodata::bottom_temp_insitu %>%
+temp_anom <- ecodata26::bottom_temp_insitu %>%
   dplyr::filter(EPU %in% c("GB")) %>%
   tidyr::complete(
     Time = tidyr::full_seq(
@@ -36,7 +36,7 @@ temp_anom <- ecodata::bottom_temp_insitu %>%
   dplyr::mutate(hline = 0) %>%
   dplyr::filter(Var == "bottom temp anomaly in situ")
 
-gl_bt <- ecodata::bottom_temp_glorys %>%
+gl_bt <- ecodata26::bottom_temp_glorys %>%
   dplyr::filter(EPU %in% c("GB"))
 #bot_temp<-temp_anom %>%
 # dplyr::filter(Var == "bottom temp anomaly in situ") %>%
@@ -65,8 +65,8 @@ ggplot2::ggplot() +
     color = "red"
   ) +
   ggplot2::geom_line(aes(x = gl_bt$Time, y = gl_bt$Value), color = "red") +
-  ecodata::geom_gls(aes(x = temp_anom$Time, y = temp_anom$Value)) +
-  #ecodata::geom_lm(aes(x = temp_anom$Time, y = temp_anom$Value))+
+  ecodata26::geom_gls(aes(x = temp_anom$Time, y = temp_anom$Value)) +
+  #ecodata26::geom_lm(aes(x = temp_anom$Time, y = temp_anom$Value))+
   ggplot2::ylab("Temperature (C)") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Geroges Bank Bottom temperature anomaly") +
@@ -80,12 +80,12 @@ ggplot2::ggplot() +
   #         size = hline.size,
   #         alpha = hline.alpha,
   #         linetype = hline.lty) +
-  ecodata::theme_ts() +
-  ecodata::theme_facet() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_facet() +
+  ecodata26::theme_title()
 
 
-temp_anom <- ecodata::bottom_temp_insitu %>%
+temp_anom <- ecodata26::bottom_temp_insitu %>%
   dplyr::filter(EPU %in% c("GOM")) %>%
   tidyr::complete(
     Time = tidyr::full_seq(
@@ -97,7 +97,7 @@ temp_anom <- ecodata::bottom_temp_insitu %>%
   dplyr::mutate(hline = 0) %>%
   dplyr::filter(Var == "bottom temp anomaly in situ")
 
-gl_bt <- ecodata::bottom_temp_glorys %>%
+gl_bt <- ecodata26::bottom_temp_glorys %>%
   dplyr::filter(EPU %in% c("GOM"))
 #bot_temp<-temp_anom %>%
 # dplyr::filter(Var == "bottom temp anomaly in situ") %>%
@@ -126,8 +126,8 @@ ggplot2::ggplot() +
     color = "red"
   ) +
   ggplot2::geom_line(aes(x = gl_bt$Time, y = gl_bt$Value), color = "red") +
-  ecodata::geom_gls(aes(x = temp_anom$Time, y = temp_anom$Value)) +
-  #ecodata::geom_lm(aes(x = temp_anom$Time, y = temp_anom$Value))+
+  ecodata26::geom_gls(aes(x = temp_anom$Time, y = temp_anom$Value)) +
+  #ecodata26::geom_lm(aes(x = temp_anom$Time, y = temp_anom$Value))+
   ggplot2::ylab("Temperature (C)") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Gulf of Maine Bottom temperature anomaly") +
@@ -141,6 +141,6 @@ ggplot2::ggplot() +
   #         size = hline.size,
   #         alpha = hline.alpha,
   #         linetype = hline.lty) +
-  ecodata::theme_ts() +
-  ecodata::theme_facet() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_facet() +
+  ecodata26::theme_title()

@@ -1,6 +1,6 @@
 #Filter data into two dataframes for plotting
 
-indicators <- ecodata::bennet %>%
+indicators <- ecodata26::bennet %>%
   dplyr::filter(EPU %in% c("GB", "GOM")) %>%
   dplyr::filter(
     stringr::str_detect(Var, pattern = "Total"),
@@ -19,7 +19,7 @@ indicators <- ecodata::bennet %>%
   as.data.frame()
 #dplyr::mutate(New = sum(Value))
 
-revchange <- ecodata::bennet %>%
+revchange <- ecodata26::bennet %>%
   dplyr::filter(
     EPU %in% c("GOM", "GB"),
     Var %in% c("Total Revenue Change - Bennet"),
@@ -71,8 +71,8 @@ ggplot2::ggplot() +
     legend.title = element_text(size = 8),
     legend.text = element_text(size = 8)
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::facet_wrap(~EPU) +
   ggplot2::theme(title = element_text(size = 10)) +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()

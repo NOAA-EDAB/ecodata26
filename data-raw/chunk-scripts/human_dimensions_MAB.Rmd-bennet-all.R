@@ -1,5 +1,5 @@
 #Filter data into two dataframes for plotting
-indicators <- ecodata::bennet %>%
+indicators <- ecodata26::bennet %>%
   dplyr::filter(EPU == epu_abbr)
 
 indicators$Var <- gsub("Predator", "", indicators$Var)
@@ -21,7 +21,7 @@ indicators <- indicators %>%
 # dplyr::group_by(Time, Var) %>%
 # dplyr::mutate(component = sum(Value))
 
-revchange <- ecodata::bennet %>%
+revchange <- ecodata26::bennet %>%
   dplyr::filter(
     EPU == "MAB",
     #Var %in% c("Total Revenue Change - Bennet"),
@@ -78,8 +78,8 @@ ggplot2::ggplot() +
   #ggplot2::scale_y_continuous(breaks = seq(y.lim[1], y.lim[2], by = 100),
   #                            limits = y.lim, expand = c(0.01, 0.01)) +
   ggplot2::scale_fill_brewer(palette = "Set1") +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::xlab(element_blank()) +
   ggplot2::theme(title = element_text(size = 10)) +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()

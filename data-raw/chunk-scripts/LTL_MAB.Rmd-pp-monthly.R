@@ -1,4 +1,4 @@
-out_pp <- ecodata::chl_pp %>%
+out_pp <- ecodata26::chl_pp %>%
   dplyr::filter(
     EPU == epu_abbr,
     stringr::str_detect(Var, "MONTHLY_PPD_MEDIAN")
@@ -33,7 +33,7 @@ out_pp$Month <- factor(out_pp$Month, levels = month.abb)
 
 
 pp_cci <- ggplot2::ggplot(out_pp) +
-  #ecodata::geom_lm(aes(x = Year, y = Value, group = Month))+
+  #ecodata26::geom_lm(aes(x = Year, y = Value, group = Month))+
   ggplot2::geom_point(aes(x = Year, y = Value, group = Month)) +
   ggplot2::geom_line(aes(x = Year, y = Value, group = Month)) +
   ggplot2::scale_x_discrete(
@@ -49,12 +49,12 @@ pp_cci <- ggplot2::ggplot(out_pp) +
   ggplot2::facet_wrap(Month ~ ., ncol = 12) +
   ggplot2::ggtitle("Monthly median PPD") +
   ggplot2::ylab(expression("PP (gC m"^-2 * " d"^-1 * ")")) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::ylab("Time") +
   ggplot2::theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
     panel.spacing = unit(0.5, "lines"),
     plot.margin = unit(c(0.1, 0, 0, 0), "cm")
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 pp_cci

@@ -1,4 +1,4 @@
-ecodata::rec_hms %>%
+ecodata26::rec_hms %>%
   filter(EPU == "MAB") %>%
   #mutate(Value = Value/1000) %>%
   ggplot() +
@@ -17,5 +17,5 @@ ecodata::rec_hms %>%
   ggplot2::ylab("Number of Fish") +
   ggplot2::xlab(element_blank()) +
   ggplot2::scale_color_discrete(name = "Category") +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

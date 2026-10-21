@@ -1,4 +1,4 @@
-ecodata::seal_pups %>%
+ecodata26::seal_pups %>%
   tidyr::separate(Var, into = c("Var", "colony"), sep = "-") %>%
   dplyr::filter(!colony == "Green", Var == "count") %>%
   dplyr::mutate(
@@ -27,7 +27,7 @@ ecodata::seal_pups %>%
   ggplot2::ylab("Pup Count") +
   ggplot2::xlab(element_blank()) +
   #ggplot2::scale_color_discrete(name = "Category")+
-  ecodata::theme_ts() +
-  ecodata::theme_title() +
-  ecodata::theme_facet() +
+  ecodata26::theme_ts() +
+  ecodata26::theme_title() +
+  ecodata26::theme_facet() +
   ggplot2::theme(legend.position = "bottom", legend.title = element_blank())

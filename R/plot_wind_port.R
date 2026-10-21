@@ -16,7 +16,7 @@ plot_wind_port <- function(
   report = "MidAtlantic"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -30,7 +30,7 @@ plot_wind_port <- function(
   }
 
   ## convert back to semi-wide format
-  data <- ecodata::wind_port |>
+  data <- ecodata26::wind_port |>
     dplyr::filter(.data$EPU == filterEPUs) |>
     tidyr::separate_wider_delim(
       cols = Var,

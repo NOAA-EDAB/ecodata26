@@ -1,7 +1,7 @@
-cpsf26 <- ecodata::cold_pool_sf %>%
+cpsf26 <- ecodata26::cold_pool_sf %>%
   mutate(Time = c(1993:2018)) %>%
   filter(Time == 2018)
-cpsf <- ecodata::cold_pool_sf %>%
+cpsf <- ecodata26::cold_pool_sf %>%
   mutate(Time = c(1993:2018)) %>%
   filter(!Time == 2018)
 
@@ -19,7 +19,7 @@ ylims <- c(ymin, ymax)
 cp_map <-
   ggplot2::ggplot() +
   #ggplot2::geom_tile(data =hw, aes(x = Longitude, y = Latitude,fill = Value)) +
-  ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+  ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
   ggplot2::geom_sf(data = cpsf, alpha = 0.1, color = "red", size = 1) +
   ggplot2::geom_sf(
     data = cpsf26,
@@ -36,7 +36,7 @@ cp_map <-
   #                     limits = c(-4,4)) +
 
   #facet_wrap(Season~.) +
-  ecodata::theme_map() +
+  ecodata26::theme_map() +
   ggplot2::facet_wrap(~Time) +
   ggplot2::ggtitle("Cold Pool Area") +
   ggplot2::xlab("Longitude") +
@@ -51,7 +51,7 @@ cp_map <-
     axis.text = element_blank(),
     axis.title.y = element_text(angle = 90)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 
 cp_map

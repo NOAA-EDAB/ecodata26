@@ -1,11 +1,11 @@
-hms10 <- ecodata::cetacean_dist %>%
+hms10 <- ecodata26::cetacean_dist %>%
   tidyr::separate(Var, into = c("Var", "species", "season"), sep = "_") %>%
   tidyr::pivot_wider(names_from = Var, values_from = Value) %>%
   dplyr::filter(Time == 2010) %>%
   dplyr::rename("x_start" = wlon, "y_start" = wlat) %>%
   dplyr::select(!Time)
 
-hms <- ecodata::cetacean_dist %>%
+hms <- ecodata26::cetacean_dist %>%
   tidyr::separate(Var, into = c("Var", "species", "season"), sep = "_") %>%
   tidyr::pivot_wider(names_from = Var, values_from = Value) %>%
   dplyr::filter(Time == 2017) %>%
@@ -25,7 +25,7 @@ hms$season <- factor(
   hms$season,
   levels = c("Winter", "Spring", "Summer", "Fall")
 )
-epu_sf <- ecodata::epu_sf %>%
+epu_sf <- ecodata26::epu_sf %>%
   dplyr::filter(EPU %in% c("GOM", "GB", "MAB"))
 map.lwd <- 0.4
 xmin <- -77
@@ -36,7 +36,7 @@ xlims <- c(xmin, xmax)
 ylims <- c(ymin, ymax)
 hms_map <- hms %>%
   ggplot2::ggplot() +
-  ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+  ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
   ggplot2::geom_sf(data = epu_sf, fill = "transparent", size = map.lwd) +
   geom_segment(
     mapping = aes(
@@ -52,7 +52,7 @@ hms_map <- hms %>%
   #ggplot2::scale_shape_manual(values=c(16, 3, 17))+
   #ggplot2::scale_color_manual(values = c("blue", "black", "red"))+
   ggplot2::coord_sf(crs = crs, xlim = xlims, ylim = ylims) +
-  ecodata::theme_map() +
+  ecodata26::theme_map() +
   ggplot2::ggtitle("HMS Species Distibution") +
   ggplot2::xlab("") +
   ggplot2::ylab("") +

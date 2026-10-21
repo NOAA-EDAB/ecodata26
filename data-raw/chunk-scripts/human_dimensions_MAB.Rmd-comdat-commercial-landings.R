@@ -1,5 +1,5 @@
 #Managed landings
-managed_landings <- ecodata::comdat %>%
+managed_landings <- ecodata26::comdat %>%
   dplyr::filter(
     Var %in%
       c(
@@ -23,7 +23,7 @@ managed_landings <- ecodata::comdat %>%
   dplyr::ungroup()
 
 #Total landings
-total_landings <- ecodata::comdat %>%
+total_landings <- ecodata26::comdat %>%
   dplyr::filter(
     Var %in%
       c(
@@ -86,8 +86,8 @@ mab_landings <- landings %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(aes(x = Time, y = Value, group = Var)) +
-  # ecodata::geom_lm(aes(x = Time, y = Value,
+  ecodata26::geom_gls(aes(x = Time, y = Value, group = Var)) +
+  # ecodata26::geom_lm(aes(x = Time, y = Value,
   #              group = Var))+
 
   #Add time series
@@ -116,12 +116,12 @@ mab_landings <- landings %>%
   ) +
   ggplot2::ylab(expression("Landings (10"^3 * "metric tons)")) +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     legend.position = "none"
   ) +
   ggplot2::ggtitle("Mid-Atlantic Bight") +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 mab_landings

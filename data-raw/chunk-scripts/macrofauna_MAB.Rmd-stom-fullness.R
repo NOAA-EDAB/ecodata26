@@ -1,4 +1,4 @@
-fullness <- ecodata::stom_fullness %>%
+fullness <- ecodata26::stom_fullness %>%
   dplyr::group_by(Var, EPU) %>% ## Remove values with missing data
   dplyr::filter(n() > 10) %>% ## at least ten years of data
   dplyr::ungroup() %>%

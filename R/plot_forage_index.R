@@ -18,7 +18,7 @@ plot_forage_index <- function(shadedRegion = NULL,
                               varName = "index",
                               n = 0) {
 
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion,
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion,
                                report=report)
 
   if (varName == "index") {
@@ -29,14 +29,14 @@ plot_forage_index <- function(shadedRegion = NULL,
       filterEPUs <- c("GB", "GOM")
     }
 
-    fix<- ecodata::forage_index |>
+    fix<- ecodata26::forage_index |>
       dplyr::filter(Var %in% c("Fall Forage Fish Biomass Estimate",
                                "Spring Forage Fish Biomass Estimate"),
                     EPU %in% filterEPUs) |>
       dplyr::group_by(EPU) |>
       dplyr::summarise(max = max(Value))
 
-    p <- ecodata::forage_index |>
+    p <- ecodata26::forage_index |>
       dplyr::filter(Var %in% c("Fall Forage Fish Biomass Estimate",
                                "Fall Forage Fish Biomass Estimate SE",
                                "Spring Forage Fish Biomass Estimate",
@@ -66,11 +66,11 @@ plot_forage_index <- function(shadedRegion = NULL,
       ggplot2::ylab(expression("Relative forage biomass"))+
       ggplot2::xlab(ggplot2::element_blank())+
       ggplot2::facet_wrap(.~EPU)+
-      ecodata::geom_gls()+
-      ecodata::geom_lm(n=n)+
-      ecodata::theme_ts()+
-      ecodata::theme_facet()+
-      ecodata::theme_title()
+      ecodata26::geom_gls()+
+      ecodata26::geom_lm(n=n)+
+      ecodata26::theme_ts()+
+      ecodata26::theme_facet()+
+      ecodata26::theme_title()
 
     if (report == "NewEngland") {
       p <- p +
@@ -82,7 +82,7 @@ plot_forage_index <- function(shadedRegion = NULL,
 
   if (varName == "cog"){
 
-    p <- ecodata::forage_index |>
+    p <- ecodata26::forage_index |>
       dplyr::filter(Var %in% c("Fall Eastward Forage Fish Center of Gravity",
                                "Fall Eastward Forage Fish Center of Gravity SE",
                                "Fall Northward Forage Fish Center of Gravity",
@@ -114,11 +114,11 @@ plot_forage_index <- function(shadedRegion = NULL,
         rows = ggplot2::vars(Direction),
         scales = "free_y"
       ) +
-      ecodata::geom_gls()+
-      ecodata::geom_lm(n=n)+
-      ecodata::theme_ts()+
-      ecodata::theme_facet()+
-      ecodata::theme_title()
+      ecodata26::geom_gls()+
+      ecodata26::geom_lm(n=n)+
+      ecodata26::theme_ts()+
+      ecodata26::theme_facet()+
+      ecodata26::theme_title()
 
   }
 
@@ -128,7 +128,7 @@ plot_forage_index <- function(shadedRegion = NULL,
 
 attr(plot_forage_index,"report") <- c("MidAtlantic","NewEngland")
 attr(plot_forage_index, "varName") <- c("index", "cog")
-  # ecodata::forage_index |>
+  # ecodata26::forage_index |>
   #   dplyr::filter(Var %in% c("Fall Forage Fish Biomass Estimate",
   #                            "Fall Forage Fish Biomass Estimate SE",
   #                            "Spring Forage Fish Biomass Estimate",
@@ -154,8 +154,8 @@ attr(plot_forage_index, "varName") <- c("index", "cog")
   #   ggplot2::ggtitle("Forage Biomass Index")+
   #   ggplot2::ylab(expression("Relative forage biomass"))+
   #   ggplot2::xlab(element_blank())+
-  #   ecodata::geom_gls()+
-  #   ecodata::theme_ts()+
-  #   ecodata::theme_title()
+  #   ecodata26::geom_gls()+
+  #   ecodata26::theme_ts()+
+  #   ecodata26::theme_title()
   #
   #

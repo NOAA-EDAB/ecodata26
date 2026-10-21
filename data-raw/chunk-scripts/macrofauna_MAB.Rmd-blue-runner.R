@@ -1,4 +1,4 @@
-blue <- ecodata::blue_runner %>%
+blue <- ecodata26::blue_runner %>%
   tidyr::separate(Var, c("Var", "Pos"), "L") %>%
   tidyr::spread(., Pos, Value) %>%
   dplyr::rename(Lat = at, Lon = on) %>%
@@ -16,7 +16,7 @@ blue$Var <- factor(
 )
 
 #EPU shapefile
-epu_sf <- ecodata::epu_sf %>%
+epu_sf <- ecodata26::epu_sf %>%
   dplyr::filter(EPU %in% c("GOM", "GB", "MAB"))
 
 #Map line parameters
@@ -33,7 +33,7 @@ ylims <- c(ymin, ymax)
 ## Map plotting blue runner
 blue_map <-
   ggplot2::ggplot() +
-  ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+  ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
   ggplot2::geom_sf(data = epu_sf, fill = "transparent", size = map.lwd) +
   ggplot2::geom_point(
     data = blue,
@@ -42,7 +42,7 @@ blue_map <-
   ggplot2::scale_shape_manual(values = c(16, 3, 17)) +
   ggplot2::scale_color_manual(values = c("blue", "black", "red")) +
   ggplot2::coord_sf(crs = crs, xlim = xlims, ylim = ylims) +
-  ecodata::theme_map() +
+  ecodata26::theme_map() +
   ggplot2::ggtitle("Blue Runner Presence") +
   ggplot2::xlab("") +
   ggplot2::ylab("") +

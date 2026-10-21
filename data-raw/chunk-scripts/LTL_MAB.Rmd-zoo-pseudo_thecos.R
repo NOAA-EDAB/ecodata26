@@ -4,7 +4,7 @@ zoo_fill <- expand.grid(
   EPU = "MAB",
   Var = c("thecos_100m3", "pseudo_100m3")
 )
-zoo_abund <- ecodata::zoo_regime %>%
+zoo_abund <- ecodata26::zoo_regime %>%
   dplyr::filter(
     EPU == "MAB",
     stringr::str_detect(Var, "thecos_100m3|pseudo_100m3"),
@@ -34,8 +34,8 @@ zoo_abund %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm(aes(x = Time, y = Value))+
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm(aes(x = Time, y = Value))+
   ggplot2::geom_line() +
   ggplot2::geom_point() +
   ggplot2::ylab(expression("Abundance Anomaly")) +
@@ -49,10 +49,10 @@ zoo_abund %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0, face = "italic"),
     legend.title = element_blank(),
     legend.position = "bottom"
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

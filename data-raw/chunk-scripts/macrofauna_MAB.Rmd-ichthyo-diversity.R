@@ -1,4 +1,4 @@
-ma_larv_div <- ecodata::ichthyo_diversity %>%
+ma_larv_div <- ecodata26::ichthyo_diversity %>%
   dplyr::filter(EPU == "MAB") %>%
   dplyr::mutate(Var = stringr::word(Var, 1)) %>%
   dplyr::group_by(Var) %>%
@@ -6,7 +6,7 @@ ma_larv_div <- ecodata::ichthyo_diversity %>%
   ggplot2::ggplot(aes(x = Time, y = Value, group = Var)) +
   ggplot2::geom_line() +
   ggplot2::geom_point() +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
   annotate(
     "rect",
     fill = shade.fill,
@@ -26,9 +26,9 @@ ma_larv_div <- ecodata::ichthyo_diversity %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::xlab(element_blank()) +
   ggplot2::theme(strip.text = element_text(hjust = 0)) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 ma_larv_div

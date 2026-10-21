@@ -21,7 +21,7 @@ plot_zooplankton_index <- function(
   plottype = "index",
   n = 0
 ) {
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # convert to leading capital
   varName <- stringr::str_to_sentence(varName)
@@ -48,7 +48,7 @@ plot_zooplankton_index <- function(
       filterEPUs <- c("GB", "GOM")
     }
 
-    fix <- ecodata::zooplankton_index |>
+    fix <- ecodata26::zooplankton_index |>
       dplyr::filter(
         Var %in%
           c(
@@ -60,7 +60,7 @@ plot_zooplankton_index <- function(
       dplyr::group_by(EPU) |>
       dplyr::summarise(max = max(Value, na.rm = T))
 
-    p <- ecodata::zooplankton_index |>
+    p <- ecodata26::zooplankton_index |>
       dplyr::filter(
         Var %in%
           c(
@@ -110,11 +110,11 @@ plot_zooplankton_index <- function(
       ggplot2::ylab(paste("Relative", varName, "Biomass")) +
       ggplot2::xlab(ggplot2::element_blank()) +
       ggplot2::facet_wrap(. ~ EPU) +
-      ecodata::geom_gls() +
-      ecodata::geom_lm(n = n) +
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::geom_gls() +
+      ecodata26::geom_lm(n = n) +
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
 
     if (report == "NewEngland") {
       p <- p +
@@ -126,7 +126,7 @@ plot_zooplankton_index <- function(
   }
 
   if (plottype == "cog") {
-    p <- ecodata::zooplankton_index |>
+    p <- ecodata26::zooplankton_index |>
       dplyr::filter(
         Var %in%
           c(
@@ -176,11 +176,11 @@ plot_zooplankton_index <- function(
         rows = ggplot2::vars(Direction),
         scales = "free_y"
       ) +
-      ecodata::geom_gls() +
-      ecodata::geom_lm(n = n) +
-      ecodata::theme_ts() +
-      ecodata::theme_facet() +
-      ecodata::theme_title()
+      ecodata26::geom_gls() +
+      ecodata26::geom_lm(n = n) +
+      ecodata26::theme_ts() +
+      ecodata26::theme_facet() +
+      ecodata26::theme_title()
   }
 
   return(p)

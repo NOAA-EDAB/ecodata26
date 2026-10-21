@@ -1,4 +1,4 @@
-ecodata::ch_bay_sal %>%
+ecodata26::ch_bay_sal %>%
   tidyr::pivot_wider(names_from = Var, values_from = Value) %>%
   ggplot2::ggplot() +
   ggplot2::geom_ribbon(
@@ -16,5 +16,5 @@ ecodata::ch_bay_sal %>%
   ggplot2::ylab("Salinity") +
   ggplot2::ggtitle("Chesapeake Bay Salinity") +
   ggplot2::theme(legend.position = "bottom", legend.title = element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

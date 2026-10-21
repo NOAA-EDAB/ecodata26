@@ -1,4 +1,4 @@
-ecodata::heatwave_year %>%
+ecodata26::heatwave_year %>%
   filter(
     EPU == "GOM",
     stringr::str_detect(t, "2022"),
@@ -19,4 +19,4 @@ ecodata::heatwave_year %>%
   theme_bw() +
   ggplot2::ggtitle("Gulf of Maine") +
   theme(legend.title = element_blank(), legend.position = c(0.2, 0.8)) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

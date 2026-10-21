@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 library(ggplot2)
 library(dplyr)
 library(tidyr)
-library(ecodata)
+library(ecodata26)
 library(here)
 library(kableExtra)
 library(ggrepel)

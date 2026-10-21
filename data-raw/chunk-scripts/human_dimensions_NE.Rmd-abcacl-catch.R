@@ -1,4 +1,4 @@
-mean <- ecodata::abc.acl %>%
+mean <- ecodata26::abc.acl %>%
   dplyr::filter(EPU == "NE", Time >= 2012) %>%
   tidyr::separate(col = Var, into = c("FMP", "Species", "Var"), sep = "_") %>%
   pivot_wider(names_from = Var, values_from = Value) %>%
@@ -10,7 +10,7 @@ mean <- ecodata::abc.acl %>%
   dplyr::mutate(Time = as.numeric(Time)) %>%
   dplyr::filter(Time > 2012 & Time < 2021)
 
-above <- ecodata::abc.acl %>%
+above <- ecodata26::abc.acl %>%
   filter(EPU == "NE", Time >= 2012) %>%
   tidyr::separate(col = Var, into = c("FMP", "Species", "Var"), sep = "_") %>%
   tidyr::separate(col = Species, into = c("Species", "Location"), sep = "-") %>%
@@ -18,7 +18,7 @@ above <- ecodata::abc.acl %>%
   dplyr::mutate(Value = Catch / ACL, Time = as.numeric(Time)) %>%
   dplyr::filter(Time > 2012 & Time < 2021, Value > 1)
 
-ecodata::abc.acl %>%
+ecodata26::abc.acl %>%
   filter(EPU == "NE", Time >= 2012) %>%
   tidyr::separate(col = Var, into = c("FMP", "Species", "Var"), sep = "_") %>%
   tidyr::separate(col = Species, into = c("Species", "Location"), sep = "-") %>%
@@ -45,5 +45,5 @@ ecodata::abc.acl %>%
   scale_x_continuous(breaks = c(2014, 2016, 2018, 2020)) +
   #scale_shape_manual(values=c(18, 20, 16))+
   #scale_color_manual(values=c('#999999','#E69F00', '#56B4E9'))+
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

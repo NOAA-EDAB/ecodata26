@@ -108,7 +108,7 @@ plot_stackbarcpts_single <- function(
     ggplot2::ylab(ylab) +
     ggplot2::ggtitle(titl) +
     ggplot2::guides(fill = guide_legend(ncol = leg_ncol)) +
-    ecodata::theme_ts() +
+    ecodata26::theme_ts() +
     ggplot2::theme(
       axis.title = element_text(size = 10),
       axis.text = element_text(size = 10),
@@ -134,7 +134,7 @@ plot_stackbarcpts_single <- function(
 
 
 ## GB
-bar_dat <- ecodata::productivity_anomaly %>%
+bar_dat <- ecodata26::productivity_anomaly %>%
   dplyr::filter(EPU == "GB") %>%
   tidyr::separate(Var, into = c("Var", "Survey"), sep = "_")
 

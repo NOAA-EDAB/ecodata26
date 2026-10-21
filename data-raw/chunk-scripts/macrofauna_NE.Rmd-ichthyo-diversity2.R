@@ -1,4 +1,4 @@
-gom_larv_div <- ecodata::ichthyo_diversity %>%
+gom_larv_div <- ecodata26::ichthyo_diversity %>%
   dplyr::filter(EPU == "GOM") %>%
   #dplyr::mutate(Var = word(Var,1)) %>%
   #dplyr::group_by(Var) %>%
@@ -15,8 +15,8 @@ gom_larv_div <- ecodata::ichthyo_diversity %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls(aes(x = Time, y = mean(Value))) +
-  #ecodata::geom_lm(aes(x=Time, y = Value))+
+  ecodata26::geom_gls(aes(x = Time, y = mean(Value))) +
+  #ecodata26::geom_lm(aes(x=Time, y = Value))+
   ggplot2::ggtitle("GOM larval diversity") +
   ggplot2::ylab("Shannon Diversity") +
   ggplot2::xlab(element_blank()) +
@@ -27,11 +27,11 @@ gom_larv_div <- ecodata::ichthyo_diversity %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0)) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
-gb_larv_div <- ecodata::ichthyo_diversity %>%
+gb_larv_div <- ecodata26::ichthyo_diversity %>%
   dplyr::filter(EPU == "GB") %>%
   #dplyr::mutate(Var = word(Var,1)) %>%
   #dplyr::group_by(Var) %>%
@@ -48,8 +48,8 @@ gb_larv_div <- ecodata::ichthyo_diversity %>%
     ymin = -Inf,
     ymax = Inf
   ) +
-  ecodata::geom_gls(aes(x = Time, y = mean(Value))) +
-  #ecodata::geom_lm(aes(x=Time, y = Value))+
+  ecodata26::geom_gls(aes(x = Time, y = mean(Value))) +
+  #ecodata26::geom_lm(aes(x=Time, y = Value))+
   ggplot2::ggtitle("GB larval diversity") +
   ylab("Shannon Diversity") +
   ggplot2::xlab(element_blank()) +
@@ -60,9 +60,9 @@ gb_larv_div <- ecodata::ichthyo_diversity %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0)) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 gb_larv_div
 gom_larv_div

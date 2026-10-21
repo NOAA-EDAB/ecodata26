@@ -1,4 +1,4 @@
-ecodata::zoo_abund %>%
+ecodata26::zoo_abund %>%
   dplyr::filter(EPU %in% c("GOM", "GB")) %>%
   dplyr::mutate(hline = 0) %>%
   ggplot2::ggplot(aes(x = Time, y = Value, color = Var)) +
@@ -25,7 +25,7 @@ ecodata::zoo_abund %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0, face = "italic"),
     legend.title = element_blank()

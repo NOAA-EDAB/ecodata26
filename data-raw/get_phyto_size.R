@@ -118,7 +118,7 @@ usethis::use_data(phyto_size, overwrite = T)
 #   ggplot2::ggtitle("Georges Bank Phytoplankton Size Class") +
 #   ggplot2::ylab("Percent") +
 #   ggplot2::xlab(element_blank())+
-#   ecodata::theme_facet() +
+#   ecodata26::theme_facet() +
 #   ggplot2::theme(axis.text.x = element_text(angle=45, hjust = 1),
 #                  panel.spacing = unit(.5, "lines"),
 #                  plot.margin = unit(c(0.1, 0, 0, 0), "cm"),
@@ -129,4 +129,4 @@ usethis::use_data(phyto_size, overwrite = T)
 #   #scale_y_continuous( name = "Phytoplankton Size Fraction", sec.axis = sec_axis(~.*2, name="Chlorophyll a (mg m^-3)"))+
 #   scale_x_continuous(breaks = month_numeric,
 #                      labels = month_label)+
-#   ecodata::theme_title()
+#   ecodata26::theme_title()

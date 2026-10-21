@@ -1,4 +1,4 @@
-temp_anom <- ecodata::bottom_temp_insitu %>%
+temp_anom <- ecodata26::bottom_temp_insitu %>%
   dplyr::filter(EPU == epu_abbr) %>%
   tidyr::complete(
     Time = tidyr::full_seq(
@@ -10,7 +10,7 @@ temp_anom <- ecodata::bottom_temp_insitu %>%
   dplyr::mutate(hline = 0) %>%
   dplyr::filter(Var == "bottom temp anomaly in situ")
 
-gl_bt <- ecodata::bottom_temp_glorys %>%
+gl_bt <- ecodata26::bottom_temp_glorys %>%
   dplyr::filter(EPU == epu_abbr)
 #bot_temp<-temp_anom %>%
 # dplyr::filter(Var == "bottom temp anomaly in situ") %>%
@@ -44,8 +44,8 @@ ggplot2::ggplot() +
     linetype = "dashed",
     color = "grey"
   ) +
-  ecodata::geom_gls(aes(x = temp_anom$Time, y = temp_anom$Value)) +
-  #ecodata::geom_lm(aes(x = temp_anom$Time, y = temp_anom$Value))+
+  ecodata26::geom_gls(aes(x = temp_anom$Time, y = temp_anom$Value)) +
+  #ecodata26::geom_lm(aes(x = temp_anom$Time, y = temp_anom$Value))+
   ggplot2::ylab("Temperature (C)") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Bottom temperature anomaly") +
@@ -58,5 +58,5 @@ ggplot2::ggplot() +
   #         size = hline.size,
   #         alpha = hline.alpha,
   #         linetype = hline.lty) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

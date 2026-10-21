@@ -1,4 +1,4 @@
-ecodata::ch_bay_temp %>%
+ecodata26::ch_bay_temp %>%
   tidyr::pivot_wider(names_from = Var, values_from = Value) %>%
   dplyr::mutate(
     YearLTAC = (YearLTA - 32) * (5 / 9),
@@ -22,5 +22,5 @@ ecodata::ch_bay_temp %>%
   ggplot2::ylab("Temperature (C)") +
   ggplot2::ggtitle("Chesapeake Bay Temperature") +
   ggplot2::theme(legend.position = "bottom", legend.title = element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

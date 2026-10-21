@@ -1,4 +1,4 @@
-ecodata::zoo_sli_anom %>%
+ecodata26::zoo_sli_anom %>%
   dplyr::filter(EPU == epu_abbr) %>%
   dplyr::group_by(Time) %>%
   dplyr::mutate(hline = 0) %>%
@@ -15,7 +15,7 @@ ecodata::zoo_sli_anom %>%
   #geom_gls() +
   ggplot2::geom_line() +
   ggplot2::geom_point() +
-  #ecodata::geom_lm()+
+  #ecodata26::geom_lm()+
   ggplot2::ylab("Abundance anomaly") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Small and large-bodied copepod abundance anomaly") +
@@ -26,10 +26,10 @@ ecodata::zoo_sli_anom %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     plot.title = element_text(size = 7),
     strip.text = element_text(hjust = 0, face = "italic"),
     legend.title = element_blank()
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

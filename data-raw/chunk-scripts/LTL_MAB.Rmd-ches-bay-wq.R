@@ -2,7 +2,7 @@ minlab <- seq(1987, 2017, 5)
 maxlab <- seq(1989, 2019, 5)
 minl <- as.numeric(sprintf('%02d', minlab %% 100))
 maxl <- sprintf('%02d', maxlab %% 100)
-ecodata::ches_bay_wq %>%
+ecodata26::ches_bay_wq %>%
   dplyr::mutate(hline = mean(Value)) %>%
   ggplot2::ggplot(aes(x = Time, y = Value)) +
   ggplot2::annotate(
@@ -16,8 +16,8 @@ ecodata::ches_bay_wq %>%
   ) +
   ggplot2::geom_line() +
   ggplot2::geom_point() +
-  ecodata::geom_gls() +
-  #ecodata::geom_lm()+
+  ecodata26::geom_gls() +
+  #ecodata26::geom_lm()+
   ggplot2::ylab(expression("Estimated attainment (%)")) +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Chesapeake Bay Water Quality Attainment") +
@@ -32,4 +32,4 @@ ecodata::ches_bay_wq %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()

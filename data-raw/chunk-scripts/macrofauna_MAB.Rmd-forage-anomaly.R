@@ -1,4 +1,4 @@
-ecodata::forage_anomaly %>%
+ecodata26::forage_anomaly %>%
   filter(EPU == "MAB") %>%
   pivot_wider(names_from = Var, values_from = Value) %>%
   ggplot() +
@@ -13,7 +13,7 @@ ecodata::forage_anomaly %>%
   ) +
   ggplot2::geom_point(aes(x = Time, y = Forage_Mean)) +
   ggplot2::geom_line(aes(x = Time, y = Forage_Mean)) +
-  #ecodata::geom_lm(aes(x = Time, y = Forage_Mean))+
+  #ecodata26::geom_lm(aes(x = Time, y = Forage_Mean))+
   ggplot2::geom_ribbon(
     aes(ymin = Forage_Lower, ymax = Forage_Upper, x = Time),
     alpha = 0.3
@@ -22,5 +22,5 @@ ecodata::forage_anomaly %>%
   ggplot2::ggtitle("Forage Anomalies") +
   ggplot2::ylab("Forage Anomaly") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

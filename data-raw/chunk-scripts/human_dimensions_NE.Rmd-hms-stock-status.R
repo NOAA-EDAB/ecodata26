@@ -8,7 +8,7 @@ unknown <- data.frame(
 )
 
 
-stock_status <- ecodata::hms_stock_status %>%
+stock_status <- ecodata26::hms_stock_status %>%
   tidyr::spread(., Var, Value) %>%
   tidyr::separate(stock, c("species_abr", "spp"), ":") %>%
   dplyr::group_by(spp) %>%
@@ -70,4 +70,4 @@ ggplot2::ggplot(data = stock_status) +
   ggplot2::xlab(expression(~ B / B[msy])) +
   ggplot2::ylab(expression(~ F / F[msy])) +
   ggplot2::guides(color = FALSE) +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()

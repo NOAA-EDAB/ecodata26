@@ -20,7 +20,7 @@ plot_narw <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -37,15 +37,15 @@ plot_narw <- function(
     vylab <- "Number of individuals"
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
   if (varName == "calf") {
-    fix <- ecodata::narw |>
+    fix <- ecodata26::narw |>
       dplyr::filter(Var == "Calves") |>
       dplyr::mutate(hline = mean(Value, na.rm = TRUE))
   } else {
-    fix <- ecodata::narw |>
+    fix <- ecodata26::narw |>
       dplyr::filter(Var != "Calves") |>
       tidyr::pivot_wider(
         id_cols = c(Time, EPU, Units),
@@ -74,8 +74,8 @@ plot_narw <- function(
     ) +
     ggplot2::geom_point() +
     ggplot2::geom_line() +
-    ecodata::geom_lm(n = n) +
-    ecodata::geom_gls() +
+    ecodata26::geom_lm(n = n) +
+    ecodata26::geom_gls() +
     ggplot2::ggtitle(vtitle) +
     ggplot2::ylab(vylab) +
     ggplot2::geom_hline(
@@ -85,8 +85,8 @@ plot_narw <- function(
       linetype = setup$hline.lty
     ) +
     ggplot2::xlab(ggplot2::element_blank()) +
-    ecodata::theme_ts() +
-    ecodata::theme_title()
+    ecodata26::theme_ts() +
+    ecodata26::theme_title()
 
   if (varName == "adult") {
     p <- p +

@@ -1,4 +1,4 @@
-total <- ecodata::productivity_anomaly %>%
+total <- ecodata26::productivity_anomaly %>%
   tidyr::separate(Var, into = c("Stock", "Var"), sep = "-") %>%
   dplyr::filter(EPU == "MA", Var == "rs_anom") %>%
   dplyr::group_by(Time) %>%
@@ -8,7 +8,7 @@ total <- ecodata::productivity_anomaly %>%
     Total = ifelse(Count < max(Count), NA, Total)
   )
 
-prod <- ecodata::productivity_anomaly %>%
+prod <- ecodata26::productivity_anomaly %>%
   tidyr::separate(Var, into = c("Stock", "Var"), sep = "-") %>%
   dplyr::filter(EPU == "MA", Var == "rs_anom")
 
@@ -30,7 +30,7 @@ p <-
   ggplot2::ylab("Recruitment Anomaly") +
   ggplot2::ggtitle("MAB Recruitment Anomaly from Stock Assessments") +
   #ggplot2::guides(fill = guide_legend(ncol = leg_ncol)) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     axis.title = element_text(size = 10),
     axis.text = element_text(size = 10),

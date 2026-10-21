@@ -36,7 +36,7 @@ invisible(sf::st_crs(prop_m) <- crs)
 ggplot2::ggplot() +
   ggplot2::geom_raster(data = nesbath, aes(x = x, y = y, fill = z)) +
   ggplot2::scale_fill_gradientn(colors = c("lightcyan", "lightblue4")) +
-  ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+  ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
   ggplot2::geom_sf(data = epu_sf, fill = "transparent", size = map.lwd) +
   ggplot2::geom_sf(data = lease_s, size = map.lwd, color = "black") +
   ggplot2::geom_sf(data = lease_n, size = map.lwd, color = "black") +

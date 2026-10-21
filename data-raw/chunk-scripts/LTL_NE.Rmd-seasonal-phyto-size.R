@@ -1,4 +1,4 @@
-micro_chlor <- ecodata::phyto_size %>%
+micro_chlor <- ecodata26::phyto_size %>%
   dplyr::filter(
     EPU %in% c("GB", "GOM"),
     Var %in%
@@ -36,6 +36,6 @@ micro_chlor <- ecodata::phyto_size %>%
   ggplot2::facet_wrap(~EPU) +
   ggplot2::ylab("Chlorophyll a (mg m^-3)") +
   ggplot2::xlab("Microplankton % of Total Phytoplankton Composition ") +
-  ecodata::theme_facet() +
-  ecodata::theme_title()
+  ecodata26::theme_facet() +
+  ecodata26::theme_title()
 #micro_chlor

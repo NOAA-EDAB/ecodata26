@@ -1,4 +1,4 @@
-ecodata::trans_dates %>%
+ecodata26::trans_dates %>%
   dplyr::filter(EPU %in% c("GB", "GOM"), Var == "sumlen", !Value == "NA") %>%
   ggplot(aes(x = Time, y = Value)) +
   ggplot2::annotate(
@@ -12,14 +12,14 @@ ecodata::trans_dates %>%
   ) +
   geom_point() +
   geom_line() +
-  ecodata::geom_gls() +
+  ecodata26::geom_gls() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     plot.title = element_text(size = 12)
   ) +
-  ecodata::theme_title() +
+  ecodata26::theme_title() +
   ylab("Number of Days") +
   xlab(element_blank()) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::facet_wrap(. ~ EPU) +
-  ecodata::theme_facet()
+  ecodata26::theme_facet()

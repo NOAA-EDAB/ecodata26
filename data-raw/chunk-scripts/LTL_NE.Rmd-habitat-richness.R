@@ -1,4 +1,4 @@
-NE <- ecodata::habitat_diversity %>%
+NE <- ecodata26::habitat_diversity %>%
   dplyr::filter(!Var == "Shannon", EPU %in% c("GB", "GOM"), !EPU == "SS") %>%
   tidyr::separate(Var, into = c("Var", "Richness")) %>%
   tidyr::pivot_wider(values_from = "Value", names_from = "Var") %>%
@@ -11,7 +11,7 @@ NE <- ecodata::habitat_diversity %>%
     hline = mean(mean)
   )
 
-ecodata::habitat_diversity %>%
+ecodata26::habitat_diversity %>%
   dplyr::filter(!Var == "Shannon", !EPU == "SS") %>%
   tidyr::separate(Var, into = c("Var", "Richness")) %>%
   tidyr::pivot_wider(values_from = "Value", names_from = "Var") %>%
@@ -51,7 +51,7 @@ ecodata::habitat_diversity %>%
   #ggplot2::facet_wrap(~EPU)+
   ggplot2::ggtitle("New England Species Richness from Habitat Assessment") +
   ggplot2::scale_x_continuous(expand = c(0.01, 0.01)) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(strip.text = element_text(hjust = 0, face = "italic")) +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()

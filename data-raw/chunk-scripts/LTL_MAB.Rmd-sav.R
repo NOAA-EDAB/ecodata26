@@ -1,4 +1,4 @@
-ecodata::SAV %>%
+ecodata26::SAV %>%
   dplyr::filter(
     !Var == "Baywide",
     !Var == "Oligohaline",
@@ -21,10 +21,10 @@ ecodata::SAV %>%
   ) +
   ggplot2::geom_point() +
   ggplot2::geom_line() +
-  #ecodata::geom_lm(aes(x = Time, y = Value))+
+  #ecodata26::geom_lm(aes(x = Time, y = Value))+
   ggplot2::facet_wrap(~Var) +
-  ecodata::geom_gls(aes(x = Time, y = Value)) +
-  ecodata::theme_ts() +
+  ecodata26::geom_gls(aes(x = Time, y = Value)) +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0, face = "italic"),
     axis.title.y = element_text(angle = 90),
@@ -32,8 +32,8 @@ ecodata::SAV %>%
   ) +
   # ggplot2::scale_color_discrete(name = "",
   # labels = c("Lower bay",  "Upper Bay"))+
-  ecodata::theme_title() +
+  ecodata26::theme_title() +
   ggplot2::ylab(expression("Acres (10"^3 * ")")) +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Submerged Aquatic Vegetation (SAV) Abundance") +
-  ecodata::theme_facet()
+  ecodata26::theme_facet()

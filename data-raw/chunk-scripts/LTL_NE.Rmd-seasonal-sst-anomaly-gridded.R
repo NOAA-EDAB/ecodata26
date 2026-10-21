@@ -1,5 +1,5 @@
 #EPU shapefile
-ne_epu_sf <- ecodata::epu_sf %>%
+ne_epu_sf <- ecodata26::epu_sf %>%
   dplyr::filter(EPU %in% c("GOM", "GB"))
 
 #Map line parameters
@@ -12,7 +12,7 @@ ymin <- 39
 ymax <- 45
 xlims <- c(xmin, xmax)
 ylims <- c(ymin, ymax)
-sst <- ecodata::seasonal_oisst_anom_gridded
+sst <- ecodata26::seasonal_oisst_anom_gridded
 
 sst$Season <- factor(
   sst$Season,
@@ -26,7 +26,7 @@ sst_map <-
     data = sst,
     aes(x = Longitude, y = Latitude, fill = Value)
   ) +
-  ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) +
+  ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) +
   ggplot2::geom_sf(data = ne_epu_sf, fill = "transparent", size = map.lwd) +
   ggplot2::scale_fill_gradient2(
     name = "Temp.\nAnomaly (C)",
@@ -38,7 +38,7 @@ sst_map <-
   ) +
   ggplot2::coord_sf(xlim = xlims, ylim = ylims) +
   ggplot2::facet_wrap(Season ~ .) +
-  ecodata::theme_map() +
+  ecodata26::theme_map() +
   ggplot2::ggtitle("SST anomaly (2022)") +
   ggplot2::xlab("Longitude") +
   ggplot2::ylab("Latitude") +
@@ -51,7 +51,7 @@ sst_map <-
     axis.text = element_text(size = 8),
     axis.title.y = element_text(angle = 90)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 
 sst_map

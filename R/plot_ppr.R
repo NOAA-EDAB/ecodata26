@@ -22,7 +22,7 @@ plot_ppr <- function(
   threshold = "global"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   if (threshold == "regional") {
     # not yet available
@@ -85,9 +85,9 @@ plot_ppr <- function(
     vylab <- "Proportion"
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  fix <- ecodata::ppr |>
+  fix <- ecodata26::ppr |>
     dplyr::filter(EPU %in% filterEPUs, Var == varName) |>
     dplyr::group_by(EPU) |>
     dplyr::mutate(Value = Value * scalar, hline = mean(Value))
@@ -141,9 +141,9 @@ plot_ppr <- function(
     ggplot2::ylab(vylab) +
     ggplot2::xlab("") +
     #ggplot2::facet_wrap(. ~ EPU) +
-    ecodata::theme_ts() +
-    ecodata::theme_facet() +
-    ecodata::theme_title()
+    ecodata26::theme_ts() +
+    ecodata26::theme_facet() +
+    ecodata26::theme_title()
 
   # # optional code for New England specific (2 panel) formatting
   # if (report == "NewEngland") {

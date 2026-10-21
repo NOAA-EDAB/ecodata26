@@ -17,7 +17,7 @@ plot_zoo_community <- function(
   report = "MidAtlantic",
   n = 0
 ) {
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # convert to leading capital
   if (report == "MidAtlantic") {
@@ -26,7 +26,7 @@ plot_zoo_community <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  fix <- ecodata::zoo_community |>
+  fix <- ecodata26::zoo_community |>
     dplyr::filter(EPU %in% filterEPUs)
 
   p <- ggplot2::ggplot(
@@ -54,11 +54,11 @@ plot_zoo_community <- function(
     ggplot2::ylab(paste("Principal Component Values")) +
     ggplot2::xlab(ggplot2::element_blank()) +
     ggplot2::facet_wrap(. ~ EPU) +
-    ecodata::geom_gls() +
-    ecodata::geom_lm(n = n) +
-    ecodata::theme_ts() +
-    ecodata::theme_facet() +
-    ecodata::theme_title()
+    ecodata26::geom_gls() +
+    ecodata26::geom_lm(n = n) +
+    ecodata26::theme_ts() +
+    ecodata26::theme_facet() +
+    ecodata26::theme_title()
 
   if (report == "NewEngland") {
     p <- p +

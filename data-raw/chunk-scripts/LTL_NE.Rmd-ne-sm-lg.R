@@ -1,4 +1,4 @@
-ecodata::zoo_abundance_anom %>%
+ecodata26::zoo_abundance_anom %>%
   dplyr::filter(
     EPU %in% c("GOM", "GB"),
     stringr::str_detect(Var, "LgCopepods|SmCopepods")
@@ -37,4 +37,4 @@ ecodata::zoo_abundance_anom %>%
     strip.text = element_text(hjust = 0, face = "italic"),
     legend.title = element_blank()
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

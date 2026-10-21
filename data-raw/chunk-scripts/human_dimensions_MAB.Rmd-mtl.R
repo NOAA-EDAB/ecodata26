@@ -1,4 +1,4 @@
-ecodata::ppr %>%
+ecodata26::ppr %>%
   dplyr::filter(Var == "MTL") %>%
   dplyr::group_by(EPU) %>%
   dplyr::mutate(hline = mean(Value)) %>%
@@ -26,5 +26,5 @@ ecodata::ppr %>%
   ggplot2::ggtitle("Mean Trophic Level") +
   ggplot2::ylab("") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

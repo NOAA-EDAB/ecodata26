@@ -1,6 +1,6 @@
 #Filter data into two dataframes for plotting
 
-indicators <- ecodata::bennet %>%
+indicators <- ecodata26::bennet %>%
   dplyr::filter(!EPU == "MAB") %>%
   dplyr::filter(
     stringr::str_detect(Var, pattern = "Benth"),
@@ -30,7 +30,7 @@ revchange1 <- indicators %>%
   dplyr::summarise(revchange.line = sum(Value))
 
 
-revchange <- ecodata::bennet %>%
+revchange <- ecodata26::bennet %>%
   dplyr::filter(
     !EPU == "MAB",
     Var %in% c("Total Revenue Change - Bennet"),
@@ -87,7 +87,7 @@ gom_bennet <- indicators %>%
   ) +
   #ggplot2::scale_y_continuous(breaks = seq(y.lim[1], y.lim[2], by = 100), limits = y.lim,
   #                   expand = c(0.01, 0.01)) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(title = element_text(size = 10)) +
   ggplot2::theme(
     legend.position = "bottom",
@@ -96,8 +96,8 @@ gom_bennet <- indicators %>%
     legend.title = element_blank(),
     legend.text = element_blank()
   ) +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()
 
 
 gb_bennet <- indicators %>%
@@ -135,7 +135,7 @@ gb_bennet <- indicators %>%
   ) +
   #ggplot2::scale_y_continuous(breaks = seq(y.lim[1], y.lim[2], by = 100),
   #                            limits = y.lim, expand = c(0.01, 0.01)) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(title = element_text(size = 10)) +
   ggplot2::theme(
     legend.position = "bottom",
@@ -148,8 +148,8 @@ ggplot2::guides(
   color = guide_legend(order = 1),
   fill = guide_legend(order = 0)
 ) +
-  ecodata::theme_title() +
-  ecodata::theme_facet()
+  ecodata26::theme_title() +
+  ecodata26::theme_facet()
 
 
 #cowplot::plot_grid(gom_bennet, gb_bennet, ncol = 2, rel_widths = c(0.7,1))

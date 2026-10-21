@@ -1,4 +1,4 @@
-indicators <- ecodata::bennet %>%
+indicators <- ecodata26::bennet %>%
   dplyr::filter(EPU == epu_abbr)
 
 indicators$Var <- gsub("Predator", "", indicators$Var)

@@ -24,7 +24,7 @@ plot_finfish_traits <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -33,7 +33,7 @@ plot_finfish_traits <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
   varTitle <- c(
@@ -63,12 +63,12 @@ plot_finfish_traits <- function(
     "PC3"
   )
 
-  fix <- ecodata::finfish_traits |>
+  fix <- ecodata26::finfish_traits |>
     tidyr::separate(Var, into = c("Season", "Var"), sep = "-") |>
     dplyr::group_by(Season, Var, EPU) |>
     dplyr::summarise(hline = mean(Value))
 
-  varUnit <- ecodata::finfish_traits |>
+  varUnit <- ecodata26::finfish_traits |>
     tidyr::separate(Var, into = c("Season", "Var"), sep = "-") |>
     dplyr::filter(Var %in% c(varName)) |>
     dplyr::select(Units) |>
@@ -79,7 +79,7 @@ plot_finfish_traits <- function(
   # e.g. fill = setup$shade.fill, alpha = setup$shade.alpha,
   # xmin = setup$x.shade.min , xmax = setup$x.shade.max
   #
-  p <- ecodata::finfish_traits |>
+  p <- ecodata26::finfish_traits |>
     tidyr::separate(Var, into = c("Season", "Var"), sep = "-") |>
     dplyr::filter(Var %in% c(varName), EPU %in% filterEPUs) |>
     dplyr::left_join(fix) |>
@@ -99,12 +99,12 @@ plot_finfish_traits <- function(
     ggplot2::ylab(paste0(varName, " (", unlist(varUnit), ")")) +
     ggplot2::xlab(ggplot2::element_blank()) +
     ggplot2::facet_grid(EPU ~ Season) +
-    ecodata::geom_gls(
+    ecodata26::geom_gls(
       ggplot2::aes(x = Time, y = Value, group = Season),
       alpha = setup$trend.alpha,
       size = setup$trend.size
     ) +
-    ecodata::geom_lm(
+    ecodata26::geom_lm(
       ggplot2::aes(x = Time, y = Value, group = Season),
       alpha = setup$trend.alpha,
       size = setup$trend.size,
@@ -116,9 +116,9 @@ plot_finfish_traits <- function(
       alpha = setup$hline.alpha,
       linetype = setup$hline.lty
     ) +
-    ecodata::theme_ts() +
-    ecodata::theme_facet() +
-    ecodata::theme_title()
+    ecodata26::theme_ts() +
+    ecodata26::theme_facet() +
+    ecodata26::theme_title()
 
   # optional code for New England specific (2 panel) formatting
   if (report == "NewEngland") {

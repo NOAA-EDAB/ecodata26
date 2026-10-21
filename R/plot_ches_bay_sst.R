@@ -18,7 +18,7 @@ plot_ches_bay_sst <- function(
   scale = "celsius"
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # adjust map window for Chesapeake Bay
   setup$xmin <- -77.5
@@ -36,9 +36,9 @@ plot_ches_bay_sst <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  sst <- ecodata::ches_bay_sst
+  sst <- ecodata26::ches_bay_sst
   sst$Var <- factor(sst$Var, levels = c("Winter", "Spring", "Summer", "Fall"))
 
   if (scale == "fahrenheit") {
@@ -67,7 +67,7 @@ plot_ches_bay_sst <- function(
   #
   p <- sst |>
     ggplot2::ggplot() +
-    ggplot2::geom_sf(data = ecodata::coast, size = setup$map.lwd) +
+    ggplot2::geom_sf(data = ecodata26::coast, size = setup$map.lwd) +
     ggplot2::coord_sf(crs = setup$crs, xlim = setup$xlims, ylim = setup$ylims) +
 
     ggplot2::geom_tile(
@@ -85,7 +85,7 @@ plot_ches_bay_sst <- function(
       midpoint = midpoint
     ) +
     ggplot2::facet_wrap(Var ~ .) +
-    ecodata::theme_map() +
+    ecodata26::theme_map() +
     ggplot2::ggtitle("Chesapeake Bay SST anomaly") +
     ggplot2::xlab(ggplot2::element_blank()) +
     ggplot2::ylab(ggplot2::element_blank()) +
@@ -104,7 +104,7 @@ plot_ches_bay_sst <- function(
       axis.text = ggplot2::element_text(size = 6),
       axis.title.y = ggplot2::element_text(angle = 90)
     ) +
-    ecodata::theme_title()
+    ecodata26::theme_title()
 
   # # optional code for New England specific (2 panel) formatting
   #  if (report == "NewEngland") {
@@ -124,7 +124,7 @@ plot_ches_bay_sst <- function(
 attr(plot_ches_bay_sst, "report") <- c("MidAtlantic", "NewEngland")
 
 # Paste commented original plot code chunk for reference
-# ecodata::dataset |>
+# ecodata26::dataset |>
 #   dplyr::filter(Var %in% c("..."),
 #                 EPU == "...") |>
 #   ... more dataset wrangling as necessary |>
@@ -138,8 +138,8 @@ attr(plot_ches_bay_sst, "report") <- c("MidAtlantic", "NewEngland")
 #   ggplot2::ggtitle("Title")+
 #   ggplot2::ylab(expression("Y label"))+
 #   ggplot2::xlab(element_blank())+
-#   ecodata::geom_gls()+
-#   ecodata::theme_ts()+
-#   ecodata::theme_title()
+#   ecodata26::geom_gls()+
+#   ecodata26::theme_ts()+
+#   ecodata26::theme_title()
 #
 #

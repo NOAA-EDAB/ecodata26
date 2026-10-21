@@ -13,7 +13,7 @@
 
 plot_demo <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -38,8 +38,8 @@ plot_demo <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
   #Plot series with trend
   psample <- ggplot2::ggplot(data = data, ggplot2::aes(x = x, y = y)) +
     ggplot2::geom_point(size = setup$pcex) +
-    ecodata::geom_gls() +
-    ecodata::geom_lm(n = 10, pValThreshold = 0.5) +
+    ecodata26::geom_gls() +
+    ecodata26::geom_lm(n = 10, pValThreshold = 0.5) +
     ggplot2::scale_color_manual(aesthetics = "color") +
     ggplot2::guides(color = "none") +
     ggplot2::geom_hline(
@@ -70,7 +70,7 @@ plot_demo <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
     ggplot2::ylab("") +
     ggplot2::xlab("Time") +
     ggplot2::labs(tag = "a") +
-    ecodata::theme_ts()
+    ecodata26::theme_ts()
 
   # Specify data frame with lat/lon locations for labels
   epu_labels <- data.frame(
@@ -81,7 +81,7 @@ plot_demo <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
 
   # Map of NE LME
   epumap <- ggplot2::ggplot() +
-    ggplot2::geom_sf(data = ecodata::coast, size = setup$map.lwd) +
+    ggplot2::geom_sf(data = ecodata26::coast, size = setup$map.lwd) +
     ggplot2::geom_sf(
       data = setup$epu_sf,
       fill = "transparent",
@@ -93,7 +93,7 @@ plot_demo <- function(shadedRegion = NULL, report = "MidAtlantic", n = 0) {
       ggplot2::aes(x = longitude, y = latitude, label = EPU),
       size = 1.7
     ) +
-    ecodata::theme_map() +
+    ecodata26::theme_map() +
     ggplot2::scale_x_continuous(
       breaks = seq(-78, -65, by = 4),
       expand = c(0.01, 0.01)

@@ -1,4 +1,4 @@
-ecodata::ppr %>%
+ecodata26::ppr %>%
   dplyr::filter(Var == "Fogarty") %>%
   dplyr::mutate(Value = Value * 1000) %>%
   dplyr::group_by(EPU) %>%
@@ -37,5 +37,5 @@ ecodata::ppr %>%
   ggplot2::ggtitle("Fogarty Index") +
   ggplot2::ylab("PPT") +
   ggplot2::xlab(element_blank()) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

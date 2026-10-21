@@ -1,4 +1,4 @@
-ecodata::zoo_abundance_anom %>%
+ecodata26::zoo_abundance_anom %>%
   dplyr::filter(
     EPU == "MAB",
     stringr::str_detect(Var, "LgCopepods|SmCopepods"),
@@ -29,10 +29,10 @@ ecodata::zoo_abundance_anom %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     plot.title = element_text(size = 7),
     strip.text = element_text(hjust = 0, face = "italic"),
     legend.title = element_blank()
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

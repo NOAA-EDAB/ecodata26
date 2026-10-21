@@ -1,7 +1,7 @@
-gl_bt <- ecodata::bottom_temp_glorys %>%
+gl_bt <- ecodata26::bottom_temp_glorys %>%
   dplyr::filter(EPU == "GB")
 
-bt <- ecodata::bottom_temp_insitu %>%
+bt <- ecodata26::bottom_temp_insitu %>%
   dplyr::filter(EPU == "GB", Var == "bottom temp anomaly in situ") %>%
   dplyr::mutate(hline = 0)
 
@@ -16,7 +16,7 @@ ggplot2::ggplot() + #plot
     ymax = Inf
   ) +
   ggplot2::geom_line(aes(x = bt$Time, y = bt$Value)) +
-  ecodata::geom_gls(aes(x = bt$Time, y = bt$Value)) +
+  ecodata26::geom_gls(aes(x = bt$Time, y = bt$Value)) +
   ggplot2::geom_point(aes(x = bt$Time, y = bt$Value), size = 1) +
   ggplot2::geom_point(
     aes(x = gl_bt$Time, y = gl_bt$Value),
@@ -35,9 +35,9 @@ ggplot2::ggplot() + #plot
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     plot.title = element_text(size = 12)
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

@@ -1,4 +1,4 @@
-aggregate_prod <- ecodata::seabird_ne %>%
+aggregate_prod <- ecodata26::seabird_ne %>%
   dplyr::filter(stringr::str_detect(Var, "Productivity")) %>%
   tidyr::separate(Var, c("Island", "COTE", "Spp", "Extra"), sep = " ") %>%
   mutate(Diet = (paste(Spp, Extra, sep = " "))) %>%
@@ -46,8 +46,8 @@ aggregate_prod %>%
   ) +
   ggplot2::geom_line(aes(x = Time, y = Mean), size = lwd - 0.75) +
   ggplot2::geom_point(aes(x = Time, y = Mean), size = pcex - 0.75) +
-  ecodata::geom_gls(aes(x = Time, y = Mean)) +
-  #ecodata::geom_lm(aes(x=Time, y=Mean))+
+  ecodata26::geom_gls(aes(x = Time, y = Mean)) +
+  #ecodata26::geom_lm(aes(x=Time, y=Mean))+
   ggplot2::geom_errorbar(
     aes(x = Time, ymin = se.low, ymax = se.high),
     width = 0.25
@@ -64,5 +64,5 @@ aggregate_prod %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

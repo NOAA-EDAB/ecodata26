@@ -1,6 +1,6 @@
 #Get data for plotting
 ## Apex pred
-apex <- ecodata::hms_landings %>%
+apex <- ecodata26::hms_landings %>%
   dplyr::filter(stringr::str_detect(Var, "Landings")) %>%
   separate(Var, c("Var", "trash"), sep = "_")
 
@@ -46,7 +46,7 @@ p1 <- apex %>%
     breaks = seq(1985, 2015, by = 5),
     limits = c(1985, 2018)
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0),
     legend.position = "bottom",
@@ -56,7 +56,7 @@ p1 <- apex %>%
   ggplot2::ylab("")
 
 #Managed landings
-managed_landings <- ecodata::comdat %>%
+managed_landings <- ecodata26::comdat %>%
   dplyr::filter(
     stringr::str_detect(
       Var,
@@ -70,7 +70,7 @@ managed_landings <- ecodata::comdat %>%
   )
 
 # #Total landings
-total_landings <- ecodata::comdat %>%
+total_landings <- ecodata26::comdat %>%
   dplyr::filter(
     !stringr::str_detect(Var, "managed species"),
     !stringr::str_detect(Var, "Other"),
@@ -136,7 +136,7 @@ gom_landings <- landings %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(aes(x = Time, y = Value, group = Var)) +
+  ecodata26::geom_gls(aes(x = Time, y = Value, group = Var)) +
 
   #Add time series
   ggplot2::geom_line(size = lwd) +
@@ -162,7 +162,7 @@ gom_landings <- landings %>%
     expand = c(0.01, 0.01)
   ) +
   ggplot2::ylab(expression("Landings (10"^3 * "metric tons)")) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0)) +
   ggplot2::ggtitle("Gulf of Maine")
 
@@ -182,7 +182,7 @@ gb_landings <- landings %>%
   ) +
 
   #Test for trend and add lines
-  ecodata::geom_gls(aes(x = Time, y = Value, group = Var)) +
+  ecodata26::geom_gls(aes(x = Time, y = Value, group = Var)) +
 
   #Add time series
   ggplot2::geom_line(size = lwd) +
@@ -208,7 +208,7 @@ gb_landings <- landings %>%
     expand = c(0.01, 0.01)
   ) +
   ggplot2::ylab(expression("Landings (10"^3 * "metric tons)")) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0)) +
   ggplot2::ggtitle("Georges Bank")
 

@@ -1,4 +1,4 @@
-ecodata::hms_cpue %>%
+ecodata26::hms_cpue %>%
   filter(stringr::str_detect(Var, "TUNA")) %>%
   ggplot() +
   ggplot2::annotate(
@@ -16,6 +16,6 @@ ecodata::hms_cpue %>%
   ggplot2::ggtitle("HMS POP TUNA CPUE") +
   ggplot2::ylab("Number per Haul") +
   ggplot2::xlab(element_blank()) +
-  ecodata::geom_gls(aes(x = Time, y = Value)) +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::geom_gls(aes(x = Time, y = Value)) +
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

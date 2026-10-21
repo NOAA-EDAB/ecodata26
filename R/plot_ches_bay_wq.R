@@ -18,7 +18,7 @@ plot_ches_bay_wq <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -28,7 +28,7 @@ plot_ches_bay_wq <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
   # three year moving average, these labels requested for clarity
   minlab <- seq(1987, 2017, 5)
@@ -36,7 +36,7 @@ plot_ches_bay_wq <- function(
   minl <- as.numeric(sprintf('%02d', minlab %% 100))
   maxl <- sprintf('%02d', maxlab %% 100)
 
-  CBwq <- ecodata::ches_bay_wq #|>
+  CBwq <- ecodata26::ches_bay_wq #|>
   #dplyr::mutate(hline = mean(Value))
 
   # code for generating plot object p
@@ -57,9 +57,9 @@ plot_ches_bay_wq <- function(
     ) +
     ggplot2::geom_line() +
     ggplot2::geom_point() +
-    ecodata::geom_gls() +
-    ecodata::geom_lm(n = n) +
-    #ecodata::geom_lm()+
+    ecodata26::geom_gls() +
+    ecodata26::geom_lm(n = n) +
+    #ecodata26::geom_lm()+
     ggplot2::labs(
       x = "Assessment Period",
       y = "Estimated attainment (%)",
@@ -74,7 +74,7 @@ plot_ches_bay_wq <- function(
     #                    size = setup$hline.size,
     #                    alpha = setup$hline.alpha,
     #                    linetype = setup$hline.lty) +
-    ecodata::theme_ts()
+    ecodata26::theme_ts()
 
   # # optional code for New England specific (2 panel) formatting
   #  if (report == "NewEngland") {
@@ -94,7 +94,7 @@ attr(plot_ches_bay_wq, "report") <- c("MidAtlantic")
 # maxlab <- seq(1989,2019,5)
 # minl<- as.numeric(sprintf('%02d',minlab %% 100))
 # maxl<- sprintf('%02d', maxlab %% 100)
-# ecodata::ches_bay_wq %>%
+# ecodata26::ches_bay_wq %>%
 #   dplyr::mutate(hline = mean(Value)) %>%
 #   ggplot2::ggplot(aes(x = Time, y = Value)) +
 #   ggplot2::annotate("rect", fill = shade.fill, alpha = shade.alpha,
@@ -102,8 +102,8 @@ attr(plot_ches_bay_wq, "report") <- c("MidAtlantic")
 #                     ymin = -Inf, ymax = Inf) +
 #   ggplot2::geom_line() +
 #   ggplot2::geom_point() +
-#   ecodata::geom_gls() +
-#   #ecodata::geom_lm()+
+#   ecodata26::geom_gls() +
+#   #ecodata26::geom_lm()+
 #   ggplot2::ylab(expression("Estimated attainment (%)")) +
 #   ggplot2::xlab(element_blank())+
 #   ggplot2::ggtitle("Chesapeake Bay Water Quality Attainment") +
@@ -115,5 +115,5 @@ attr(plot_ches_bay_wq, "report") <- c("MidAtlantic")
 #                       size = hline.size,
 #                       alpha = hline.alpha,
 #                       linetype = hline.lty) +
-#   ecodata::theme_ts()
+#   ecodata26::theme_ts()
 #

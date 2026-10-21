@@ -1,4 +1,4 @@
-ecodata::habs %>%
+ecodata26::habs %>%
   filter(Source == "Alexandrium") %>%
   ggplot2::ggplot(aes(x = Time, y = Value, color = Var)) +
   ggplot2::annotate(
@@ -12,7 +12,7 @@ ecodata::habs %>%
   ) +
   ggplot2::geom_point() +
   ggplot2::geom_line() +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(
     strip.text = element_text(hjust = 0, face = "italic"),
     axis.title.y = element_text(angle = 90)
@@ -21,8 +21,8 @@ ecodata::habs %>%
     name = "Region",
     labels = c("Bay of Fundy", "East GOM", "GOM all", "West GOM")
   ) +
-  ecodata::theme_title() +
+  ecodata26::theme_title() +
   ggplot2::ylab(expression("Cyst Abundance (10"^6 * "Cells)")) +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Gulf of Maine Alexandrium Cyst Abundance") +
-  ecodata::theme_facet()
+  ecodata26::theme_facet()

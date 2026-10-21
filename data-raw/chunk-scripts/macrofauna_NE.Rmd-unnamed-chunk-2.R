@@ -1,4 +1,4 @@
-ecodata::forage_anomaly %>%
+ecodata26::forage_anomaly %>%
   filter(!EPU == "MAB") %>%
   pivot_wider(names_from = Var, values_from = Value) %>%
   ggplot() +
@@ -21,4 +21,4 @@ ecodata::forage_anomaly %>%
   ggplot2::facet_wrap(~EPU) +
   ggplot2::ggtitle("Forage Anomalies") +
   ggplot2::ylab("Forage Anomaly") +
-  ecodata::theme_ts()
+  ecodata26::theme_ts()

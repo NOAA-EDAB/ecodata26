@@ -24,7 +24,7 @@ plot_spawn_timing <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   # dataset has NA EPU field but may be added later, so keep this here
@@ -36,9 +36,9 @@ plot_spawn_timing <- function(
     filterEPUs <- c("GB", "GOM")
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  fix <- ecodata::spawn_timing |>
+  fix <- ecodata26::spawn_timing |>
     dplyr::mutate(
       Units = dplyr::recode(
         Units,
@@ -94,8 +94,8 @@ plot_spawn_timing <- function(
     ) +
     ggplot2::geom_point() +
     ggplot2::geom_line() +
-    ecodata::geom_gls() +
-    ecodata::geom_lm(n = n) +
+    ecodata26::geom_gls() +
+    ecodata26::geom_lm(n = n) +
     #ggplot2::geom_bar(stat="identity", position="fill") +
     #ggplot2::scale_fill_manual(values = mat.col) +
     ggplot2::ylab(filt$Units) +
@@ -104,8 +104,8 @@ plot_spawn_timing <- function(
       dir = "v",
       labeller = ggplot2::label_wrap_gen(multi_line = FALSE)
     ) +
-    ecodata::theme_facet() +
-    ecodata::theme_title()
+    ecodata26::theme_facet() +
+    ecodata26::theme_title()
 
   if (varName %in% c("Resting", "Ripe", "Spent", "Developing")) {
     p <- p +

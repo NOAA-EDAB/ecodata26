@@ -105,5 +105,5 @@ get_ESP_gsi(save_clean = T)
 #   ggplot2::ggplot(aes(x = year, y = Value))+
 #   ggplot2::geom_point()+
 #   ggplot2::geom_line()+
-#   ecodata::geom_gls()+
+#   ecodata26::geom_gls()+
 #   ggplot2::facet_wrap(~season_month)

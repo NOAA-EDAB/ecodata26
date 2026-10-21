@@ -22,7 +22,7 @@ plot_commercial_div <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # # which report? this may be bypassed for some figures
   # if (report == "MidAtlantic") {
@@ -31,9 +31,9 @@ plot_commercial_div <- function(
   #   filterEPUs <- c("GB", "GOM")
   # }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  comm_div <- ecodata::commercial_div |>
+  comm_div <- ecodata26::commercial_div |>
     dplyr::filter(EPU == setup$region_abbr) |>
     dplyr::group_by(Var) |>
     dplyr::mutate(hline = mean(Value))
@@ -86,14 +86,14 @@ plot_commercial_div <- function(
   p <- comm_div |>
     dplyr::filter(Var == varName) |>
     ggplot2::ggplot(ggplot2::aes(x = Time, y = Value, color = Var)) +
-    # ecodata::geom_lm(n=n, ggplot2::aes(x = Time, y = Value, group = Var),
+    # ecodata26::geom_lm(n=n, ggplot2::aes(x = Time, y = Value, group = Var),
     #                  alpha = setup$trend.alpha, size = setup$trend.size)+
     # geom_gls(aes(x = Time, y = Value,
     #              group = Var),
     #            alpha = trend.alpha, size = trend.size) +
     ggplot2::geom_line(linewidth = setup$lwd) +
     ggplot2::geom_point(size = setup$pcex) +
-    ecodata::geom_lm(n = n) +
+    ecodata26::geom_lm(n = n) +
     #Highlight last ten years
     ggplot2::annotate(
       "rect",
@@ -104,7 +104,7 @@ plot_commercial_div <- function(
       ymin = -Inf,
       ymax = Inf
     ) +
-    # ecodata::geom_lm(aes(x = Time, y = Value,
+    # ecodata26::geom_lm(aes(x = Time, y = Value,
     #              group = Var))+
     ggplot2::ylim(ylim_fc) +
     ggplot2::scale_x_continuous(expand = c(0.01, 0.01)) +
@@ -119,8 +119,8 @@ plot_commercial_div <- function(
       alpha = setup$hline.alpha,
       linetype = setup$hline.lty
     ) +
-    ecodata::theme_ts() +
-    ecodata::theme_title()
+    ecodata26::theme_ts() +
+    ecodata26::theme_title()
   # optional code for New England specific (2 panel) formatting
   if (report == "NewEngland") {
     p <- p +
@@ -133,7 +133,7 @@ plot_commercial_div <- function(
   return(p)
 
   # Paste commented original plot code chunk for reference
-  # ecodata::dataset |>
+  # ecodata26::dataset |>
   #   dplyr::filter(Var %in% c("..."),
   #                 EPU == "...") |>
   #   ... more dataset wrangling as necessary |>
@@ -147,9 +147,9 @@ plot_commercial_div <- function(
   #   ggplot2::ggtitle("Title")+
   #   ggplot2::ylab(expression("Y label"))+
   #   ggplot2::xlab(element_blank())+
-  #   ecodata::geom_gls()+
-  #   ecodata::theme_ts()+
-  #   ecodata::theme_title()
+  #   ecodata26::geom_gls()+
+  #   ecodata26::theme_ts()+
+  #   ecodata26::theme_title()
   #
   #
 }

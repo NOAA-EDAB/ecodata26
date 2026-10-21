@@ -1,7 +1,7 @@
-upper.line <- ecodata::wcr %>%
+upper.line <- ecodata26::wcr %>%
   dplyr::filter(Time > 2000) %>%
   dplyr::mutate(hline = c(mean(Value)))
-lower.line <- ecodata::wcr %>%
+lower.line <- ecodata26::wcr %>%
   dplyr::filter(Time < 2000) %>%
   dplyr::mutate(hline = c(mean(Value)))
 wcr <- upper.line %>%
@@ -20,11 +20,11 @@ wcr %>%
   ) +
   ggplot2::geom_point() +
   ggplot2::geom_line() +
-  #ecodata::geom_lm(aes(x = Time, y = Value, group = Var))+
+  #ecodata26::geom_lm(aes(x = Time, y = Value, group = Var))+
   ggplot2::ylab("Warm Core Ring Births") +
   ggplot2::xlab(element_blank()) +
   ggplot2::ggtitle("Warm Core Rings") +
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::geom_segment(
     data = upper.line,
     aes(
@@ -46,4 +46,4 @@ wcr %>%
     )
   ) +
   ggplot2::theme(legend.position = "none") +
-  ecodata::theme_title()
+  ecodata26::theme_title()

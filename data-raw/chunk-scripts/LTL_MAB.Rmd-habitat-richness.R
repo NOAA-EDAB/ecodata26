@@ -1,4 +1,4 @@
-MAB <- ecodata::habitat_diversity %>%
+MAB <- ecodata26::habitat_diversity %>%
   dplyr::filter(!Var == "Shannon", EPU == "MAB") %>%
   tidyr::separate(Var, into = c("Var", "Richness")) %>%
   tidyr::pivot_wider(values_from = "Value", names_from = "Var") %>%
@@ -11,7 +11,7 @@ MAB <- ecodata::habitat_diversity %>%
     hline = mean(mean)
   )
 
-ecodata::habitat_diversity %>%
+ecodata26::habitat_diversity %>%
   dplyr::filter(!Var == "Shannon") %>%
   tidyr::separate(Var, into = c("Var", "Richness")) %>%
   tidyr::pivot_wider(values_from = "Value", names_from = "Var") %>%
@@ -54,6 +54,6 @@ ecodata::habitat_diversity %>%
   #          size = hline.size,
   #          alpha = hline.alpha,
   #          linetype = hline.lty)+
-  ecodata::theme_ts() +
+  ecodata26::theme_ts() +
   ggplot2::theme(strip.text = element_text(hjust = 0, face = "italic")) +
-  ecodata::theme_title()
+  ecodata26::theme_title()

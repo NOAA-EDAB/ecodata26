@@ -1,4 +1,4 @@
-mafmc_ne <- ecodata::nefsc_survey_disaggregated %>%
+mafmc_ne <- ecodata26::nefsc_survey_disaggregated %>%
   dplyr::distinct() %>%
   dplyr::filter(
     EPU %in% c("GOM", "GB"),
@@ -56,7 +56,7 @@ gom_mafmc_props <- mafmc_ne %>%
     expand = c(0.01, 0.01)
   ) +
   ggplot2::ylab(expression("Proportion of GOM survey")) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0))
 
 gb_mafmc_props <- mafmc_ne %>%
@@ -100,7 +100,7 @@ gb_mafmc_props <- mafmc_ne %>%
     expand = c(0.01, 0.01)
   ) +
   ggplot2::ylab("Proportion of GB survey") +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(strip.text = element_text(hjust = 0))
 
 

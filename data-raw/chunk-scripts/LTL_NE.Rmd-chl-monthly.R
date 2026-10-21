@@ -1,4 +1,4 @@
-out_pp <- ecodata::chl_pp %>%
+out_pp <- ecodata26::chl_pp %>%
   dplyr::filter(
     EPU %in% c("GOM", "GB"),
     stringr::str_detect(Var, "MONTHLY_CHLOR_A_MEDIAN")
@@ -33,7 +33,7 @@ out_pp$Month <- factor(out_pp$Month, levels = month.abb)
 pp_cci_gom <- out_pp %>%
   dplyr::filter(EPU == "GOM") %>%
   ggplot2::ggplot() +
-  #ecodata::geom_lm(aes(x = Year, y = Value, group = Month))+
+  #ecodata26::geom_lm(aes(x = Year, y = Value, group = Month))+
   ggplot2::geom_point(aes(x = Year, y = Value, group = Month)) +
   ggplot2::geom_line(aes(x = Year, y = Value, group = Month)) +
   ggplot2::scale_x_discrete(
@@ -49,18 +49,18 @@ pp_cci_gom <- out_pp %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
     panel.spacing = unit(1, "lines"),
     plot.margin = unit(c(0.1, 0, 0, 0), "cm")
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 pp_cci_gb <- out_pp %>%
   dplyr::filter(EPU == "GB") %>%
   ggplot2::ggplot() +
-  #ecodata::geom_lm(aes(x = Year, y = Value, group = Month))+
+  #ecodata26::geom_lm(aes(x = Year, y = Value, group = Month))+
   ggplot2::geom_point(aes(x = Year, y = Value, group = Month)) +
   ggplot2::geom_line(aes(x = Year, y = Value, group = Month)) +
   ggplot2::scale_x_discrete(
@@ -76,12 +76,12 @@ pp_cci_gb <- out_pp %>%
     alpha = hline.alpha,
     linetype = hline.lty
   ) +
-  ecodata::theme_facet() +
+  ecodata26::theme_facet() +
   ggplot2::theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
     panel.spacing = unit(1, "lines"),
     plot.margin = unit(c(0.1, 0, 0, 0), "cm")
   ) +
-  ecodata::theme_title()
+  ecodata26::theme_title()
 
 pp_cci_gb + pp_cci_gom + patchwork::plot_layout(ncol = 1)
