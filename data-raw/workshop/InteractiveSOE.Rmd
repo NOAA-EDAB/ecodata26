@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE,
 library(ggplot2)
 library(dplyr)
 library(tidyr)
-library(ecodata)
+library(ecodata26)
 library(here)
 library(kableExtra)
 library(ggrepel)
@@ -190,7 +190,7 @@ plot_stackbarcpts_single <- function(YEAR, var2bar,
   return(p)
 }
 
-bar_dat <- ecodata::productivity_anomaly %>% 
+bar_dat <- ecodata26::productivity_anomaly %>% 
   filter(EPU == "MAB")
 
 # mafmc <-plot_stackbarcpts_single(YEAR = bar_dat$Time,
@@ -229,7 +229,7 @@ ggiraph(code = print(mid), pointsize = 14, width_svg = 8, height_svg = 6)
 ```{r GB-recruitment, fig.cap = "Small fish per large fish biomass anomaly on Georges Bank. Point cursor to a bar for species name; this will highlight that species in all years.",fig.width = 8, fig.height = 5}
 
 ## GB
-bar_dat <- ecodata::productivity_anomaly %>% 
+bar_dat <- ecodata26::productivity_anomaly %>% 
   filter(EPU == "GB")
 
 gb <- plot_stackbarcpts_single(YEAR = bar_dat$Time,
@@ -257,7 +257,7 @@ ggiraph(code = print(gb), pointsize = 14, width_svg = 8, height_svg = 6)
 
 
 ## GOM
-bar_dat <- ecodata::productivity_anomaly %>% 
+bar_dat <- ecodata26::productivity_anomaly %>% 
   filter(EPU == "GOM")
 
 gom <- plot_stackbarcpts_single(YEAR = bar_dat$Time,

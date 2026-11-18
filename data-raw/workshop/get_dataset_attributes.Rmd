@@ -22,7 +22,7 @@ shelf(
   devtools, dplyr, here, knitr, purrr, tidyr)
 load_all(here())
 
-ds_ls <- data(package = "ecodata") %>% .$results %>% .[,3]
+ds_ls <- data(package = "ecodata26") %>% .$results %>% .[,3]
 not_null <- function(x) !is.null(x)
 datasets <- tibble(
   name = ds_ls) %>% 

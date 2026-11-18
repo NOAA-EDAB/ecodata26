@@ -3,7 +3,7 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   data_guidelines: data_guidelines.html
-  ecodata26: ecodata.html
+  ecodata26: ecodata26.html
   ecodata26_maintenance: ecodata_maintenance.html
   geom_gls: geom_gls.html
   landing_page: landing_page.html

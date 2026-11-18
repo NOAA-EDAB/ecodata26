@@ -282,7 +282,7 @@ Data from the NEFSC Bottom Trawl Survey are shown in black
 <div id="nefmc-benthivores-in-mab" class="section level4">
 <h4>NEFMC Benthivores in MAB</h4>
 <!-- ```{r nefsc-survey-disaggregated-NEFMC-ssp-in-mab} -->
-<!-- nefmc_ma <- ecodata::nefsc_survey_disaggregated %>%  -->
+<!-- nefmc_ma <- ecodata26::nefsc_survey_disaggregated %>%  -->
 <!--   # distinct() %>%  -->
 <!--   dplyr::filter(EPU %in% c("MAB"), -->
 <!--          Management == "NEFMC", -->
@@ -307,8 +307,8 @@ Data from the NEFSC Bottom Trawl Survey are shown in black
 <!--   #Add time series -->
 <!--   ggplot2::geom_line(size = lwd-0.5) + -->
 <!--   ggplot2::geom_point(size = pcex-0.5) + -->
-<!--   ecodata::geom_gls(aes(x = Time, y = Value)) + -->
-<!--   #ecodata::geom_lm(aes(x=Time, y = Value))+ -->
+<!--   ecodata26::geom_gls(aes(x = Time, y = Value)) + -->
+<!--   #ecodata26::geom_lm(aes(x=Time, y = Value))+ -->
 <!--   # scale_color_manual(values = series.col, aesthetics = "color")+ -->
 <!--   ggplot2::guides(color = FALSE) + -->
 <!--   ggplot2::geom_hline(aes(yintercept = hline, -->
@@ -323,7 +323,7 @@ Data from the NEFSC Bottom Trawl Survey are shown in black
 <!--   ggplot2::scale_x_continuous(breaks = seq(1965, 2015, by = 10), expand = c(0.01, 0.01)) + -->
 <!--   ggplot2::ylab(expression("Proportion of MAB survey")) + -->
 <!--   ggplot2::xlab(element_blank())+ -->
-<!--   ecodata::theme_facet()+ -->
+<!--   ecodata26::theme_facet()+ -->
 <!--   ggplot2::theme(strip.text=element_text(hjust=0)) -->
 <!-- mab_nefmc_props -->
 <!-- ``` -->
@@ -352,7 +352,7 @@ inshore bottom trawl survey.
 class="section level4">
 <h4>Proportion managed species in NEFSC BTS</h4>
 <!-- ```{r nefsc-survey-disaggregated-managed-spp-bts-gb} -->
-<!-- prop <- ecodata::nefsc_survey_disaggregated %>%  -->
+<!-- prop <- ecodata26::nefsc_survey_disaggregated %>%  -->
 <!--   dplyr::filter(!stringr::str_detect(`Feeding guild`, "Other|other"), -->
 <!--          !is.na(Proportion)) %>% #remove "other" -->
 <!--   tidyr::unite(.,Var,c("Feeding guild","Season"), sep = " ") %>%  -->
@@ -396,14 +396,14 @@ class="section level4">
 <!--   ggplot2::ylab(expression("Proportion of survey")) + -->
 <!--   ggplot2::xlab(element_blank())+ -->
 <!--   ggplot2::ggtitle("GB") + -->
-<!--   ecodata::theme_facet()+ -->
+<!--   ecodata26::theme_facet()+ -->
 <!--   ggplot2::theme(strip.text=element_text(hjust=0)) -->
 <!-- GB_prop <- ggiraph::girafe(ggobj = GB_prop) -->
 <!-- GB_prop <- ggiraph::girafe_options(GB_prop, opts_zoom(max = 5) ) -->
 <!-- GB_prop -->
 <!-- ``` -->
 <!-- ```{r nefsc-survey-disaggregated-managed-spp-bts-gom} -->
-<!-- prop <- ecodata::nefsc_survey_disaggregated %>%  -->
+<!-- prop <- ecodata26::nefsc_survey_disaggregated %>%  -->
 <!--   dplyr::filter(!stringr::str_detect(`Feeding guild`, "Other|other"), -->
 <!--          !is.na(Proportion)) %>% #remove "other" -->
 <!--   tidyr::unite(.,Var,c("Feeding guild","Season"), sep = " ") %>%  -->
@@ -447,7 +447,7 @@ class="section level4">
 <!--   ggplot2::ylab(expression("Proportion of survey")) + -->
 <!--   ggplot2::xlab(element_blank())+ -->
 <!--   ggplot2::ggtitle("GOM") + -->
-<!--   ecodata::theme_facet()+ -->
+<!--   ecodata26::theme_facet()+ -->
 <!--   ggplot2::theme(strip.text=element_text(hjust=0)) -->
 <!-- GOM_prop <- ggiraph::girafe(ggobj = GOM_prop) -->
 <!-- GOM_prop <- ggiraph::girafe_options(GOM_prop, opts_zoom(max = 5) ) -->
@@ -524,7 +524,7 @@ Stomach Fullness Anomaly in New England.
 <h3 class="tabset tabset-fade">Larval diversity</h3>
 <p><img src="macrofauna_NE_files/figure-html/ichthyo-diversity-1.png" width="672" style="display: block; margin: auto;" /></p>
 <!-- ```{r ichthyo-diversity2} -->
-<!-- gom_larv_div <- ecodata::ichthyo_diversity %>% -->
+<!-- gom_larv_div <- ecodata26::ichthyo_diversity %>% -->
 <!--   dplyr::filter(EPU == "GOM") %>% -->
 <!--   #dplyr::mutate(Var = word(Var,1)) %>%  -->
 <!--   #dplyr::group_by(Var) %>%  -->
@@ -535,8 +535,8 @@ Stomach Fullness Anomaly in New England.
 <!--        annotate("rect", fill = shade.fill, alpha = shade.alpha, -->
 <!--       xmin = x.shade.min , xmax = x.shade.max, -->
 <!--       ymin = -Inf, ymax = Inf) + -->
-<!--   ecodata::geom_gls(aes(x = Time, y = mean(Value))) + -->
-<!--   #ecodata::geom_lm(aes(x=Time, y = Value))+ -->
+<!--   ecodata26::geom_gls(aes(x = Time, y = mean(Value))) + -->
+<!--   #ecodata26::geom_lm(aes(x=Time, y = Value))+ -->
 <!--   ggplot2::ggtitle("GOM larval diversity") + -->
 <!--   ggplot2::ylab("Shannon Diversity") + -->
 <!--   ggplot2::xlab(element_blank())+ -->
@@ -545,10 +545,10 @@ Stomach Fullness Anomaly in New England.
 <!--            size = hline.size, -->
 <!--            alpha = hline.alpha, -->
 <!--            linetype = hline.lty)+ -->
-<!--   ecodata::theme_facet() + -->
+<!--   ecodata26::theme_facet() + -->
 <!--   ggplot2::theme(strip.text=element_text(hjust=0))+ -->
-<!--   ecodata::theme_title() -->
-<!-- gb_larv_div <- ecodata::ichthyo_diversity %>% -->
+<!--   ecodata26::theme_title() -->
+<!-- gb_larv_div <- ecodata26::ichthyo_diversity %>% -->
 <!--   dplyr::filter(EPU == "GB") %>% -->
 <!--   #dplyr::mutate(Var = word(Var,1)) %>%  -->
 <!--   #dplyr::group_by(Var) %>%  -->
@@ -559,8 +559,8 @@ Stomach Fullness Anomaly in New England.
 <!--   ggplot2::annotate("rect", fill = shade.fill, alpha = shade.alpha, -->
 <!--       xmin = x.shade.min , xmax = x.shade.max, -->
 <!--       ymin = -Inf, ymax = Inf) + -->
-<!--   ecodata::geom_gls(aes(x = Time, y = mean(Value))) + -->
-<!--   #ecodata::geom_lm(aes(x=Time, y = Value))+ -->
+<!--   ecodata26::geom_gls(aes(x = Time, y = mean(Value))) + -->
+<!--   #ecodata26::geom_lm(aes(x=Time, y = Value))+ -->
 <!--   ggplot2::ggtitle("GB larval diversity") + -->
 <!--   ylab("Shannon Diversity") + -->
 <!--   ggplot2::xlab(element_blank())+ -->
@@ -569,9 +569,9 @@ Stomach Fullness Anomaly in New England.
 <!--            size = hline.size, -->
 <!--            alpha = hline.alpha, -->
 <!--            linetype = hline.lty)+ -->
-<!--   ecodata::theme_facet() + -->
+<!--   ecodata26::theme_facet() + -->
 <!--   ggplot2::theme(strip.text=element_text(hjust=0))+ -->
-<!--   ecodata::theme_title() -->
+<!--   ecodata26::theme_title() -->
 <!-- gb_larv_div  -->
 <!-- gom_larv_div  -->
 <!-- ``` -->
@@ -678,7 +678,7 @@ counts.
 <div id="black-belly-rose" class="section level4">
 <h4>Black Belly Rose</h4>
 <!-- ```{r black-belly-rose, message=FALSE} -->
-<!-- dat<- ecodata::long_line_survey %>% -->
+<!-- dat<- ecodata26::long_line_survey %>% -->
 <!--   dplyr::filter(COMMON_NAME == "BLACKBELLY ROSEFISH") -->
 <!-- nesbath <- marmap::fortify.bathy(marmap::getNOAA.bathy(lon1 = -72, lon2 = -65, lat1 = 40, lat2 = 45,resolution = 5)) -->
 <!-- #invisible(sf::st_crs(poly)<-crs) -->
@@ -686,9 +686,9 @@ counts.
 <!-- ggplot2::ggplot() + -->
 <!--   ggplot2::geom_raster(data = nesbath, aes(x=x,y=y, fill = z)) + -->
 <!--   ggplot2::scale_fill_gradientn(colors =c("lightcyan","lightblue4"))+ -->
-<!--   ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) + -->
+<!--   ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) + -->
 <!--   ggplot2::geom_sf(data = epu_sf, fill = "transparent", size = map.lwd) + -->
-<!--   ggplot2::geom_sf(data = ecodata::longlinesurvey_sf, size = map.lwd, color = "black",fill = "transparent")+ -->
+<!--   ggplot2::geom_sf(data = ecodata26::longlinesurvey_sf, size = map.lwd, color = "black",fill = "transparent")+ -->
 <!--   ggplot2::geom_point(data = dat, aes(x = DECDEG_BEGLON_SET, y = DECDEG_BEGLAT_SET,color = categ), size = map.lwd)+ -->
 <!--   ggplot2::coord_sf(crs = crs, xlim = c(-72, -66.5), ylim = c(41, 44.5))+ -->
 <!--   ggspatial::annotation_scale(location = "br", width_hint = 0.4) + -->

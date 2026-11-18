@@ -25,7 +25,7 @@ plot_annual_chl_pp <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -50,10 +50,10 @@ plot_annual_chl_pp <- function(
 
   varN <- paste0(var, "_ANNUAL_", type)
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
-  fix <- ecodata::annual_chl_pp |>
+  fix <- ecodata26::annual_chl_pp |>
     dplyr::mutate(Time = as.integer(gsub("A_", "", Time))) |>
     dplyr::filter(EPU == filterEPUs, Var == varN)
 
@@ -74,7 +74,7 @@ plot_annual_chl_pp <- function(
 
   p <- fix |>
     ggplot2::ggplot(ggplot2::aes(x = Time, y = Value)) +
-    #ecodata::geom_lm(aes(x = Year, y = Value, group = Month))+
+    #ecodata26::geom_lm(aes(x = Year, y = Value, group = Month))+
     ggplot2::geom_point() +
     ggplot2::geom_line() +
     ggplot2::annotate(
@@ -94,9 +94,9 @@ plot_annual_chl_pp <- function(
       alpha = setup$hline.alpha,
       linetype = setup$hline.lty
     ) +
-    ecodata::geom_lm(n = n) +
-    ecodata::theme_facet() +
-    ecodata::theme_title()
+    ecodata26::geom_lm(n = n) +
+    ecodata26::theme_facet() +
+    ecodata26::theme_title()
 
   if (varName == "chl" & plottype == "total") {
     p <- "Plot type 'total' is not available for the chlorophyll variable. Please use plottype = `mean`."

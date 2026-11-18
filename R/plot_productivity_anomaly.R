@@ -71,13 +71,13 @@ plot_productivity_anomaly <- function(
   }
 
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # this should be added to plot_setip
   leg_font_size <- 8
 
   # base data object
-  prod_dat <- ecodata::productivity_anomaly
+  prod_dat <- ecodata26::productivity_anomaly
 
   # council-level filtering
   if (plottype == "council") {
@@ -112,7 +112,7 @@ plot_productivity_anomaly <- function(
   #   }
   # }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
   if (varName == "assessment") {
@@ -181,7 +181,7 @@ plot_productivity_anomaly <- function(
         subtitle = subtitle_text
       ) +
       ggplot2::guides(fill = ggplot2::guide_legend(ncol = 3)) +
-      ecodata::theme_ts() +
+      ecodata26::theme_ts() +
       ggplot2::theme(
         axis.title = ggplot2::element_text(size = setup$label.size * 2.4),
         axis.text = ggplot2::element_text(size = setup$label.size * 2.4),
@@ -395,7 +395,7 @@ plot_stackbarcpts_single <- function(
     ggplot2::ylab(ylab) +
     ggplot2::ggtitle(titl) +
     ggplot2::guides(fill = ggplot2::guide_legend(ncol = leg_ncol)) +
-    ecodata::theme_ts() +
+    ecodata26::theme_ts() +
     ggplot2::theme(
       axis.title = ggplot2::element_text(size = 12),
       axis.text = ggplot2::element_text(size = 10),

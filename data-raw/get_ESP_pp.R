@@ -11,12 +11,12 @@ library(sf)
 library(ggplot2)
 library(ncdf4)
 library(reshape2)
-library(ecodata)
+library(ecodata26)
 library(stringr)
 
 raw.dir <- here::here("data-raw", "ESP")
 
-ESP_sf <- ecodata::ESP_sf
+ESP_sf <- ecodata26::ESP_sf
 
 # season <- "winter"
 # ESP_name <- "acadian_redfish_both"

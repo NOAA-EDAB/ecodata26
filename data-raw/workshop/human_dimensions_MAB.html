@@ -458,13 +458,13 @@ class="section level3 tabset tabset-fade">
 <h3 class="tabset tabset-fade">Ecosystem Overfishing</h3>
 <!-- #### Primary Production Required -->
 <!-- ```{r ppr, fig.cap="Primary production required to support the commercial landings. Included are the top species accounting for 80% of the landings in each year."} -->
-<!-- a<- ecodata::ppr %>%  -->
+<!-- a<- ecodata26::ppr %>%  -->
 <!--   dplyr::group_by(EPU) %>%  -->
 <!--   dplyr::mutate(hline = mean(Value)) %>%  -->
 <!--   dplyr::filter(Var == "PPR", -->
 <!--                 EPU == "MAB",  -->
 <!--                 Time <= 1997)  -->
-<!-- ecodata::ppr %>%  -->
+<!-- ecodata26::ppr %>%  -->
 <!--   dplyr::group_by(EPU) %>%  -->
 <!--   dplyr::mutate(hline = mean(Value)) %>%  -->
 <!--   dplyr::filter(Var == "PPR", -->
@@ -477,7 +477,7 @@ class="section level3 tabset tabset-fade">
 <!--   ggplot2::geom_point(aes(x = Time, y = Value))+ -->
 <!--   ggplot2::geom_line(aes(x = Time, y = Value))+ -->
 <!--   ggplot2::geom_line(data = a, aes(x = Time, y = Value), linetype = "dashed")+ -->
-<!--   # ecodata::geom_lm(aes(x = Time, y = Value, -->
+<!--   # ecodata26::geom_lm(aes(x = Time, y = Value, -->
 <!--   #              group = Var))+ -->
 <!--   ggplot2::geom_hline(aes(yintercept = hline), -->
 <!--            size = hline.size, -->
@@ -487,8 +487,8 @@ class="section level3 tabset tabset-fade">
 <!--   ggplot2::ggtitle("Primary Production Required")+ -->
 <!--   ggplot2::ylab("Proportion of Total PPD ")+ -->
 <!--   ggplot2::xlab(element_blank())+ -->
-<!--   ecodata::theme_ts()+ -->
-<!--   ecodata::theme_title() -->
+<!--   ecodata26::theme_ts()+ -->
+<!--   ecodata26::theme_title() -->
 <!-- ``` -->
 <div id="fogarty-index" class="section level4">
 <h4>Fogarty Index</h4>
@@ -509,7 +509,7 @@ Ryther Index
 </div>
 <!-- #### Mean Trophic Level -->
 <!-- ```{r mtl, fig.cap="Mean trophic level"} -->
-<!-- ecodata::ppr %>%  -->
+<!-- ecodata26::ppr %>%  -->
 <!--   dplyr::filter(Var == "MTL") %>%  -->
 <!--   dplyr::group_by(EPU) %>%  -->
 <!--   dplyr::mutate(hline = mean(Value)) %>%  -->
@@ -529,8 +529,8 @@ Ryther Index
 <!--   ggplot2::ggtitle("Mean Trophic Level")+ -->
 <!--   ggplot2::ylab("")+ -->
 <!--   ggplot2::xlab(element_blank())+ -->
-<!--   ecodata::theme_ts()+ -->
-<!--   ecodata::theme_title() -->
+<!--   ecodata26::theme_ts()+ -->
+<!--   ecodata26::theme_title() -->
 <!-- ``` -->
 </div>
 <div id="pp-reconstructed" class="section level4">
@@ -592,15 +592,15 @@ Summary of single species status for HMS stocks.
 <p><img src="images/Cumulative%20Timeline_Full%20Region_SoE2023%20v2-01.png" width="1276" style="display: block; margin: auto;" /></p>
 <!-- ```{r wind-dev-cumul-MAB, fig.cap = ""} -->
 <!-- knitr::include_graphics(file.path(image.dir, "MidAtlantic_2021128-01.jpg")) -->
-<!-- #knitr::include_url("https://raw.githubusercontent.com/NOAA-EDAB/ecodata/master/docs/images/MidAtlantic_2021119-01.jpg") -->
+<!-- #knitr::include_url("https://raw.githubusercontent.com/NOAA-EDAB/ecodata26/master/docs/images/MidAtlantic_2021119-01.jpg") -->
 <!-- ``` -->
 <!-- ```{r wind-dev-NE, fig.cap = ""} -->
-<!-- #knitr::include_url("https://raw.githubusercontent.com/NOAA-EDAB/ecodata/master/docs/images/NE2021119.jpg") -->
+<!-- #knitr::include_url("https://raw.githubusercontent.com/NOAA-EDAB/ecodata26/master/docs/images/NE2021119.jpg") -->
 <!-- knitr::include_graphics(file.path(image.dir, "NE2021128-01.jpg")) -->
 <!-- ``` -->
 <!-- ```{r wind-dev-survey, fig.cap = ""} -->
 <!-- knitr::include_graphics(file.path(image.dir, "SurveyMap202133.png")) -->
-<!-- #knitr::include_url("https://raw.githubusercontent.com/NOAA-EDAB/ecodata/master/docs/images/SurveysWindFarmAreas_20201229.jpg") -->
+<!-- #knitr::include_url("https://raw.githubusercontent.com/NOAA-EDAB/ecodata26/master/docs/images/SurveysWindFarmAreas_20201229.jpg") -->
 <!-- ``` -->
 <div class="figure" style="text-align: center">
 <img src="human_dimensions_MAB_files/figure-html/wind-proposed-dev-1.png" alt="Proposed wind development on the northeast shelf." width="80%" />
@@ -758,7 +758,7 @@ Illex squid***
 <!-- <span style="color: red;">NO NEW DATA</span> -->
 <!-- These are the five species most likely to occur in the lease areas.  -->
 <!-- ```{r wind-occupancy, eval = T, echo = F, fig.cap='', out.width='80%'} -->
-<!-- wind1 <- ecodata::wind_occupancy -->
+<!-- wind1 <- ecodata26::wind_occupancy -->
 <!-- wind1$trend<- ifelse(wind1$Trend == "pos",  -->
 <!--                     "$\\nearrow$", -->
 <!--                     ifelse(wind1$Trend == "neg", -->

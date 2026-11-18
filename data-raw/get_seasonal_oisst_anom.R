@@ -13,7 +13,7 @@ library(sf)
 library(ggplot2)
 library(ncdf4)
 library(reshape2)
-library(ecodata)
+library(ecodata26)
 library(stringr)
 
 ### SST from ecopull

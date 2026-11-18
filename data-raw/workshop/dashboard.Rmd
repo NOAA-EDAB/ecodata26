@@ -9,7 +9,7 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-library(ecodata)
+library(ecodata26)
 library(tidyverse)
 library(stringr)
 library(plotly)
@@ -60,13 +60,13 @@ Questions:
  * What are we trying to answer?
  
 ```{r, setup2}
-managed_landings <- ecodata::comdat  %>%
+managed_landings <- ecodata26::comdat  %>%
   dplyr::filter(stringr::str_detect(Var, paste0(council_abbr," managed species - Landings weight|JOINT managed species - Landings weight")),
          !stringr::str_detect(Var, "Other"),
          Time >= 1986,
          EPU == epu_abbr)
 # HMS Landings
-apex<-ecodata::hms_landings %>% 
+apex<-ecodata26::hms_landings %>% 
   dplyr::filter(stringr::str_detect(Var, "Landings")) %>% 
   separate(Var, c("Var", "trash"), sep = "_") %>% 
   group_by(Time) %>% 
@@ -76,7 +76,7 @@ apex<-ecodata::hms_landings %>%
          Units = c("metric tons"), 
          EPU = c("MAB"))
 #Total landings
-total_landings <- ecodata::comdat  %>%
+total_landings <- ecodata26::comdat  %>%
   dplyr::filter(!stringr::str_detect(Var, "managed species"),
          !stringr::str_detect(Var, "Other"),
          !stringr::str_detect(Var, "Apex"),
@@ -109,7 +109,7 @@ p2<- ggplot(data = landings_agg)+
   ggplot2::annotate("rect", fill = shade.fill, alpha = shade.alpha,
       xmin = x.shade.min , xmax = x.shade.max,
       ymin = -Inf, ymax = Inf) +
-  #ecodata::geom_gls(aes(x = Time, y = Value,
+  #ecodata26::geom_gls(aes(x = Time, y = Value,
   #             group = Var),
   #           alpha = trend.alpha, size = trend.size) +
   ggplot2::geom_line(aes(x = Time, y = Value, color = Var), size = lwd) +
@@ -127,8 +127,8 @@ p2<- ggplot(data = landings_agg)+
            linetype = hline.lty) +
   ggplot2::ggtitle("Total Landings")+
   ggplot2::theme(axis.title.y = element_text(size = 7))+
-  ecodata::theme_ts()+
-  ecodata::theme_title()
+  ecodata26::theme_ts()+
+  ecodata26::theme_title()
 #plotly::ggplotly(p2)
 
 ```
@@ -143,7 +143,7 @@ p3<- ggplot2::ggplot(data = landings_agg)+
   ggplot2::annotate("rect", fill = shade.fill, alpha = shade.alpha,
       xmin = x.shade.min , xmax = x.shade.max,
       ymin = -Inf, ymax = Inf) +
-  ecodata::geom_gls(aes(x = Time, y = Value,
+  ecodata26::geom_gls(aes(x = Time, y = Value,
                group = Var),
              alpha = trend.alpha, size = trend.size) +
   ggplot2::geom_line(aes(x = Time, y = Value, color = Var), size = lwd) +
@@ -161,8 +161,8 @@ p3<- ggplot2::ggplot(data = landings_agg)+
            linetype = hline.lty) +
   ggplot2::ggtitle("Total Landings")+
   ggplot2::theme(axis.title.y = element_text(size = 7))+
-  ecodata::theme_ts()+
-  ecodata::theme_title()
+  ecodata26::theme_ts()+
+  ecodata26::theme_title()
 #plotly::ggplotly(p3)
 p3
 
@@ -182,7 +182,7 @@ p3<- ggplot(data = land)+
   ggplot2::annotate("rect", fill = shade.fill, alpha = shade.alpha,
       xmin = x.shade.min , xmax = x.shade.max,
       ymin = -Inf, ymax = Inf) +
-  ecodata::geom_gls(aes(x = Time, y = Value,
+  ecodata26::geom_gls(aes(x = Time, y = Value,
                group = Var),
              alpha = trend.alpha, size = trend.size) +
   ggplot2::geom_line(aes(x = Time, y = Value, color = Var), size = lwd) +
@@ -201,8 +201,8 @@ p3<- ggplot(data = land)+
            linetype = hline.lty) +
   ggplot2::ggtitle("Managed Landings")+
   ggplot2::theme(axis.title.y = element_text(size = 7))+
-  ecodata::theme_ts()+
-  ecodata::theme_title()
+  ecodata26::theme_ts()+
+  ecodata26::theme_title()
 #plotly::ggplotly(p3)
 p3 
 ```
@@ -301,7 +301,7 @@ ggplot(data = all)+
   # ggplot2::annotate("rect", fill = shade.fill, alpha = shade.alpha,
   #     xmin = x.shade.min , xmax = x.shade.max,
   #     ymin = -Inf, ymax = Inf) +
-  #ecodata::geom_gls(aes(x = Time, y = Value,
+  #ecodata26::geom_gls(aes(x = Time, y = Value,
   #             group = Var),
   #           alpha = trend.alpha, size = trend.size) +
   #ggplot2::geom_line(aes(x = Time, y = Value, color = Var), size = lwd) +
@@ -320,8 +320,8 @@ ggplot(data = all)+
            linetype = hline.lty) +
   ggplot2::ggtitle("Managed Landings - GAM")+
   ggplot2::theme(axis.title.y = element_text(size = 7))+
-  ecodata::theme_ts()+
-  ecodata::theme_title()
+  ecodata26::theme_ts()+
+  ecodata26::theme_title()
 
 ```
 
@@ -355,7 +355,7 @@ Revenue from Mid-Atlantic managed spp.
 
 ```{r, setup3}
 ## Apex pred
-apex<-ecodata::hms_landings %>% 
+apex<-ecodata26::hms_landings %>% 
   dplyr::filter(stringr::str_detect(Var, "Revenue")) %>% 
   separate(Var, c("Var", "trash"), sep = "_") %>% 
   group_by(Time) %>% 
@@ -364,7 +364,7 @@ apex<-ecodata::hms_landings %>%
          Units = c("metric tons"), 
          EPU = c("MAB"))
 #Filtering and aggregation step
-rev_agg <- ecodata::comdat %>% 
+rev_agg <- ecodata26::comdat %>% 
   dplyr::filter(stringr::str_detect(Var, "Revenue"),
          !stringr::str_detect(Var, "Apex|prop|Other|NEFMC"), #Remove proportions, "Other" category species, NEFMC managed species in MAB
          EPU == epu_abbr,
@@ -396,7 +396,7 @@ ggplot2::ggplot(data = rev_agg) +
       ymin = -Inf, ymax = Inf)+  
   
   #lines
-  ecodata::geom_gls(aes(x = Time, y = Total,
+  ecodata26::geom_gls(aes(x = Time, y = Total,
                group = Status),
              alpha = trend.alpha, size = trend.size) +
   ggplot2::geom_line(aes(x = Time, y = Total, color = Status), size = lwd) +
@@ -415,8 +415,8 @@ ggplot2::ggplot(data = rev_agg) +
            alpha = hline.alpha,
            linetype = hline.lty) +
   ggplot2::xlab(element_blank())+
-  ecodata::theme_ts()+
-  ecodata::theme_title()
+  ecodata26::theme_ts()+
+  ecodata26::theme_title()
 
 ```
 
@@ -436,7 +436,7 @@ p3<- ggplot(data = rev)+
   ggplot2::annotate("rect", fill = shade.fill, alpha = shade.alpha,
       xmin = x.shade.min , xmax = x.shade.max,
       ymin = -Inf, ymax = Inf) +
-  ecodata::geom_gls(aes(x = Time, y = Value,
+  ecodata26::geom_gls(aes(x = Time, y = Value,
                group = Var),
              alpha = trend.alpha, size = trend.size) +
   ggplot2::geom_line(aes(x = Time, y = Value, color = Var), size = lwd) +
@@ -455,8 +455,8 @@ p3<- ggplot(data = rev)+
            linetype = hline.lty) +
   ggplot2::ggtitle("Total Landings")+
   ggplot2::theme(axis.title.y = element_text(size = 7))+
-  ecodata::theme_ts()+
-  ecodata::theme_title()
+  ecodata26::theme_ts()+
+  ecodata26::theme_title()
 #plotly::ggplotly(p3)
 p3 
 ```

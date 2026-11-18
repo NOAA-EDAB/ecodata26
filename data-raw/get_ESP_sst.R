@@ -13,14 +13,14 @@ library(sf)
 library(ggplot2)
 library(ncdf4)
 library(reshape2)
-library(ecodata)
+library(ecodata26)
 library(stringr)
 
 
 raw.dir <- here::here("data-raw", "gridded", "sst_data")
 ltm.dir <- here::here("data-raw", "gridded")
 
-ESP_sf <- ecodata::ESP_sf
+ESP_sf <- ecodata26::ESP_sf
 
 
 seasonal_ESP_ltm <- function(ltm, ESP_name) {

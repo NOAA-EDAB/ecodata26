@@ -281,7 +281,7 @@ NEAMAP shown in red.
 class="section level4">
 <h4>Proportion managed species in NEFSC BTS</h4>
 <!-- ```{r nefsc-survey-disaggregated-managed-spp-bts} -->
-<!-- prop <- ecodata::nefsc_survey_disaggregated %>%  -->
+<!-- prop <- ecodata26::nefsc_survey_disaggregated %>%  -->
 <!--   dplyr::filter(!stringr::str_detect(`Feeding guild`, "Other|other"), -->
 <!--          !is.na(Proportion)) %>% #remove "other" -->
 <!--   tidyr::unite(.,Var,c("Feeding guild","Season"), sep = " ") %>%  -->
@@ -324,7 +324,7 @@ class="section level4">
 <!--   ggplot2::scale_x_continuous(breaks = seq(1965, 2015, by = 10), expand = c(0.01, 0.01)) + -->
 <!--   ggplot2::ylab(expression("Proportion of survey")) + -->
 <!--   ggplot2::ggtitle("MAB") + -->
-<!--   ecodata::theme_facet()+ -->
+<!--   ecodata26::theme_facet()+ -->
 <!--   ggplot2::theme(strip.text=element_text(hjust=0)) -->
 <!-- mab_prop <- ggiraph::girafe(ggobj = mab_prop) -->
 <!-- mab_prop <- ggiraph::girafe_options(mab_prop, opts_zoom(max = 5) ) -->
@@ -334,7 +334,7 @@ class="section level4">
 <div id="mafmc-planktivores-in-ne" class="section level4">
 <h4>MAFMC Planktivores in NE</h4>
 <!-- ```{r nefsc-survey-disaggregated-mafmc-spp-in-ne} -->
-<!-- mafmc_ne <- ecodata::nefsc_survey_disaggregated %>%  -->
+<!-- mafmc_ne <- ecodata26::nefsc_survey_disaggregated %>%  -->
 <!--   dplyr::distinct() %>%  -->
 <!--   dplyr::filter(EPU %in% c("GOM","GB"), -->
 <!--          Management == "MAFMC", -->
@@ -373,7 +373,7 @@ class="section level4">
 <!--   #Axis and theme -->
 <!--   ggplot2::scale_x_continuous(breaks = seq(1965, 2015, by = 10), expand = c(0.01, 0.01)) + -->
 <!--   ggplot2::ylab(expression("Proportion of GOM survey")) + -->
-<!--   ecodata::theme_facet()+ -->
+<!--   ecodata26::theme_facet()+ -->
 <!--   ggplot2::theme(strip.text=element_text(hjust=0)) -->
 <!-- gb_mafmc_props <- mafmc_ne %>%  -->
 <!--   dplyr::filter(EPU == "GB") %>%  -->
@@ -402,7 +402,7 @@ class="section level4">
 <!--   #Axis and theme -->
 <!--   ggplot2::scale_x_continuous(breaks = seq(1965, 2015, by = 10), expand = c(0.01, 0.01)) + -->
 <!--   ggplot2::ylab("Proportion of GB survey") + -->
-<!--   ecodata::theme_facet()+ -->
+<!--   ecodata26::theme_facet()+ -->
 <!--   ggplot2::theme(strip.text=element_text(hjust=0)) -->
 <!-- gom_mafmc_props + gb_mafmc_props + patchwork::plot_layout(ncol = 1) -->
 <!-- ``` -->
@@ -543,7 +543,7 @@ Large Marine Ecosystem.
 <!-- ### Blue Runner on NES -->
 <!-- <span style="color: red;">NO NEW DATA</span> -->
 <!-- ```{r blue-runner, fig.cap = "Blue runner presence on Northeast Shelf"} -->
-<!-- blue<-ecodata::blue_runner %>%  -->
+<!-- blue<-ecodata26::blue_runner %>%  -->
 <!--   tidyr::separate(Var, c("Var", "Pos"), "L") %>%  -->
 <!--   tidyr::spread(., Pos, Value) %>%  -->
 <!--   dplyr::rename(Lat = at,  -->
@@ -554,7 +554,7 @@ Large Marine Ecosystem.
 <!--                       "Positive Blue Runner Tows since 2010 - " = "Since 2010")) -->
 <!-- blue$Var <- factor(blue$Var, levels = c("Prior to 2000", "2001-2010", "Since 2010")) -->
 <!-- #EPU shapefile -->
-<!-- epu_sf <- ecodata::epu_sf %>%  -->
+<!-- epu_sf <- ecodata26::epu_sf %>%  -->
 <!--   dplyr::filter(EPU %in% c("GOM","GB", "MAB")) -->
 <!-- #Map line parameters -->
 <!-- map.lwd <- 0.4 -->
@@ -568,13 +568,13 @@ Large Marine Ecosystem.
 <!-- ## Map plotting blue runner -->
 <!-- blue_map <-  -->
 <!--   ggplot2::ggplot() + -->
-<!--   ggplot2::geom_sf(data = ecodata::coast, size = map.lwd) + -->
+<!--   ggplot2::geom_sf(data = ecodata26::coast, size = map.lwd) + -->
 <!--   ggplot2::geom_sf(data = epu_sf, fill = "transparent", size = map.lwd) + -->
 <!--   ggplot2::geom_point(data = blue, aes(x = Lon, y = Lat, color = Var, shape = Var))+ -->
 <!--   ggplot2::scale_shape_manual(values=c(16, 3, 17))+ -->
 <!--   ggplot2::scale_color_manual(values = c("blue", "black", "red"))+ -->
 <!--   ggplot2::coord_sf(crs = crs, xlim = xlims, ylim = ylims) + -->
-<!--   ecodata::theme_map() + -->
+<!--   ecodata26::theme_map() + -->
 <!--   ggplot2::ggtitle("Blue Runner Presence") + -->
 <!--   ggplot2::xlab("") + -->
 <!--   ggplot2::ylab("") + -->
@@ -601,7 +601,7 @@ here</a>
 <h3>HMS CPUE</h3>
 <!-- ```{r, hms-all-cpue} -->
 <!-- #knitr::include_graphics(file.path(image.dir, "hms-too-big.png")) -->
-<!-- ecodata::hms_cpue %>% -->
+<!-- ecodata26::hms_cpue %>% -->
 <!--   ggplot()+ -->
 <!--  ggplot2::annotate("rect", fill = shade.fill, alpha = shade.alpha, -->
 <!--       xmin = x.shade.min , xmax = x.shade.max, -->
@@ -611,7 +611,7 @@ here</a>
 <!--   ggplot2::facet_wrap(~Var, scales = "free")+ -->
 <!--   ggplot2::ggtitle("HMS POP CPUE ALL")+ -->
 <!--   ggplot2::ylab("Number per Haul")+ -->
-<!--   ecodata::theme_ts() -->
+<!--   ecodata26::theme_ts() -->
 <!-- ``` -->
 <p><img src="macrofauna_MAB_files/figure-html/hms-tuna-cpue-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="figure" style="text-align: center">

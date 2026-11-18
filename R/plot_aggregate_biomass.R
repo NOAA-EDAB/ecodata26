@@ -20,7 +20,7 @@ plot_aggregate_biomass <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -32,11 +32,11 @@ plot_aggregate_biomass <- function(
     filterEPUs <- EPU
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
-  end_year <- max(ecodata::aggregate_biomass$Time)
+  end_year <- max(ecodata26::aggregate_biomass$Time)
   # this code from NE reports, works for Mid but includes Spring 2020
-  agg <- ecodata::aggregate_biomass |>
+  agg <- ecodata26::aggregate_biomass |>
     dplyr::mutate(EPU = factor(EPU)) |>
     dplyr::filter(
       !stringr::str_detect(
@@ -109,7 +109,7 @@ plot_aggregate_biomass <- function(
 
   if (report == "MidAtlantic") {
     #Get NEAMAP
-    neamap <- ecodata::mab_inshore_survey |>
+    neamap <- ecodata26::mab_inshore_survey |>
       tidyr::separate(Var, into = c("Var", "Val"), sep = "-") |>
       tidyr::pivot_wider(names_from = Val, values_from = Value) |>
       dplyr::mutate(Value = as.numeric(Value), CV = as.numeric(CV)) |>
@@ -177,23 +177,23 @@ plot_aggregate_biomass <- function(
       ymax = Inf
     ) +
     #Test for trend and add lines
-    ecodata::geom_gls(
+    ecodata26::geom_gls(
       ggplot2::aes(x = Time, y = Mean, color = Var),
       alpha = setup$trend.alpha,
       size = setup$trend.size,
       na.rm = T
     ) +
-    ecodata::geom_lm(
+    ecodata26::geom_lm(
       n = n,
       ggplot2::aes(x = Time, y = Mean, color = Var),
       alpha = setup$trend.alpha,
       size = setup$trend.size,
       na.rm = T
     ) +
-    # ecodata::geom_lm(aes(x = Time, y = Mean,
+    # ecodata26::geom_lm(aes(x = Time, y = Mean,
     #              color = Var),
     #            alpha = trend.alpha, size = trend.size) +
-    #ecodata::geom_lm(aes(x = Time, y = Mean))+
+    #ecodata26::geom_lm(aes(x = Time, y = Mean))+
 
     #Add time series
     ggplot2::geom_ribbon(
@@ -230,7 +230,7 @@ plot_aggregate_biomass <- function(
     ) +
     ggplot2::coord_cartesian(clip = "on") +
     ggplot2::ylab(ggplot2::element_blank()) +
-    ecodata::theme_facet() +
+    ecodata26::theme_facet() +
     ggplot2::theme(
       strip.text = ggplot2::element_text(hjust = 0, size = 12),
       axis.title.x = ggplot2::element_blank(),
@@ -277,23 +277,23 @@ plot_aggregate_biomass <- function(
       ymax = Inf
     ) +
     #Test for trend and add lines
-    ecodata::geom_gls(
+    ecodata26::geom_gls(
       ggplot2::aes(x = Time, y = Mean, color = Var),
       alpha = setup$trend.alpha,
       size = setup$trend.size,
       na.rm = T
     ) +
-    ecodata::geom_lm(
+    ecodata26::geom_lm(
       n = n,
       ggplot2::aes(x = Time, y = Mean, color = Var),
       alpha = setup$trend.alpha,
       size = setup$trend.size,
       na.rm = T
     ) +
-    # ecodata::geom_lm(aes(x = Time, y = Mean,
+    # ecodata26::geom_lm(aes(x = Time, y = Mean,
     #              color = Var),
     #            alpha = trend.alpha, size = trend.size) +
-    #ecodata::geom_lm(aes(x = Time, y = Mean))+
+    #ecodata26::geom_lm(aes(x = Time, y = Mean))+
 
     #Add time series
     ggplot2::geom_ribbon(
@@ -330,7 +330,7 @@ plot_aggregate_biomass <- function(
     ) +
     ggplot2::coord_cartesian(clip = "on") +
     ggplot2::ylab(ggplot2::element_blank()) +
-    ecodata::theme_facet() +
+    ecodata26::theme_facet() +
     ggplot2::theme(
       strip.text = ggplot2::element_text(hjust = 0, size = 12),
       axis.title.x = ggplot2::element_blank(),
@@ -381,23 +381,23 @@ plot_aggregate_biomass <- function(
     #Test for trend and add lines
     # bespoke geom just for planktivores since nmle package could not fit
     # models with ar1 errors
-    ecodata::geom_gls(
+    ecodata26::geom_gls(
       ggplot2::aes(x = Time, y = Mean, color = Var),
       alpha = setup$trend.alpha,
       size = setup$trend.size,
       na.rm = T
     ) +
-    ecodata::geom_lm(
+    ecodata26::geom_lm(
       n = n,
       ggplot2::aes(x = Time, y = Mean, color = Var),
       alpha = setup$trend.alpha,
       size = setup$trend.size,
       na.rm = T
     ) +
-    # ecodata::geom_lm(aes(x = Time, y = Mean,
+    # ecodata26::geom_lm(aes(x = Time, y = Mean,
     #              color = Var),
     #            alpha = trend.alpha, size = trend.size) +
-    #ecodata::geom_lm(aes(x = Time, y = Mean))+
+    #ecodata26::geom_lm(aes(x = Time, y = Mean))+
 
     #Add time series
     ggplot2::geom_ribbon(
@@ -434,7 +434,7 @@ plot_aggregate_biomass <- function(
     ) +
     ggplot2::coord_cartesian(clip = "on") +
     ggplot2::ylab(ggplot2::element_blank()) +
-    ecodata::theme_facet() +
+    ecodata26::theme_facet() +
     ggplot2::theme(
       strip.text = ggplot2::element_text(hjust = 0, size = 12),
       axis.title.x = ggplot2::element_blank(),
@@ -482,13 +482,13 @@ plot_aggregate_biomass <- function(
 
     #Highlight last ten years
     #Test for trend and add lines
-    ecodata::geom_gls(
+    ecodata26::geom_gls(
       ggplot2::aes(x = Time, y = Mean, color = Var),
       alpha = setup$trend.alpha,
       size = setup$trend.size,
       na.rm = T
     ) +
-    ecodata::geom_lm(
+    ecodata26::geom_lm(
       n = n,
       ggplot2::aes(x = Time, y = Mean, color = Var),
       alpha = setup$trend.alpha,
@@ -496,10 +496,10 @@ plot_aggregate_biomass <- function(
       na.rm = T
     ) +
 
-    # ecodata::geom_lm(aes(x = Time, y = Mean,
+    # ecodata26::geom_lm(aes(x = Time, y = Mean,
     #              color = Var),
     #            alpha = trend.alpha, size = trend.size) +
-    #ecodata::geom_lm(aes(x = Time, y = Mean))+
+    #ecodata26::geom_lm(aes(x = Time, y = Mean))+
 
     #Add time series
     ggplot2::geom_ribbon(
@@ -536,7 +536,7 @@ plot_aggregate_biomass <- function(
     ) +
     ggplot2::coord_cartesian(clip = "on") +
     ggplot2::ylab(ggplot2::element_blank()) +
-    ecodata::theme_facet() +
+    ecodata26::theme_facet() +
     ggplot2::theme(
       strip.text = ggplot2::element_text(hjust = 0, size = 12),
       axis.title.x = ggplot2::element_blank(),

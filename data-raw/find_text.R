@@ -1,4 +1,4 @@
-#' Find snippets of text in the ecodata chunk-scripts
+#' Find snippets of text in the ecodata26 chunk-scripts
 #'
 #' Scans all chapter R chunck scripts for \code{textSnippet}
 #'

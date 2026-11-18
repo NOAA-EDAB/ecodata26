@@ -1,10 +1,10 @@
-a <- ecodata::ppr %>%
+a <- ecodata26::ppr %>%
   dplyr::filter(Var == "PP") %>%
   dplyr::group_by(EPU) %>%
   dplyr::mutate(hline = mean(Value)) %>%
   dplyr::filter(EPU != "MAB", Time <= 1997)
 
-ecodata::ppr %>%
+ecodata26::ppr %>%
   dplyr::filter(Var == "PP") %>%
   dplyr::group_by(EPU) %>%
   dplyr::mutate(hline = mean(Value)) %>%
@@ -32,5 +32,5 @@ ecodata::ppr %>%
   ggplot2::facet_wrap(~EPU) +
   ggplot2::ggtitle("PP Reconstrcted") +
   ggplot2::ylab("mtC region-1 year-1") +
-  ecodata::theme_ts() +
-  ecodata::theme_title()
+  ecodata26::theme_ts() +
+  ecodata26::theme_title()

@@ -20,7 +20,7 @@ plot_advection <- function(
   n = 0
 ) {
   # generate plot setup list (same for all plot functions)
-  setup <- ecodata::plot_setup(shadedRegion = shadedRegion, report = report)
+  setup <- ecodata26::plot_setup(shadedRegion = shadedRegion, report = report)
 
   # which report? this may be bypassed for some figures
   if (report == "MidAtlantic") {
@@ -35,10 +35,10 @@ plot_advection <- function(
     var <- varName
   }
 
-  # optional code to wrangle ecodata object prior to plotting
+  # optional code to wrangle ecodata26 object prior to plotting
   # e.g., calculate mean, max or other needed values to join below
 
-  fix <- ecodata::advection |>
+  fix <- ecodata26::advection |>
     tidyr::separate(Time, c('Year', 'Month'), sep = '\\.') |>
     dplyr::filter(Month %in% var & EPU %in% filterEPUs) |>
     dplyr::mutate(
@@ -57,8 +57,8 @@ plot_advection <- function(
     )
 
   #set plot limits based on data
-  fix.mu <- mean(ecodata::advection$Value, na.rm = T)
-  fix.sd <- sd(ecodata::advection$Value, na.rm = T)
+  fix.mu <- mean(ecodata26::advection$Value, na.rm = T)
+  fix.sd <- sd(ecodata26::advection$Value, na.rm = T)
   plot.lower <- fix.mu - 1.5 * fix.sd
   plot.upper <- fix.mu + 1.5 * fix.sd
 
@@ -110,9 +110,9 @@ plot_advection <- function(
       size = setup$label.size * 0.75
     ) +
     ggplot2::facet_wrap(~Month.Name, scale = 'free_y') +
-    ecodata::geom_gls() +
-    ecodata::geom_lm(n = n) +
-    ecodata::theme_ts() +
+    ecodata26::geom_gls() +
+    ecodata26::geom_lm(n = n) +
+    ecodata26::theme_ts() +
     ggplot2::coord_cartesian(ylim = c(plot.lower, plot.upper)) +
     ggplot2::geom_hline(
       yintercept = 0,
@@ -120,7 +120,7 @@ plot_advection <- function(
       alpha = setup$hline.alpha,
       linetype = setup$hline.lty
     ) +
-    ecodata::theme_title()
+    ecodata26::theme_title()
 
   return(p)
 }

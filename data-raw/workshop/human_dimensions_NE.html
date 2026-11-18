@@ -469,13 +469,13 @@ class="section level3 tabset tabset-fade">
 <h3 class="tabset tabset-fade">Ecosystem Overfishing</h3>
 <!-- #### Primary Production Required -->
 <!-- ```{r ppr, fig.cap="Primary production required to support the commercial landings. Included are the top species accounting for 80% of the landings in each year."} -->
-<!-- a<-ecodata::ppr %>%  -->
+<!-- a<-ecodata26::ppr %>%  -->
 <!--   dplyr::filter(Var == "PPR") %>%  -->
 <!--   dplyr::group_by(EPU) %>%  -->
 <!--   dplyr::mutate(hline = mean(Value)) %>%  -->
 <!--   dplyr::filter(EPU != "MAB",  -->
 <!--                 Time <=1997)  -->
-<!-- ecodata::ppr %>%  -->
+<!-- ecodata26::ppr %>%  -->
 <!--   dplyr::filter(Var == "PPR") %>%  -->
 <!--   dplyr::group_by(EPU) %>%  -->
 <!--   dplyr::mutate(hline = mean(Value)) %>%  -->
@@ -487,7 +487,7 @@ class="section level3 tabset tabset-fade">
 <!--       ymin = -Inf, ymax = Inf) + -->
 <!--   ggplot2::geom_point(aes(x = Time, y = Value))+ -->
 <!--   ggplot2::geom_line(aes(x = Time, y = Value))+ -->
-<!--   # ecodata::geom_lm(aes(x = Time, y = Value, -->
+<!--   # ecodata26::geom_lm(aes(x = Time, y = Value, -->
 <!--   #              group = Var))+ -->
 <!--   ggplot2::geom_line(data = a, aes(x = Time, y = Value), linetype = "dashed")+ -->
 <!--   ggplot2::geom_hline(aes(yintercept = hline), -->
@@ -499,9 +499,9 @@ class="section level3 tabset tabset-fade">
 <!--   ggplot2::ggtitle("Primary Production Required")+ -->
 <!--   ggplot2::ylab("Proportion of Total PPD")+ -->
 <!--   ggplot2::xlab(element_blank())+ -->
-<!--   ecodata::theme_ts()+ -->
-<!--   ecodata::theme_title()+ -->
-<!--   ecodata::theme_facet() -->
+<!--   ecodata26::theme_ts()+ -->
+<!--   ecodata26::theme_title()+ -->
+<!--   ecodata26::theme_facet() -->
 <!-- ``` -->
 <div id="fogarty-index" class="section level4">
 <h4>Fogarty Index</h4>
@@ -522,7 +522,7 @@ Ryther Index
 </div>
 <!-- #### Mean Trophic Level -->
 <!-- ```{r mtl, fig.cap="Mean tropic level"} -->
-<!-- ecodata::ppr %>%  -->
+<!-- ecodata26::ppr %>%  -->
 <!--   dplyr::filter(Var == "MTL") %>%  -->
 <!--   dplyr::group_by(EPU) %>%  -->
 <!--   dplyr::mutate(hline = mean(Value)) %>%  -->
@@ -533,7 +533,7 @@ Ryther Index
 <!--       ymin = -Inf, ymax = Inf) + -->
 <!--   ggplot2::geom_point(aes(x = Time, y = Value))+ -->
 <!--   ggplot2::geom_line(aes(x = Time, y = Value))+ -->
-<!--   # ecodata::geom_lm(aes(x = Time, y = Value, -->
+<!--   # ecodata26::geom_lm(aes(x = Time, y = Value, -->
 <!--   #              group = Var))+ -->
 <!--   ggplot2::geom_hline(aes(yintercept = hline), -->
 <!--            size = hline.size, -->
@@ -543,8 +543,8 @@ Ryther Index
 <!--   ggplot2::facet_wrap( ~ EPU)+ -->
 <!--   ggplot2::ggtitle("Mean Trophic Level")+ -->
 <!--   ggplot2::ylab("")+ -->
-<!--   ecodata::theme_ts()+ -->
-<!--   ecodata::theme_title() -->
+<!--   ecodata26::theme_ts()+ -->
+<!--   ecodata26::theme_title() -->
 <!-- ``` -->
 </div>
 <div id="pp-reconstructed" class="section level4">
